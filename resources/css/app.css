@@ -1,0 +1,198 @@
+@import 'bootstrap.min.css';
+@import 'jost-font.css';
+@import 'dashboard.css';
+
+/*------ 1. GENERAL ------*/
+/*------ 2. HEADER  ------*/
+
+
+/*------ DASHBOARD  ------*/
+
+
+
+/* 1. GENERAL */
+
+body {
+     font-family: Jost;
+     font-size: 1em;
+     font-weight: 400;
+}
+
+
+/* 2.1 NavBar */
+.navbar {
+     padding: 0;
+}
+
+.bg-dark {
+     background-color: #000 !important;
+}
+
+.navbar-brand {
+     padding: 0;
+     margin: 0;
+}
+
+.navbar-brand img {
+     height: 100px;
+     padding-left: 16px;
+}
+
+.navbar-secondary-logo img {
+     height: 100px;
+     padding-left: 16px;
+}
+
+.navbar-header {
+     color: #fff;
+     text-align: center;
+}
+
+.site-title {
+     text-transform: uppercase;
+     font-weight: 700;
+     padding-bottom: 0;
+     margin-bottom: 0;
+     font-size: 1.6em;
+}
+
+.site-subtitle {
+     font-weight: 400;
+     font-size: 1.3em;
+}
+
+/* 2.2 SECONDARY NAVBAR */
+
+.secondary-navbar {
+     background-color: #9574fa !important;
+     text-transform: uppercase;
+     font-weight: 500;
+     letter-spacing: 0.05em;
+     padding: 0.5rem;
+     margin: 0;
+     
+
+
+}
+
+.navbar-nav {
+     padding: 0;
+     margin: 0;
+}
+
+.navbar-nav>.nav-item>.nav-link{
+     color:#fff;
+}
+
+.navbar-nav>.nav-item>.nav-link:hover {
+     background-color: #000 !important;
+     color: #E6BE7E;
+     transition: 0.3s
+}
+
+.navbar-nav>.nav-item>.nav-link.active {
+     background-color: #000 !important;
+     color: #E6BE7E;
+
+}
+
+
+
+/*----- CAROUSEL -----*/
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+     /* margin-bottom: 4rem; */
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+     bottom: 3rem;
+     z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+     height: 32rem;
+}
+
+.birthday-carousel-item {
+     height: 10rem;
+}
+
+.birthday-card {
+     position: absolute;
+     left: 15%;
+     right: 15%;
+     text-align: center;
+}
+
+.birthdaycarousel .carousel-indicators [data-bs-target] {
+     color: #000;
+}
+
+/* NEWS SECTION */
+.featuredNewsExcerpt{
+     text-align: justify;
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-line-clamp: 2;
+     -webkit-box-orient: vertical;
+     margin-bottom: 0px;
+}
+
+.newsExcerpt {
+     text-align: justify;
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-line-clamp: 2;
+     -webkit-box-orient: vertical;
+     margin-bottom: 0px;
+     font-size:0.875rem;
+}
+
+.cmd-message-text{
+     text-align: justify;
+     font-size: 1.1rem;
+     line-height: 2rem;
+     text-align: justify;
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-line-clamp: 8;
+     -webkit-box-orient: vertical; 
+}
+
+
+
+/* RESPONSIVE CSS
+   -------------------------------------------------- */
+
+@media (min-width: 40em) {
+
+     /* Bump up size of carousel content */
+     .carousel-caption p {
+          margin-bottom: 1.25rem;
+          font-size: 1.25rem;
+          line-height: 1.4;
+     }
+
+
+}
+
+/* FOOTER */
+
+.copyright-section{
+     background-color: #E6BE7E;
+}
+
+.copyright{
+     font-size:0.9rem;
+}
+
+.disclaimer-section{
+     font-size:0.8rem;
+}
