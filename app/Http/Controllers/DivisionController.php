@@ -29,7 +29,7 @@ class DivisionController extends Controller
      */
     public function create()
     {
-        //
+        return view('division.create');
     }
 
     /**
@@ -40,7 +40,12 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Division::create([
+        'name' => $request->input('division'),
+        'slug' => str()->slug($request->input('division')),
+        'description' => $request->input('description'),
+       ]);
+       return redirect()->action([DivisionController::class, 'index'])->with('status', 'Division Created');
     }
 
     /**

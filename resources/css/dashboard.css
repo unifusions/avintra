@@ -155,3 +155,16 @@
      border-color: transparent;
      box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
    }
+
+   .sub-nav{
+    list-style: none;
+    padding-left:3.2rem;
+   }
+
+   .sub-nav > li > a {
+    text-decoration: none;
+   }
+
+   .dashboard{
+    background-color: #F5F4F7;
+   }

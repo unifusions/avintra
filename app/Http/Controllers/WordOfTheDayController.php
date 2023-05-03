@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TodayWord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WordOfTheDayController extends Controller
 {
@@ -13,7 +15,8 @@ class WordOfTheDayController extends Controller
      */
     public function index()
     {
-        return view('wordoftheday.index');
+        $words = TodayWord::orderBy('created_at', 'desc')->paginate(15);
+        return view('wordoftheday.index', compact('words'));
     }
 
     /**
@@ -23,7 +26,7 @@ class WordOfTheDayController extends Controller
      */
     public function create()
     {
-        //
+        return view('wordoftheday.create');
     }
 
     /**
@@ -34,7 +37,22 @@ class WordOfTheDayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $file = $request->file('word_audio_file');
+        $fileName = $file->getClientOriginalName();
+        $fileType = $file->getClientOriginalExtension();
+        $fileSize = $file->getSize();
+        $upload = Storage::putFileAs("public/wordoftheday", $file, $fileName);
+
+        TodayWord::create([
+            'word_english' => $request->word_english,
+            'word_tamil'=>$request->word_tamil,
+            'word_hindi' => $request->word_hindi,
+            'word_audio_file' => $upload,
+            'slug' => str()->slug($request->word_english),
+        ]);
+
+        return redirect()->route('wordoftheday.index'); 
     }
 
     /**

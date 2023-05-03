@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
+use App\Models\NewsCategory;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -13,7 +15,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news.index');
+        
+        return view('news.index')->with([
+            'news' =>News::orderBy('created_at', 'desc')->paginate(15),
+        ]);
     }
 
     /**
@@ -23,7 +28,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('news.create')->with([
+            'news_categories' => NewsCategory::all(),
+        ]);
     }
 
     /**
@@ -34,7 +42,12 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        News::create([
+            'news_title' => $request->news_title,
+            'slug' => str()->slug($request->news_title),
+            'news_content'  => $request->news_content,
+            'news_category_id'  => $request->news_category_id
+        ]);
     }
 
     /**
@@ -81,4 +94,6 @@ class NewsController extends Controller
     {
         //
     }
+
+   
 }

@@ -1,6 +1,19 @@
 import _ from 'lodash';
 window._ = _;
 
+import $ from 'jquery';
+import tinymce from 'tinymce';
+
+import 'tinymce/icons/default';
+
+/* Required TinyMCE components */
+import 'tinymce/themes/silver';
+import 'tinymce/models/dom';
+
+/* Import a skin (can be a custom skin instead of the default) */
+import 'tinymce/skins/ui/oxide/skin.css';
+
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -9,8 +22,10 @@ window._ = _;
 
 import axios from 'axios';
 window.axios = axios;
-
+window.$ = window.jQuery = $;
+window.tinymce = tinymce;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

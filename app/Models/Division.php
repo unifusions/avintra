@@ -10,7 +10,8 @@ class Division extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug'
+        'name', 'slug',
+        'description'
     ];
 
     public function sections(){
