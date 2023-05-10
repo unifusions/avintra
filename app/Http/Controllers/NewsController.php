@@ -44,10 +44,12 @@ class NewsController extends Controller
     {
         News::create([
             'news_title' => $request->news_title,
+            'excerpt' => $request->news_excerpt,
             'slug' => str()->slug($request->news_title),
             'news_content'  => $request->news_content,
             'news_category_id'  => $request->news_category_id
         ]);
+        return redirect('news.index');
     }
 
     /**

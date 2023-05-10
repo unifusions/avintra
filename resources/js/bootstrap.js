@@ -12,6 +12,22 @@ import 'tinymce/models/dom';
 
 /* Import a skin (can be a custom skin instead of the default) */
 import 'tinymce/skins/ui/oxide/skin.css';
+import * as  FilePond from 'filepond';
+
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+import FilePondPluginImageResize from 'filepond-plugin-image-resize';
+import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
+import FilePondPluginImageEdit from 'filepond-plugin-image-edit';
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
+import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
+
+
+import 'filepond/dist/filepond.css';
+
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
 
 /**
@@ -24,6 +40,24 @@ import axios from 'axios';
 window.axios = axios;
 window.$ = window.jQuery = $;
 window.tinymce = tinymce;
+window.FilePond = FilePond;
+
+FilePond.registerPlugin(
+  FilePondPluginFileEncode,
+  FilePondPluginImageResize, 
+  // validates the size of the file
+  // FilePondPluginFileValidateSize,
+
+  // corrects mobile image orientation
+  FilePondPluginImageExifOrientation,
+
+  FilePondPluginFilePoster,
+
+  // previews dropped images
+  FilePondPluginImagePreview
+);
+
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 

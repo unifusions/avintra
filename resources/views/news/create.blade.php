@@ -26,6 +26,16 @@
                         </div>
 
                         <div class="form-group row mb-3">
+                            <x-input-label for="news_excerpt" :value="__('News Excerpt')" class="col-4 col-form-label" />
+                            <div class="col-8">
+                                <textarea id="news_excerpt" class="form-control" :value="old('news_excerpt')" type="text"
+                                    name="news_excerpt" required autocomplete="news_excerpt"></textarea>
+                                <x-input-error :messages="$errors->get('news_excerpt')" class="mt-2" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mb-3">
                             <x-input-label for="news_category" :value="__('News Category')" class="col-4 col-form-label" />
                             <div class="col-8">
                                 <select class="form-select"  id="news_category_id"

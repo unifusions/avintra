@@ -1,9 +1,9 @@
-<x-guest-layout>
+<x-guest-layout :title="'Home'">
 
-    <div class="container-fluid mt-3">
-        <div class="row mb-4">
+    <div class="container-fluid g-0">
+        <div class="row mb-4 g-0">
 
-            <div class="col-md-9">
+            <div class="col-9">
 
                 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -71,8 +71,8 @@
                 </div>
 
             </div>
-            <div class="col-md-3">
-                <section style="background:#d0c0ff;color:#000" class="h-100 p-3">
+            <div class="col-3">
+                <section style="background:#F7EDE2;color:#000" class="h-100 p-5">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h2 class="">Message from the CMD</h2>
@@ -94,26 +94,36 @@
                         me place on record that the company has been very ably led by the Board of Directors for the
                         past nine months since its formation. The last nine months have been extremely challenging as
                         the newly formed Company had to transition from a group of Government units into a corporate
-                        entity. The
-                        challenge before us was to perform while we transformed. AVANI has performed creditably and is
+                        entity. The challenge before us was to perform while we transformed. AVANI has performed creditably and is
                         on the path of growth and profit. I congratulate all my fellow Avanians for their dedication and
                         determined efforts to turnaround loss making units into a profitable concern.
                     </p>
+                    <x-hyperlink-button href="#" >
+                        Read More
+                    </x-hyperlink-button>
 
-                    <a href="#" class="btn btn-sm btn-primary">Read More</a>
+                 
                 </section>
             </div>
         </div>
+    </div>
+    <div class="container-fluid my-5">
 
-        <div class="row mb-4">
+        <div class="row mb-5">
             <div class="col-3">
 
                 @include('homepage.news')
 
             </div>
 
-            <div class="col-6">
-                @include('homepage.gallery')
+
+
+            <div class="col-3">
+             @include('homepage.word')
+            </div>
+
+            <div class="col-3">
+@include('homepage.documents')
             </div>
 
             <div class="col-3">
@@ -248,72 +258,16 @@
            
         </div>
 
-
-
-    </div>
-    {{-- Logos --}}
-
-    <div class="container-fluid">
-        <div class="d-flex mb-3 justify-content-between">
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/mpa_logo.png') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/npi-logo.png') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/mod-logo.gif') }}" alt="">
-            </div>
-
-
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/defense-production-logo.jpg') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/make-in-india-logo.jpg') }}" alt="">
-            </div>
-
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/YIL-Logo.png') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/aweil-logo.png') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/munitions-logo.jpeg') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/gil-logo.jpg') }}" alt="">
-            </div>
-
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/tcl-logo.png') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/gem-logo.png') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/public-grievances-logo.jpg') }}" alt="">
-            </div>
-
-            <div class="footer-logo-item">
-                <img src="{{ asset('images/footer-logos/niclogo.jpg') }}" alt="">
-            </div>
-        </div>
+       
+          
+       
 
     </div>
+
+    <div class="container-fluid py-5 gallery-container my-5" style="">
+        @include('homepage.gallery')
+    </div>
+   
     {{-- Footer --}}
 
 </x-guest-layout>

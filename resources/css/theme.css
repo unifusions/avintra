@@ -1,0 +1,98 @@
+
+.text-primary{
+     color:#94701D !important;
+}
+
+.btn {
+     border-radius: 0;
+}
+
+.btn-primary {
+     background-color: #94701D;
+     color: #fff;
+     border-radius: 0;
+     border: 0;
+}
+
+.btn-primary:hover {
+     background-color: #000;
+}
+
+.btn-outline-primary {
+     border: 1px solid #94701D;
+     color: #94701D;
+}
+.bg-primary{
+     background-color: #94701D !important;
+}
+.btn-outline-primary:hover {
+     background-color: #94701D;
+     border: 1px solid #94701D;
+}
+
+.form-control,
+.form-select {
+     border-radius: 0;
+}
+
+.form-control:focus,
+.form-select:focus{
+     border-color: #94701D;
+     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(148, 112, 29, 0.6);
+}
+.form-select option {
+     background-color: #fff;
+
+}
+
+option:hover{
+     color:#000;
+     background-color: #94701D !important;
+}
+.form-select option:hover, .form-select:focus option:focus , option{
+     color: #94701D;
+     background-color: #94701D;
+}
+
+.badge-new{
+    
+     /* animation: gradient 3s ease infinite; */
+}
+
+
+.badge-new{
+     background-color: red;
+     color:yellow;
+     animation: blink 0.5s linear infinite;
+
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+@keyframes blink{
+     0%{opacity: 0;}
+     50%{opacity: .5;}
+     100%{opacity: 1;}
+     }
+
+     .filepond--panel-root{
+          border-radius: 0 !important;
+     }
+
+     /* #gallery-image > .filepond--list-scroller > .filepond--list > .filepond--item { */
+
+     #gallery-image .filepond--item {
+          width: calc(33.33% - 0.5em );
+      }

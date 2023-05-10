@@ -1,38 +1,19 @@
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">AVANI</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+{{-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    
+    <button class="navbar-toggler position-absolute d-md-none collapsed" style="color: #fff" type="button" data-bs-toggle="collapse"
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <input class="form-control form-control-dark w-95 rounded-0 border-0" type="text" placeholder="Search"
-        aria-label="Search">
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-                <div class="d-flex align-items-center px-3">
-                    <a href="{{ route('settings') }}" class="">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="#A4A4A4" height="24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
-                        </svg>
-        
-                    </a>
-        
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a class="nav-link px-3" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                    this.closest('form').submit();">
-                            {{ __('Sign Out') }}</a>
-                    </form>
-                </div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
           
-
-
-        </div>
-    </div>
-</header>
+    </button>
+    {{-- <div class="w-95 form-control ">
+        <input class="form-control form-control-dark w-95 rounded-0 border-0" type="text" placeholder="Search"
+        aria-label="Search">
+    </div> 
+    
+   
+</header> --}}
 {{-- 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->

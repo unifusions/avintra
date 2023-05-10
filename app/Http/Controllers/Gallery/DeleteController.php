@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Gallery;
 
-use App\Models\News;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PublicNewsController extends Controller
+class DeleteController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,7 +15,6 @@ class PublicNewsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $news =   News::orderBy('created_at', 'desc')->paginate(15);
-        return view('news.public', compact('news'));
+        dd($request->getContent());
     }
 }

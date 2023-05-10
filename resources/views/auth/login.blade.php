@@ -1,9 +1,9 @@
-<x-guest-layout>
+<x-guest-layout :title="'Login'">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
 
-    <div class="d-flex justify-content-center my-3">
+    <div class="d-flex justify-content-center my-5">
 
         <form method="POST" action="{{ route('login') }}" class="col-3">
             @csrf
@@ -11,7 +11,7 @@
             <!-- Email Address -->
             <div>
                 <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                <x-text-input id="email" type="email" name="email" :value="old('email')"
                     required autofocus autocomplete="username" />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
@@ -20,7 +20,7 @@
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Password')" />
 
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                <x-text-input id="password" type="password" name="password" required
                     autocomplete="current-password" />
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -50,7 +50,7 @@
 
             
             <x-primary-button class="ml-3">
-                {{ __('Log in') }}
+                {{ __('Log In') }}
             </x-primary-button>
 
         </form>

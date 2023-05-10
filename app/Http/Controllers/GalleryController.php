@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
@@ -13,7 +14,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('gallery.index');
+        $galleries = Gallery::orderBy('created_at', 'desc')->paginate(15);
+        return view('gallery.index', compact('galleries'));
     }
 
     /**
@@ -23,18 +25,12 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('gallery.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+       dd($request->input('hidden_ids'));
     }
 
     /**

@@ -4,10 +4,13 @@ use App\Http\Controllers\AllSectionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Gallery\DeleteController;
+use App\Http\Controllers\Gallery\MultipleUploadsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicDocumentsController;
 use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicNewsSingleController;
 use App\Http\Controllers\SectionController;
@@ -26,11 +29,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$routes = ['except' => ['index', 'show']];
+
 
 Route::get('/', HomepageController::class)->name('home');
 
-
+Route::get('/message-from-the-cmd', function () {
+    return view('pages.cmd');
+})->name('cmdmessage');
 
 
 Route::post('/fetchSections', [DocumentController::class, 'fetchSection']);
@@ -65,7 +70,20 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
 // PUBLIC ROUTES
 
-Route::get('/news', PublicNewsController::class);
+Route::get('/news', PublicNewsController::class)->name('publicnews');
+Route::get('/gallery', function(){
+    return 'Public Gallery';
+})->name('publicgallery');
 Route::get('/news/{news:slug}', PublicNewsSingleController::class)->name('singlenews');
+Route::get('/documents', PublicDocumentsController::class)->name('publicdocuments');
+Route::get('/directory', function(){
+    return view('pages.directory');
+})->name('directory');
 
+Route::get('/about-us', function(){
+    return view ('pages.about');
+ })->name('aboutus');
+
+Route::post('galleryImageUpload',  MultipleUploadsController::class)->name('galleryImageUpload');
+Route::get('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');
 require __DIR__ . '/auth.php';

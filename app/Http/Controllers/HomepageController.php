@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Document;
+use App\Models\TodayWord;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -17,7 +19,9 @@ class HomepageController extends Controller
     {
         
         return view('welcome')->with([
-            'news' => News::all(),
+            'news' => News::latest()->take(5)->get(),
+            'documents' => Document::latest()->take(5)->get(),
+            'todayword' => TodayWord::latest()->first(),
         ]);
     }
 }
