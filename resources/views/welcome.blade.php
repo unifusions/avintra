@@ -98,9 +98,9 @@
                         on the path of growth and profit. I congratulate all my fellow Avanians for their dedication and
                         determined efforts to turnaround loss making units into a profitable concern.
                     </p>
-                    <x-hyperlink-button href="#" >
+                    <x-hyperlinkbutton href="#" >
                         Read More
-                    </x-hyperlink-button>
+                    </x-hyperlinkbutton>
 
                  
                 </section>
