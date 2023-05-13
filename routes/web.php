@@ -55,6 +55,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/documents/trash', [DocumentController::class, 'trash'])->name('documents.trash');
 
     Route::resource('documents', DocumentController::class);
+    Route::get('documents/{document}/download',[DocumentController::class, 'download'])->name('documents.download');
+
     Route::resource('news', NewsController::class);
     Route::resource('wordoftheday', WordOfTheDayController::class);
 
@@ -85,5 +87,5 @@ Route::get('/about-us', function(){
  })->name('aboutus');
 
 Route::post('galleryImageUpload',  MultipleUploadsController::class)->name('galleryImageUpload');
-Route::get('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');
+Route::delete('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');
 require __DIR__ . '/auth.php';

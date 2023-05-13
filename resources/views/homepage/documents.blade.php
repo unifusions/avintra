@@ -26,6 +26,7 @@
     <div class="news-container-smalllist">
 
         <div class="news-smalllist-wrapper">
+            @if(count($documents)> 0)
             @foreach ($documents as $document)
                 <div class="news-item">
                     <div class="news-itemin">
@@ -71,7 +72,9 @@
                     </div>
                 </div>
             @endforeach
-
+                @else
+                Publish your first document to get preview
+                @endif
 
 
 

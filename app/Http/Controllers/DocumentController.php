@@ -95,6 +95,7 @@ class DocumentController extends Controller
             'user_id' => auth()->user()->id,
             'division_id' => $request->division_id,
             'section_id' => $request->section_id,
+            'file_name' => $fileName,
             'file_size' => $fileSize,
             'file_type' => $fileType
 
@@ -120,20 +121,29 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Document $document)
     {
-        //
     }
 
+    public function download(Document $document)
+    {
+   
+
+            return response()->file(Storage::path($document->document_path));
+        
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Document $document)
     {
-        //
+        return view('documents.edit')->with([
+            'document' => $document,
+            'divisions' => Division::all(),
+        ]);
     }
 
     /**
@@ -143,9 +153,14 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Document $document)
     {
-        //
+        $document->title = $request->title;
+        $document->document_no = $request->document_no;
+        $document->division_id = $request->division_id;
+        $document->section_id = $request->section_id;
+        $document->save();
+        return redirect()->route('documents.index')->with('status', 'Document Updated');
     }
 
     /**

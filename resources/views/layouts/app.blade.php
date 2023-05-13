@@ -16,6 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+
 <body class="dashboard">
 
     @include('layouts.navigation')
@@ -26,11 +27,50 @@
 
             {{-- SideBar --}}
             @include('layouts.sidebar')
+           
 
+           
             {{-- Main Content --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+                <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+ {{-- toaster --}}
+ <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
 
 
+
+@if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ __('Section has been created') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        
+{{-- <script type="module">
+    var toastTrigger = document.getElementById('liveToastBtn')
+var toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+toastTrigger.addEventListener('click', function () {
+var toast = new bootstrap.Toast(toastLiveExample)
+
+toast.show()
+})
+}
+ --}}
+      {{-- </script>  --}}
+@endif
 
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

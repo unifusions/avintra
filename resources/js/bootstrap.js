@@ -23,8 +23,7 @@ import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import FilePondPluginImageEdit from 'filepond-plugin-image-edit';
 import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
-
-
+import bootstrap from 'bootstrap/dist/js/bootstrap';
 import 'filepond/dist/filepond.css';
 
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
@@ -41,6 +40,7 @@ window.axios = axios;
 window.$ = window.jQuery = $;
 window.tinymce = tinymce;
 window.FilePond = FilePond;
+window.bootstrap = bootstrap;
 
 FilePond.registerPlugin(
   FilePondPluginFileEncode,

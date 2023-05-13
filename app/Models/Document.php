@@ -17,7 +17,8 @@ class Document extends Model
         'division_id',
         'section_id',
         'file_size',
-        'file_type'
+        'file_type',
+        'file_name',
 
     ];
 

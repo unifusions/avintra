@@ -30,7 +30,7 @@ class GalleryController extends Controller
 
     public function store(Request $request)
     {
-       dd($request->input('hidden_ids'));
+       dd($request->input('gallery-image'));
     }
 
     /**
