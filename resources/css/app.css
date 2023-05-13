@@ -64,17 +64,18 @@ body {
      font-weight: 700;
      padding-bottom: 0;
      margin-bottom: 0;
-     font-size: 1.6em;
+     font-size: 1.3em;
      color: #FFE599;
 }
 
 .site-subtitle {
      font-weight: 400;
-     font-size: 1.3em;
+     font-size: 1.1em;
      color: #FFE599;
 }
 
 .site-tagline {
+     font-size: 0.9em;
      color: #FFE599;
 }
 
@@ -298,3 +299,117 @@ body {
      border-right: 1px solid #94701D;
      padding-right: 16px;
 }
+
+.page_header_default::before {
+     position: absolute;
+     content: "";
+     top: 0;
+     right: 0;
+     left: 0;
+     bottom: 0;
+     background: #F7EDE2;
+     opacity: 0.85;
+     z-index: 1;
+}
+.page_header_default {
+     position: relative;
+     min-height: 160px;
+     padding: 50px 0px 50px;
+     overflow: hidden;
+     align-items: center;
+ }
+
+ .page_header_default .page_header_content {
+     position: relative;
+     z-index: 3;
+     text-align: center;
+ }
+
+ .auto-container, .auto_container {
+     position: static;
+     max-width: 1200px;
+     padding: 0px 15px;
+     margin: 0 auto;
+ }
+
+ .page_header_default .parallax_cover {
+     position: absolute;
+     top: 0;
+     min-height: 300px;
+     height: 100%;
+     width: 100%;
+     left: 0;
+ }
+
+ .page_header_default .page_header_content .banner_title_inner {
+     position: relative;
+     margin-bottom: 20px;
+ }
+
+ .breadcrumbs {
+     position: relative;
+     display: inline-block;
+ }
+ .breadcrumbs ul {
+     position: relative;
+     padding: 0;
+ }
+
+ .breadcrumbs ul li {
+     margin-right: 30px;
+     color:#94701D;
+     position: relative;
+     font-family: var(--creote-family-one);
+     font-size: 12px;
+     line-height: 18px;
+     font-weight: 600;
+     text-transform: uppercase;
+ }
+/* 
+ %3Csvg xmlns='http://www.w3.org/2000/svg' fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"%3E
+ %3Cpath stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /%3E
+ %3C/svg%3E */
+
+
+ 
+ .breadcrumbs ul li:before {
+     position: absolute;
+     content:  '|';
+     right: -19px;
+     top: -2px;
+     color:#94701D;
+     font-size: 14px;
+ }
+
+ .breadcrumbs ul li:last-child:before {
+     content:  '';
+}
+ .breadcrumbs ul li:last-child {
+margin-right:  0;
+
+ }
+ 
+
+ 
+.breadcrumbs ul li a {
+   position: relative;
+   text-decoration: none;
+   font-size: 12px;
+   line-height: 18px;
+   text-transform: uppercase;
+   padding-right: 30px;
+   color:#94701D
+}
+
+
+ .breadcrumbs ul li a:last-child {
+     padding-right: 0px;
+     font-weight: bold;
+     
+ }
+
+
+ .title_page{
+     font-size:2em;
+     font-weight: bolder;
+ }
