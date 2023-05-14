@@ -1,0 +1,82 @@
+.abPageAbout,.aboutAdditionalSection {
+     position: relative;
+     padding: 120px 0 0 0;
+ }
+
+
+
+.aboutContent {
+     margin: 36px 0 0 0px;
+}
+
+.aboutContent .subTitle {
+     font-weight: 600;
+     margin-bottom: 31px;
+}
+
+.aboutContent .secTitle {
+     font-size: 48px;
+     line-height: 58px;
+     overflow: hidden;
+     margin: 0 0 27px;
+     text-transform: uppercase;
+     color: #94701d;
+}
+
+.aboutContent p {
+     margin: 0 50px 40px 0;
+     text-align: justify;
+ }
+ 
+
+ .abVideo {
+     position: relative;
+     overflow: hidden;
+     border-radius: 6px;
+ }
+
+ .abVideo img {
+     max-width: 100%;
+     height: auto;
+     border-radius: 6px;
+ }
+ .governanceContent{
+     font-size: 16px;
+     font-weight: 500;
+     line-height: 32px;
+ }
+
+ .governanceList{
+     list-style: none;
+ }
+
+
+ .governanceList li{
+     margin: 16px 0 16px 0;
+     padding-bottom: 16px;
+     border-bottom: 1px solid #E6BE7E;
+ }
+ 
+ 
+ .governanceList li:first-child{
+     margin-top: 0px !important;   
+     
+ }
+ .governanceList li a{
+     color:#000;
+     font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+ }
+
+ .governanceList li a svg{
+     color:#94701d;
+     margin-right: 16px;
+ 
+ }
+
+ .governanceList li a:hover{
+   
+  color:#94701d;
+  transition: 0.3s;
+ }
