@@ -20,8 +20,30 @@
 
 /* 1. GENERAL */
 
+@font-face {
+     font-display: swap;
+     /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+     font-family: 'Jost';
+     font-style: normal;
+     font-weight: 400;
+
+     src: url('../fonts/jost/jost-v14-latin-regular.eot');
+     /* IE9 Compat Modes */
+     src: url('../fonts/jost/jost-v14-latin-regular.eot?#iefix') format('embedded-opentype'),
+          /* IE6-IE8 */
+          url('../fonts/jost/jost-v14-latin-regular.woff2') format('woff2'),
+          /*Super Modern Browsers */
+          url('../fonts/jost/jost-v14-latin-regular.woff') format('woff'),
+          /*Modern Browsers */
+          url('../fonts/jost/jost-v14-latin-regular.ttf') format('truetype'),
+          /* Safari, Android, iOS */
+          url('../fonts/jost/jost-v14-latin-regular.svg#Jost') format('svg');
+     /* Legacy iOS */
+}
+
+
 body {
-     font-family: Jost, 'serif';
+     font-family: Jost;
      font-size: 1em;
      font-weight: 400;
 }
@@ -79,9 +101,10 @@ body {
      color: #FFE599;
 }
 
-.text-justify{
+.text-justify {
      text-align: justify;
 }
+
 /* 2.2 SECONDARY NAVBAR */
 
 .secondary-navbar {
@@ -89,7 +112,7 @@ body {
      text-transform: uppercase;
      font-weight: 500;
      letter-spacing: 0.05em;
-     
+
      margin: 0;
 }
 
@@ -130,14 +153,17 @@ body {
      height: 100%;
 }
 
-.active>.page-link, .page-link.active, .page-link:hover{
+.active>.page-link,
+.page-link.active,
+.page-link:hover {
      background-color: #94701D;
      color: #fff;
      border-color: #94701D;
 }
 
-.page-link, .page-link:focus{
-     color:#94701D;
+.page-link,
+.page-link:focus {
+     color: #94701D;
 }
 
 .gallery-container {
@@ -323,105 +349,110 @@ body {
      opacity: 0.85;
      z-index: 1;
 }
+
 .page_header_default {
      position: relative;
      min-height: 160px;
      padding: 50px 0px 50px;
      overflow: hidden;
      align-items: center;
- }
+}
 
- .page_header_default .page_header_content {
+.page_header_default .page_header_content {
      position: relative;
      z-index: 3;
      text-align: center;
- }
+}
 
- .auto-container, .auto_container {
+.auto-container,
+.auto_container {
      position: static;
      max-width: 1200px;
      padding: 0px 15px;
      margin: 0 auto;
- }
+}
 
- .page_header_default .parallax_cover {
+.page_header_default .parallax_cover {
      position: absolute;
      top: 0;
      min-height: 300px;
      height: 100%;
      width: 100%;
      left: 0;
- }
+}
 
- .page_header_default .page_header_content .banner_title_inner {
+.page_header_default .page_header_content .banner_title_inner {
      position: relative;
      margin-bottom: 20px;
- }
+}
 
- .breadcrumbs {
+.breadcrumbs {
      position: relative;
      display: inline-block;
- }
- .breadcrumbs ul {
+}
+
+.breadcrumbs ul {
      position: relative;
      padding: 0;
- }
+}
 
- .breadcrumbs ul li {
+.breadcrumbs ul li {
      margin-right: 30px;
-     color:#94701D;
+     color: #94701D;
      position: relative;
      font-family: var(--creote-family-one);
      font-size: 12px;
      line-height: 18px;
      font-weight: 600;
      text-transform: uppercase;
- }
+}
+
 /* 
  %3Csvg xmlns='http://www.w3.org/2000/svg' fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"%3E
  %3Cpath stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /%3E
  %3C/svg%3E */
 
 
- 
- .breadcrumbs ul li:before {
+
+.breadcrumbs ul li:before {
      position: absolute;
-     content:  '|';
+     content: '|';
      right: -19px;
      top: -2px;
-     color:#94701D;
+     color: #94701D;
      font-size: 14px;
- }
-
- .breadcrumbs ul li:last-child:before {
-     content:  '';
 }
- .breadcrumbs ul li:last-child {
-margin-right:  0;
 
- }
- 
+.breadcrumbs ul li:last-child:before {
+     content: '';
+}
 
- 
+.breadcrumbs ul li:last-child {
+     margin-right: 0;
+
+}
+
+
+
 .breadcrumbs ul li a {
-   position: relative;
-   text-decoration: none;
-   font-size: 12px;
-   line-height: 18px;
-   text-transform: uppercase;
-   padding-right: 30px;
-   color:#94701D
+     position: relative;
+     text-decoration: none;
+     font-size: 12px;
+     line-height: 18px;
+     text-transform: uppercase;
+     padding-right: 30px;
+     color: #94701D
 }
 
 
- .breadcrumbs ul li a:last-child {
+.breadcrumbs ul li a:last-child {
      padding-right: 0px;
      font-weight: bold;
-     
- }
+
+}
 
 
- .title_page{
-     font-size:2em;
+.title_page {
+     font-size: 2em;
      font-weight: bolder;
- }
+}

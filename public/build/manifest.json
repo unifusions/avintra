@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-11be2ef3.css",
+    "file": "assets/app-38b40b7f.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -107,6 +107,18 @@
   "resources/fonts/jost/jost-v14-latin-regular.svg": {
     "file": "assets/jost-v14-latin-regular-24b98540.svg",
     "src": "resources/fonts/jost/jost-v14-latin-regular.svg"
+  },
+  "resources/fonts/jost/jost-v14-latin-regular.ttf": {
+    "file": "assets/jost-v14-latin-regular-5f2ac98d.ttf",
+    "src": "resources/fonts/jost/jost-v14-latin-regular.ttf"
+  },
+  "resources/fonts/jost/jost-v14-latin-regular.woff": {
+    "file": "assets/jost-v14-latin-regular-ef4be495.woff",
+    "src": "resources/fonts/jost/jost-v14-latin-regular.woff"
+  },
+  "resources/fonts/jost/jost-v14-latin-regular.woff2": {
+    "file": "assets/jost-v14-latin-regular-a25da21f.woff2",
+    "src": "resources/fonts/jost/jost-v14-latin-regular.woff2"
   },
   "resources/js/app.css": {
     "file": "assets/app-130eca19.css",
