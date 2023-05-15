@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-bf04e98d.css",
+    "file": "assets/app-11be2ef3.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -11,10 +11,6 @@
   "resources/fonts/jost/jost-v14-latin-500.svg": {
     "file": "assets/jost-v14-latin-500-5a047925.svg",
     "src": "resources/fonts/jost/jost-v14-latin-500.svg"
-  },
-  "resources/fonts/jost/jost-v14-latin-500.ttf": {
-    "file": "assets/jost-v14-latin-500-972f5cc0.ttf",
-    "src": "resources/fonts/jost/jost-v14-latin-500.ttf"
   },
   "resources/fonts/jost/jost-v14-latin-500italic.eot": {
     "file": "assets/jost-v14-latin-500italic-6f4d26fe.eot",
@@ -36,10 +32,6 @@
     "file": "assets/jost-v14-latin-600-e8823488.svg",
     "src": "resources/fonts/jost/jost-v14-latin-600.svg"
   },
-  "resources/fonts/jost/jost-v14-latin-600.ttf": {
-    "file": "assets/jost-v14-latin-600-1740006e.ttf",
-    "src": "resources/fonts/jost/jost-v14-latin-600.ttf"
-  },
   "resources/fonts/jost/jost-v14-latin-600italic.eot": {
     "file": "assets/jost-v14-latin-600italic-a819715b.eot",
     "src": "resources/fonts/jost/jost-v14-latin-600italic.eot"
@@ -59,10 +51,6 @@
   "resources/fonts/jost/jost-v14-latin-700.svg": {
     "file": "assets/jost-v14-latin-700-f9842710.svg",
     "src": "resources/fonts/jost/jost-v14-latin-700.svg"
-  },
-  "resources/fonts/jost/jost-v14-latin-700.ttf": {
-    "file": "assets/jost-v14-latin-700-27016db7.ttf",
-    "src": "resources/fonts/jost/jost-v14-latin-700.ttf"
   },
   "resources/fonts/jost/jost-v14-latin-700italic.eot": {
     "file": "assets/jost-v14-latin-700italic-69cee9b7.eot",
@@ -119,10 +107,6 @@
   "resources/fonts/jost/jost-v14-latin-regular.svg": {
     "file": "assets/jost-v14-latin-regular-24b98540.svg",
     "src": "resources/fonts/jost/jost-v14-latin-regular.svg"
-  },
-  "resources/fonts/jost/jost-v14-latin-regular.ttf": {
-    "file": "assets/jost-v14-latin-regular-5f2ac98d.ttf",
-    "src": "resources/fonts/jost/jost-v14-latin-regular.ttf"
   },
   "resources/js/app.css": {
     "file": "assets/app-130eca19.css",
