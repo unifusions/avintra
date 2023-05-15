@@ -85,7 +85,7 @@ class DocumentController extends Controller
         $fileName = $file->getClientOriginalName();
         $fileType = $file->getClientOriginalExtension();
         $fileSize = $file->getSize();
-        $upload = Storage::putFileAs("public/documents", $file, $fileName);
+        $upload = Storage::putFileAs("documents", $file, $fileName);
 
         Document::create([
 
@@ -123,7 +123,9 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
+        
     }
+    
 
     public function download(Document $document)
     {

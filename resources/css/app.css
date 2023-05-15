@@ -8,7 +8,7 @@
 @import 'widgets.css';
 
 @import 'about.css';
-
+@import 'documents.css';
 
 /*------ 1. GENERAL ------*/
 /*------ 2. HEADER  ------*/
@@ -85,11 +85,11 @@ body {
 /* 2.2 SECONDARY NAVBAR */
 
 .secondary-navbar {
-     background-color: #94701d !important;
+     background-color: #94701D !important;
      text-transform: uppercase;
      font-weight: 500;
      letter-spacing: 0.05em;
-     padding: 0.5rem;
+     
      margin: 0;
 }
 
@@ -130,6 +130,15 @@ body {
      height: 100%;
 }
 
+.active>.page-link, .page-link.active, .page-link:hover{
+     background-color: #94701D;
+     color: #fff;
+     border-color: #94701D;
+}
+
+.page-link, .page-link:focus{
+     color:#94701D;
+}
 
 .gallery-container {
      background-color: #F7EDE2;

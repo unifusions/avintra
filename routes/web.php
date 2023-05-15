@@ -8,14 +8,19 @@ use App\Http\Controllers\Gallery\DeleteController;
 use App\Http\Controllers\Gallery\MultipleUploadsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicDirectoryController;
 use App\Http\Controllers\PublicDocumentsController;
+use App\Http\Controllers\PublicGalleryController;
+use App\Http\Controllers\PublicGallerySingleController;
 use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicNewsSingleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\WordOfTheDayController;
+use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,7 +60,6 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/documents/trash', [DocumentController::class, 'trash'])->name('documents.trash');
 
     Route::resource('documents', DocumentController::class);
-    Route::get('documents/{document}/download',[DocumentController::class, 'download'])->name('documents.download');
 
     Route::resource('news', NewsController::class);
     Route::resource('wordoftheday', WordOfTheDayController::class);
@@ -73,19 +77,30 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 // PUBLIC ROUTES
 
 Route::get('/news', PublicNewsController::class)->name('publicnews');
-Route::get('/gallery', function(){
-    return 'Public Gallery';
-})->name('publicgallery');
+Route::get('/gallery', PublicGalleryController::class)->name('publicgallery');
+
 Route::get('/news/{news:slug}', PublicNewsSingleController::class)->name('singlenews');
 Route::get('/documents', PublicDocumentsController::class)->name('publicdocuments');
-Route::get('/directory', function(){
-    return view('pages.directory');
-})->name('directory');
 
-Route::get('/about-us', function(){
-    return view ('pages.about');
- })->name('aboutus');
+Route::get('/gallery', PublicGalleryController::class)->name('publicgallery');
+Route::get('/gallery/{gallery:slug}', PublicGallerySingleController::class)->name('gallery.single');
+Route::get('documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
+
+Route::get('/directory', PublicDirectoryController::class)->name('directory');
+
+Route::get('/about-us', function () {
+    return view('pages.about');
+})->name('aboutus');
+
+
+Route::get('/leadership', function () {
+    return view('pages.leadership');
+})->name('leadership');
+
 
 Route::post('galleryImageUpload',  MultipleUploadsController::class)->name('galleryImageUpload');
 Route::delete('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');
 require __DIR__ . '/auth.php';
+
+
+Route::get('lang/{lang}', LocaleController::class);

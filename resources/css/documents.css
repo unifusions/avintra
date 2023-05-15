@@ -1,0 +1,46 @@
+.document-list {
+     margin: 16px 0 16px 0;
+     
+}
+
+.created-date{
+     font-size:0.9em;
+}
+.document-link {
+     text-decoration: none;
+     color: #000;
+}
+
+.document-link:hover {
+     color: #94701D;
+     transition: 0.2s;
+}
+.sidebar-widget{
+     margin:1em 0 0 0;
+}
+
+.sidebar-title {
+     font-size:1.5em;
+}
+
+.sidebar-widget ul {
+     list-style: none;
+     padding-left:0;
+}
+.sidebar-widget ul li  {
+     margin: 0.5rem 0;
+}
+
+.sidebar-widget ul li a {
+     font-size: 1.1em;
+     color:#000;
+     text-decoration: none;
+}
+
+.sidebar-widget ul li a:hover {
+     
+     color:#94701D;
+     font-weight: 700;
+     transition: 0.2s;
+     
+}

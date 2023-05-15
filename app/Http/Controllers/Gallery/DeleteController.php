@@ -17,9 +17,8 @@ class DeleteController extends Controller
      */
     public function __invoke(Request $request)
     {
-    
+        
         $id = json_decode($request->getContent())->id;
-
         $model = GalleryImage::find($id);
 
         // $model->image_path;

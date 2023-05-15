@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\GalleryImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -30,7 +32,25 @@ class GalleryController extends Controller
 
     public function store(Request $request)
     {
-       dd($request->input('gallery-image'));
+
+        $file = $request->file('featured_image');
+
+        $fileName = $file->getClientOriginalName();
+        $upload = Storage::putFileAs("gallery/featured", $file, $fileName);
+            
+        $gallery = Gallery::create([
+            'title' => $request->title,
+            'featured_image' => $upload,
+            'description' => $request->description,
+            'slug' => str()->slug($request->title),
+        ]);
+        if ($request->hidden_ids)
+            foreach ($request->hidden_ids as $hi) {
+                $galleryimage = GalleryImage::findorfail($hi);
+                $galleryimage->gallery_id = $gallery->id;
+                $galleryimage->save();
+            }
+        return redirect()->route('gallery.index')->with(['status' => 'success']);
     }
 
     /**
@@ -66,6 +86,7 @@ class GalleryController extends Controller
     {
         //
     }
+
 
     /**
      * Remove the specified resource from storage.

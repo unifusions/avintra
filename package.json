@@ -28,6 +28,7 @@
         "filepond-plugin-image-resize": "^2.0.10",
         "filepond-plugin-image-transform": "^3.8.7",
         "jquery": "^3.6.4",
+        "masonry-layout": "^4.2.2",
         "tinymce": "^6.4.1"
     }
 }

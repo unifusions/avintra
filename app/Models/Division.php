@@ -17,4 +17,8 @@ class Division extends Model
     public function sections(){
         return $this->hasMany(Section::class);
     }
+
+    public function documents(){
+        return $this->hasMany(Document::class);
+    }
 }

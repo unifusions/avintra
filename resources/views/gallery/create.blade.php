@@ -7,7 +7,7 @@
 
     <x-card>
         <div class="card-body">
-            <form id="gallery-form" method="POST" action="{{ route('gallery.store') }}">
+            <form id="gallery-form" method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
 
@@ -17,7 +17,7 @@
                             <x-input-label for="title" :value="__('Gallery Title')" class="col-4 col-form-label" />
                             <div class="col-8">
                                 <x-text-input id="title" class="" :value="old('title')" type="text"
-                                    name="title" required autocomplete="title" />
+                                    name="title" autocomplete="title" />
                                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
                             </div>
                         </div>
@@ -26,17 +26,17 @@
                             <x-input-label for="description" :value="__('Gallery Description')" class="col-4 col-form-label" />
                             <div class="col-8">
                                 <x-text-input id="description" class="" :value="old('description')" type="text"
-                                    name="description" required autocomplete="description" />
+                                    name="description" autocomplete="description" />
                                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
                             </div>
                         </div>
 
 
                         <div class="form-group row mb-3">
-                            <x-input-label for="featured-image" :value="__('Featured Image')" class="col-4 col-form-label" />
+                            <x-input-label for="featured_image" :value="__('Featured Image')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <input id="featured-image" name="featured-image" type="file"
-                                    accept="image/png, image/jpeg, image/gif" id="featured-image" />
+                                <input id="featured_image" name="featured_image" type="file"
+                                    accept="image/png, image/jpeg, image/gif" />
 
 
 
@@ -49,7 +49,7 @@
                         <x-input-label for="gallery-image" :value="__('Gallery Images')" class="col-4 col-form-label" />
 
                         <input id="gallery-image" name="gallery-image" type="file"
-                            accept="image/png, image/jpeg, image/gif" id="gallery-image" required />
+                            accept="image/png, image/jpeg, image/gif" id="gallery-image" />
 
 
 
@@ -83,21 +83,27 @@
 
 
     <script type="module">
-var allids=[];
-const inputElement = document.querySelector('#featured-image');
+
+const inputElement = document.querySelector('#featured_image');
 const pond = FilePond.create(inputElement,{
     allowImagePreview: true,
+    allowMultiple:false,
     labelIdle: `Drag & Drop your Featured Image or <span class="filepond--label-action">Browse</span>`,
    credits:false,   
+   storeAsFile: true,
+  
   });
 
+  
   const galleryImages = FilePond.create(document.querySelector('#gallery-image'), {
     allowMultiple : true,   
     credits : false,
-    styleButtonRemoveItemPosition: 'bottom',
+    styleButtonRemoveItemPosition: 'bottom', 
+    allowRemove: false,
+    allowUpload:false,
     server:{
         headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
-
+       
         process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
             // fieldName is the name of the input field
             // file is the actual file object to send
@@ -122,14 +128,13 @@ const pond = FilePond.create(inputElement,{
                     // the load method accepts either a string (id) or an object
                     load(request.responseText);
                     let data = JSON.parse(request.responseText)
-                var input = document.createElement("hidden_ids")
+                var input = document.createElement("input")
                 input.setAttribute("type", "hidden");
                 input.setAttribute("name", "hidden_ids[]");
                 input.setAttribute("value",data.id)
                 input.setAttribute("id",data.id)
                 document.getElementById("gallery-form").appendChild(input);
-                    galleryImages.setOptions('allowRevertButton', false)
-                    
+                 
                 } else {
                     // Can call the error method if something is wrong, should exit after
                     error('oh no');
@@ -149,91 +154,41 @@ const pond = FilePond.create(inputElement,{
                 },
             };
         },
-        remove: (source, load,error) =>{
-
-            console.log("source" + source)
-            // const formData = new FormData();
-            // formData.append(fieldName, file, file.name);
-0
-            // const request = new XMLHttpRequest();
-            // request.open('POST', '{{ route('galleryImageDelete') }}');
-            // request.setRequestHeader('x-csrf-token', '{{ csrf_token() }}'); 
-
-        } ,
-        // load: (src, load) => {
+        revert : {
+            url: '{{ route('galleryImageDelete') }}'}
+        // revert:  (source, load ,error) =>{
+        //     let data = JSON.parse(source); 
             
-        //              load();
-        //              console.log('load' + response);
-        //             },
-        // revert: (src, load) => {
-        //     fetch(src).then(
-        //             console.log('reverted')
-        //         ).then(load)
-        //         load();
-                
-        //     },
+        //     document.getElementById(data.id).remove();
+            
+          
+        //     load();
+        
+        
+
+          
+
+
+        // } ,
+        
     }
    
     
+  });
 
-    // server : {
-    //     process:  '{{ route('galleryImageUpload') }}',
-    //     revert: '{{ route('galleryImageDelete') }}',
-    //     headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
 
-    //         load: (src, load) => {
-            
-    //          load();
-    //          console.log('load' + response);
-    //         },
-            
-    //         revert: (src, load) => {
-    //             fetch(src).then(
-    //                 console.log('reverted')
-    //             ).then(load)
-    //             load();
-    //         },
-            
-       
-             
-    //     //   load : (source, load, error, progress, abort, headers) => {
-
-               
-    //     //         //   console.log('uniqueFileId', source)
-    //     //         //    fetch(source)
-    //     //         //          .then(res => {
-    //     //         //             console.log('responseblob', res)
-    //     //         //             return res.blob()
-    //     //         //         })
-    //     //         //         .then(load)
-    //     //         //         .catch(error);
-    //     //         // }
-    //     // },
-    
-    // }
-                                           
-                                                            
-    // server : {
-    //     headers: {
-    //             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-    //         },
-    //     process: {
-    //         url: '{{ route('galleryImageUpload') }}',
-    //        onload: (response) =>{ 
-    //             let data = JSON.parse(response)
-    //             var input = document.createElement("hidden_ids")
-    //             input.setAttribute("type", "hidden");
-    //             input.setAttribute("name", "hidden_ids[]");
-    //             input.setAttribute("value",data.id)
-    //             document.getElementById("gallery-form").appendChild(input);
-    //         },
-    //     revert : './galleryImageDelete',
+  // {
+        //     revert : '{{ route('galleryImageDelete') }}',
+           
+        // }
         
-    // },
-
+//   galleryImages.on('removefile', (error, file) => {
     
-// },
-  })
+
+//     console.log('File removed' );
+// });
+
+  
 
  </script>
 
