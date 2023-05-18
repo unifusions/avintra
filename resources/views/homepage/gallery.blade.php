@@ -18,57 +18,53 @@
 
         <div>
             <x-hyperlinkbutton href="{{ route('publicnews') }}" class="" :outline="true">
-                All Gallery  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" width="20">
+                All Gallery <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                    stroke="currentColor" width="20">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                </svg>
             </x-hyperlinkbutton>
         </div>
     </div>
-    <div class="row mt-5 g-1">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @if (count($galleries) > 0)
+            @foreach ($galleries as $gallery)
+                <div class="col">
+                    <a href="{{ route('gallery.single', $gallery) }}" class="galleryLink">
+                        <div class="card rounded-0 border-0 galleryCard">
+                            <div class="galleryImageContainer">
+                                <img src="{{ asset('storage/' . $gallery->featured_image) }}"
+                                    preserveAspectRatio="xMidYMid slice" style=" object-fit: cover;" />
+                            </div>
 
 
-        <div class="col-4">
-            <svg class="bd-placeholder-img" width="100%" height="16rem" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="32rem" fill="var(--bs-secondary-color)" />
-            </svg>
-        </div>
+                            <div class="card-body ">
 
-        <div class="col-4">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-        </div>
+                                <div class="d-flex justify-content-between align-items-center">
 
-        <div class="col-4">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-        </div>
+                                    <h3 class="galleryTitle">{{ $gallery->title }}</h3>
 
-        <div class="col-4 ">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-        </div>
-        <div class="col-4 ">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-        </div>
-        <div class="col-4 ">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-            </svg>
-        </div>
+                                    <div class="galleryLinkIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.25" stroke="currentColor" height="24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                        </svg>
+
+                                    </div>
 
 
+                                </div>
+                            </div>
+                        </div>
+                    </a>
 
-
+                </div>
+            @endforeach
+        @else
+            <div class="col">
+                No galleries yet
+            </div>
+        @endif
     </div>
+
 </div>

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gallery;
-use App\Models\GalleryImage;
+use App\Models\Division;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
-class GalleryController extends Controller
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::orderBy('created_at', 'desc')->paginate(15);
-        return view('gallery.index', compact('galleries'));
+        $users = User::orderBy('created_at', 'desc')->paginate(15);
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -27,30 +27,31 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('gallery.create');
+        $divisions = Division::all();
+        return view('users.create', compact('divisions'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-
-        $file = $request->file('featured_image');
-
-        $fileName = $file->getClientOriginalName();
-        $upload = Storage::putFileAs("gallery/featured", $file, $fileName);
-            
-        $gallery = Gallery::create([
-            'title' => $request->title,
-            'featured_image' => $upload,
-            'description' => $request->description,
-            'slug' => str()->slug($request->title),
+        // $request->validate([
+        //     'full_name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
+        $user = User::create([
+            'name' => $request->full_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'division' => $request->division_id
         ]);
-        if ($request->hidden_ids)
-            foreach ($request->hidden_ids as $hi) {
-                $galleryimage = GalleryImage::findorfail($hi);
-                $galleryimage->gallery_id = $gallery->id;
-                $galleryimage->save();
-            }
-        return redirect()->route('gallery.index')->with(['status' => 'success']);
+        return redirect()->route('user.index');
+
     }
 
     /**
@@ -70,9 +71,10 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gallery $gallery)
+    public function edit(User $user)
     {
-        return view('gallery.edit', compact('gallery'));
+        $divisions = Division::all();
+        return view ('users.edit', compact(['user', 'divisions']));
     }
 
     /**
@@ -86,7 +88,6 @@ class GalleryController extends Controller
     {
         //
     }
-
 
     /**
      * Remove the specified resource from storage.

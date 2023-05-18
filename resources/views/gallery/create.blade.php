@@ -43,7 +43,19 @@
                             </div>
 
                         </div>
+                        <hr/>
+                        <div class=" row form-group mt-3">
+                            <div class="col-8">
 
+                            </div>
+                           
+                            <div class="col-4 ">
+                                <x-primary-button class="ml-3">
+                                    {{ __('Publish Gallery') }}
+                                </x-primary-button>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="col-6">
                         <x-input-label for="gallery-image" :value="__('Gallery Images')" class="col-4 col-form-label" />
@@ -55,24 +67,7 @@
 
 
                     </div>
-                    <div class="col-12 border-top">
-                        <div class=" row form-group mt-3">
-                            <div class="col-8">
-
-                            </div>
-                            <div class="col-2 ">
-                                <x-secondary-button class="ml-3 w-100">
-                                    {{ __('Cancel') }}
-                                </x-secondary-button>
-                            </div>
-                            <div class="col-2 ">
-                                <x-primary-button class="ml-3">
-                                    {{ __('Publish Gallery') }}
-                                </x-primary-button>
-                            </div>
-
-                        </div>
-                    </div>
+                   
 
                 </div>
             </form>

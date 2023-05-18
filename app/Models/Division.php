@@ -14,6 +14,9 @@ class Division extends Model
         'description'
     ];
 
+    public function users(){
+        return $this->hasMany(User::class);
+    }
     public function sections(){
         return $this->hasMany(Section::class);
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\Gallery\DeleteController;
+use App\Http\Controllers\Gallery\GalleryImageDeleteController;
 use App\Http\Controllers\Gallery\MultipleUploadsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomepageController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicNewsSingleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordOfTheDayController;
 use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +70,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::resource('gallery', GalleryController::class);
 
     Route::resource('section', SectionController::class)->parameters(['section' => 'section:slug']);
+    Route::resource('user', UserController::class);
     // Route::scopeBindings()->group(function () {
 
     //     Route::resource('division.section', SectionController::class)->parameters(['division' => 'division:slug', 'section' => 'section:slug']);
@@ -100,6 +103,7 @@ Route::get('/leadership', function () {
 
 Route::post('galleryImageUpload',  MultipleUploadsController::class)->name('galleryImageUpload');
 Route::delete('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');
+Route::delete('/galleryImageDelete/{galleryImage}', GalleryImageDeleteController::class)->name('galleryImageDeletewithID');
 require __DIR__ . '/auth.php';
 
 

@@ -6,7 +6,7 @@
             <h5 class="text-white">
                 Armoured Vehicles Nigam Limited
             </h5>
-            
+
 
         </div>
     </div>
@@ -15,7 +15,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : null }}" aria-current="page"
                     href="{{ route('dashboard') }}">
-                    
+
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" width=24>
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,39 +29,37 @@
 
             <li class="nav-item ">
 
-                <a  class="nav-link {{ request()->routeIs('documents.*') ? ' active' : null }}"
-                    data-bs-toggle="collapse" data-bs-target="#documents-collapse" aria-expanded="true">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
-                            stroke="currentColor" width=24>
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
-                        </svg>
+                <a class="nav-link {{ request()->routeIs('documents.*') ? ' active' : null }}" data-bs-toggle="collapse"
+                    data-bs-target="#documents-collapse" aria-expanded="true">
 
-                    {{ __('Documents') }} 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
+                        stroke="currentColor" width=24>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                    </svg>
+
+                    {{ __('Documents') }}
                 </a>
 
-               
-                <div class="collapse py-1 {{ request()->routeIs('documents.*') ? 'show active' : null }} " id="documents-collapse"
-                    style="">
+
+                <div class="collapse py-1 {{ request()->routeIs('documents.*') ? 'show active' : null }} "
+                    id="documents-collapse" style="">
                     <ul class="btn-toggle-nav flex-column sub-nav">
                         <li class="nav-item small mb-2"><a href="{{ route('documents.index') }}"
                                 class=" {{ request()->routeIs('documents.index') ? 'active fw-bold' : null }}">All
                                 Documents</a></li>
                         <li class="nav-item small  mb-2"><a href="{{ route('documents.create') }}"
-                                class="link-dark {{ request()->routeIs('documents.create') ? 'active fw-bold' : null }}">New
+                                class=" {{ request()->routeIs('documents.create') ? 'active fw-bold' : null }}">New
                                 Document</a></li>
 
                         <li class="nav-item small  mb-2"><a href="{{ route('documents.archive') }}"
-                                class="link-dark {{ request()->routeIs('documents.archive') ? 'active fw-bold' : null }}">Archive</a>
+                                class=" {{ request()->routeIs('documents.archive') ? 'active fw-bold' : null }}">Archive</a>
                         </li>
 
-                        <li class="nav-item small  mb-2"><a href="{{ route('documents.trash') }}"
-                                class="link-dark {{ request()->routeIs('documents.trash') ? 'active fw-bold' : null }}">Trash</a>
+                        <li class="nav-item small mb-2"><a href="{{ route('documents.trash') }}"
+                                class=" {{ request()->routeIs('documents.trash') ? 'active fw-bold' : null }}">Trash</a>
                         </li>
 
-                        {{-- <li class="nav-item small"><a href="#" class="link-dark {{ request()->routeIs('documents.index') ? 'active fw-bold' : null }}">Archive</a></li>
-                    <li class="nav-item small"><a href="#" class="link-dark {{ request()->routeIs('documents.delete') ? 'active fw-bold' : null }}">Trash</a></li> --}}
                     </ul>
                 </div>
             </li>
@@ -69,21 +67,21 @@
 
             <li class="nav-item">
 
-                
-                <a  class="nav-link {{ request()->routeIs('division.*') ? ' active' : null }}"
-                    data-bs-toggle="collapse" data-bs-target="#division-collapse" aria-expanded="true">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" width=24>
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
-                        </svg>
 
-                        {{ __('Divisions & Sections') }}
+                <a class="nav-link {{ request()->routeIs('division.*') || request()->routeIs('section.*')  ? ' active' : null }}" data-bs-toggle="collapse"
+                    data-bs-target="#division-collapse" aria-expanded="true">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" width=24>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+                    </svg>
+
+                    {{ __('Divisions & Sections') }}
                 </a>
 
 
-           
+
                 <div class="collapse py-1 {{ request()->routeIs('division.*') || request()->routeIs('section.*') ? 'show active' : null }} "
                     id="division-collapse" style="">
                     <ul class="btn-toggle-nav flex-column sub-nav">
@@ -97,7 +95,7 @@
                         <li class="nav-item small  mb-2"><a href="{{ route('section.index') }}"
                                 class="link-dark {{ request()->routeIs('section.index') ? 'active fw-bold' : null }}">Sections</a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </li>
@@ -106,23 +104,23 @@
 
             <li class="nav-item">
 
-                   
-                <a  class="nav-link {{ request()->routeIs('wordoftheday.*') ? ' active' : null }}"
-                    data-bs-toggle="collapse" data-bs-target="#words-collapse" aria-expanded="true">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" width=24>
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
-                        </svg>
 
-                        {{ __('Word of the Day') }}
+                <a class="nav-link {{ request()->routeIs('wordoftheday.*') ? ' active' : null }}"
+                    data-bs-toggle="collapse" data-bs-target="#words-collapse" aria-expanded="true">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" width=24>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
+                    </svg>
+
+                    {{ __('Word of the Day') }}
                 </a>
 
 
-             
-                <div class="collapse py-2 {{ request()->routeIs('wordoftheday.*') ? 'show active' : null }} " id="words-collapse"
-                    style="">
+
+                <div class="collapse py-2 {{ request()->routeIs('wordoftheday.*') ? 'show active' : null }} "
+                    id="words-collapse" style="">
                     <ul class="btn-toggle-nav flex-column sub-nav">
                         <li class="nav-item small mb-2"><a href="{{ route('wordoftheday.index') }}"
                                 class="link-dark {{ request()->routeIs('wordoftheday.index') ? 'active fw-bold' : null }}">All
@@ -131,35 +129,35 @@
                                 class="link-dark {{ request()->routeIs('wordoftheday.create') ? 'active fw-bold' : null }}">New
                                 Word of the day</a></li>
 
-                      
 
-                       
-                      
+
+
+
                     </ul>
                 </div>
 
             </li>
 
-          
+
 
 
 
             <li class="nav-item">
 
-                <a  class="nav-link {{ request()->routeIs('news.*') ? ' active' : null }}"
-                    data-bs-toggle="collapse" data-bs-target="#news-collapse" aria-expanded="true">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" height=24 width=24>
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                        </svg>
-                        {{ __('News & Announcements') }}
+                <a class="nav-link {{ request()->routeIs('news.*') ? ' active' : null }}" data-bs-toggle="collapse"
+                    data-bs-target="#news-collapse" aria-expanded="true">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" height=24 width=24>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+                    </svg>
+                    {{ __('News & Announcements') }}
                 </a>
 
 
-                <div class="collapse py-2 {{ request()->routeIs('news.*') ? 'show active' : null }} " id="news-collapse"
-                    style="">
+                <div class="collapse py-2 {{ request()->routeIs('news.*') ? 'show active' : null }} "
+                    id="news-collapse" style="">
                     <ul class="btn-toggle-nav flex-column sub-nav">
                         <li class="nav-item small mb-2"><a href="{{ route('news.index') }}"
                                 class="link-dark {{ request()->routeIs('news.index') ? 'active fw-bold' : null }}">All
@@ -176,8 +174,10 @@
 
 
             <li class="nav-item {{ request()->routeIs('gallery.index') ? 'active' : null }}">
-                <a class="nav-link" href="{{ route('gallery.index') }}">
 
+
+                <a class="nav-link {{ request()->routeIs('gallery.*') ? ' active' : null }}"
+                    data-bs-toggle="collapse" data-bs-target="#gallery-collapse" aria-expanded="true">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" width=24>
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -186,10 +186,33 @@
 
                     {{ __('Gallery') }}
                 </a>
+
+
+                <div class="collapse py-2 {{ request()->routeIs('gallery.*') ? 'show active' : null }} "
+                    id="gallery-collapse" style="">
+                    <ul class="btn-toggle-nav flex-column sub-nav">
+                        <li class="nav-item small mb-2"><a href="{{ route('gallery.index') }}"
+                                class="link-dark {{ request()->routeIs('gallery.index') ? 'active fw-bold' : null }}">
+                                Gallery
+                            </a></li>
+                        <li class="nav-item small  mb-2"><a href="{{ route('gallery.create') }}"
+                                class="link-dark {{ request()->routeIs('gallery.create') ? 'active fw-bold' : null }}">Add
+                                New Gallery</a></li>
+                        {{-- <li class="nav-item small"><a href="#" class="link-dark {{ request()->routeIs('documents.index') ? 'active fw-bold' : null }}">Archive</a></li> --}}
+                        <li class="nav-item small"><a href="#"
+                                class="link-dark {{ request()->routeIs('gallery.delete') ? 'active fw-bold' : null }}">Trash</a>
+                        </li>
+                    </ul>
+                </div>
+
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+
+            <li class="nav-item {{ request()->routeIs('user.index') ? 'active' : null }}">
+
+
+                <a class="nav-link {{ request()->routeIs('user.*') ? ' active' : null }}" data-bs-toggle="collapse"
+                    data-bs-target="#user-collapse" aria-expanded="true">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" width=24>
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -198,45 +221,32 @@
 
                     {{ __('Users') }}
                 </a>
+
+
+                <div class="collapse py-2 {{ request()->routeIs('user.*') ? 'show active' : null }} "
+                    id="user-collapse" style="">
+                    <ul class="btn-toggle-nav flex-column sub-nav">
+                        <li class="nav-item small mb-2"><a href="{{ route('user.index') }}"
+                                class="link-dark {{ request()->routeIs('user.index') ? 'active fw-bold' : null }}">
+                                All Users
+                            </a></li>
+                        <li class="nav-item small  mb-2"><a href="{{ route('user.create') }}"
+                                class="link-dark {{ request()->routeIs('user.create') ? 'active fw-bold' : null }}">Add
+                                New User</a></li>
+                        {{-- <li class="nav-item small"><a href="#" class="link-dark {{ request()->routeIs('documents.index') ? 'active fw-bold' : null }}">Archive</a></li> --}}
+
+                    </ul>
+                </div>
+
             </li>
 
+
+        
 
 
 
         </ul>
 
-        {{-- <h6
-            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-                <span data-feather="plus-circle" class="align-text-bottom"></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Current month
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Last quarter
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Social engagement
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Year-end sale
-                </a>
-            </li>
-        </ul> --}}
+       
     </div>
 </nav>

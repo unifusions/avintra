@@ -108,8 +108,13 @@
      color: #FFF;
    }
 
+
    .sidebar .nav-item .collapse .nav-item a{
     color:#fff
+   }
+
+   .sidebar .nav-item .show .nav-item a{
+    color:#fff;
    }
    .sidebar .nav-item div.active  .nav-item a,
    .sidebar .nav-item .collapse .nav-item a.active{

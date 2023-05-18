@@ -99,9 +99,9 @@
                          @foreach ($sections as $key=>$section )
                               <tr>
                                    <th scope="row">{{ $key+1 }}</th>
-                                   <td>{{ $section->name }}</td>
-                                   <td>{{ $section->description }}</td>
-                                   <td>{{ $section->division->name }}</td>
+                                   <td>{{ $section->name ?? ''}}</td>
+                                   <td>{{ $section->description ??'' }}</td>
+                                   <td>{{ $section->division->name ?? '' }}</td>
                               </tr>
                          @endforeach
                         
