@@ -57,10 +57,11 @@
 
                         </td>
                         <td>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="action-button-container d-flex justify-content-evenly">
                                 <x-view-button href=" {{ route('gallery.single', $gallery) }} " />
                                 <x-edit-button href=" {{ route('gallery.edit', $gallery) }} " />
-                                <x-delete-button href=" {{ route('gallery.destroy', $gallery) }} " />
+                                <x-delete-button action="{{ route('gallery.destroy', $gallery) }} " />
+                                
                             </div>
 
                         </td>

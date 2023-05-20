@@ -29,6 +29,7 @@
         "filepond-plugin-image-transform": "^3.8.7",
         "jquery": "^3.6.4",
         "masonry-layout": "^4.2.2",
+        "owl.carousel": "^2.3.4",
         "tinymce": "^6.4.1"
     }
 }

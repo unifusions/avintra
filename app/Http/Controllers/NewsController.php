@@ -49,7 +49,7 @@ class NewsController extends Controller
             'news_content'  => $request->news_content,
             'news_category_id'  => $request->news_category_id
         ]);
-        return redirect('news.index');
+        return redirect()->route('news.index');
     }
 
     /**

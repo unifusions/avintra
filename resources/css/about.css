@@ -1,12 +1,12 @@
 .abPageAbout,.aboutAdditionalSection {
      position: relative;
-     padding: 120px 0 0 0;
+     padding: 40px 0 0 0;
  }
 
 
 
 .aboutContent {
-     margin: 36px 0 0 0px;
+     margin: 16px 0 0 0px;
 }
 
 .aboutContent .subTitle {
@@ -24,8 +24,9 @@
 }
 
 .aboutContent p {
-     margin: 0 50px 40px 0;
+     margin: 0 0 20px 0;
      text-align: justify;
+     line-height: 2.2rem;
  }
  
 
@@ -41,13 +42,15 @@
      border-radius: 6px;
  }
  .governanceContent{
-     font-size: 16px;
-     font-weight: 500;
-     line-height: 32px;
+     font-size: 1.25rem;
+     font-weight: 400;
+     line-height: 2.2rem;
  }
 
  .governanceList{
      list-style: none;
+
+
  }
 
 
@@ -55,6 +58,7 @@
      margin: 16px 0 16px 0;
      padding-bottom: 16px;
      border-bottom: 1px solid #E6BE7E;
+  
  }
  
  
@@ -79,4 +83,23 @@
    
   color:#94701d;
   transition: 0.3s;
+ }
+
+ .visionList{
+    margin-top: 16px;
+    
+    padding-left: 0;
+    line-height: 1.75rem;
+    list-style-image: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+ }
+
+ .visionList li{
+    margin-bottom: 24px;
+    margin-left: 32px;
+    padding-left: 16px;
+ }
+
+ .visionList > li > .icon{
+    /* margin-left: -48px; */
+  
  }

@@ -38,9 +38,9 @@
     </style>
 
 <div class="container mt-3 mb-3">
-     
-     <h2>{{ $gallery->title }}</h2>
-     <p>{{ $gallery->description }}</p>
+{{--      
+     <h2>{{ $gallery->title }}</h2> --}}
+     {{-- <p>{{ $gallery->description }}</p> --}}
 
 
      <div id="gallery-lightbox" class="row row-cols-1 row-cols-sm-2 row-cols-md-3" data-bs-toggle="modal"
@@ -60,7 +60,7 @@
     <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
         <button type="button" class="close m-0 p-3 text-white position-absolute right-0" data-bs-dismiss="modal"
             aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" style="color:000"> X </span>
         </button>
         <div class="modal-dialog modal-lg" bs-role="document">
             <div class="modal-content modal-lg bg-transparent">

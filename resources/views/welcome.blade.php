@@ -74,38 +74,40 @@
             <div class="col-3">
                 <section style="background:#F7EDE2;color:#000" class="h-100 p-5">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h2 class="">Message from the CMD</h2>
-                            <div>Shri. A.N. Srivastava</div>
-                            <div>CHAIRMAN & MANAGING DIRECTOR</div>
-                        </div>
-                        <div>
 
-                            <img src="{{ asset('images/cmd-sk1.png') }}" alt="" width="125" height="125"
-                                class="rounded-circle" style="object-fit:cover">
-                        </div>
+                        <h3 class="">Message from the CMD</h3>
+                        <img src="{{ asset('images/cmd-sk1.png') }}" alt="" width="125" height="125"
+                            class="rounded-circle" style="object-fit:cover">
+                    </div>
+                    <div>
 
+                        <div style="font-weight:500">Shri. A.N. Srivastava</div>
+                        <div>CHAIRMAN & MANAGING DIRECTOR</div>
                     </div>
 
-                    <hr>
-                    <p class="cmd-message-text">
-                        Today I have taken over as CMD/AVL. I feel privileged & honoured to assume the charge of CMD of
-                        AVANI, one of the leading Defence Companies among the seven created recently. At the outset, let
-                        me place on record that the company has been very ably led by the Board of Directors for the
-                        past nine months since its formation. The last nine months have been extremely challenging as
-                        the newly formed Company had to transition from a group of Government units into a corporate
-                        entity. The challenge before us was to perform while we transformed. AVANI has performed creditably and is
-                        on the path of growth and profit. I congratulate all my fellow Avanians for their dedication and
-                        determined efforts to turnaround loss making units into a profitable concern.
-                    </p>
-                    <x-hyperlinkbutton href="#" >
-                        Read More
-                    </x-hyperlinkbutton>
 
-                 
-                </section>
-            </div>
+           
+
+            <hr>
+            <p class="cmd-message-text">
+                Today I have taken over as CMD/AVL. I feel privileged & honoured to assume the charge of CMD of
+                AVANI, one of the leading Defence Companies among the seven created recently. At the outset, let
+                me place on record that the company has been very ably led by the Board of Directors for the
+                past nine months since its formation. The last nine months have been extremely challenging as
+                the newly formed Company had to transition from a group of Government units into a corporate
+                entity. The challenge before us was to perform while we transformed. AVANI has performed
+                creditably and is
+                on the path of growth and profit. I congratulate all my fellow Avanians for their dedication and
+                determined efforts to turnaround loss making units into a profitable concern.
+            </p>
+            <x-hyperlinkbutton href="#">
+                Read More
+            </x-hyperlinkbutton>
+
+
+            </section>
         </div>
+    </div>
     </div>
     <div class="container-fluid my-5">
 
@@ -119,11 +121,11 @@
 
 
             <div class="col-3">
-             @include('homepage.word')
+                @include('homepage.word')
             </div>
 
             <div class="col-3">
-@include('homepage.documents')
+                @include('homepage.documents')
             </div>
 
             <div class="col-3">
@@ -133,61 +135,58 @@
                             <img src="{{ asset('images/bday-card.png') }}" alt="" height="100"
                                 class="mt-2 mb-3 mx-auto d-block">
                             <div class="birthdaycarousel carousel-indicators">
-                                <button type="button" data-bs-target="#birthDayCarousel" data-bs-slide-to="0" class="active"
-                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#birthDayCarousel" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
                                 {{-- <button type="button" data-bs-target="#birthDayCarousel" data-bs-slide-to="1"
                                     aria-label="Slide 2"></button>
                                 <button type="button" data-bs-target="#birthDayCarousel" data-bs-slide-to="2"
                                     aria-label="Slide 3"></button> --}}
                             </div>
                             <div class="carousel-inner">
-        
+
                                 <div class="birthday-carousel-item carousel-item active">
-        
-        
-        
-        
+
+
+
+
                                     <div class="container">
                                         <div class="birthday-card">
-        
-        
-                                            <svg class="bd-placeholder-img rounded-circle " width="100" height="100"
-                                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                                                preserveAspectRatio="xMidYMid slice" focusable="false">
-        
+
+
+                                            <svg class="bd-placeholder-img rounded-circle " width="100"
+                                                height="100" xmlns="http://www.w3.org/2000/svg" role="img"
+                                                aria-label="Placeholder" preserveAspectRatio="xMidYMid slice"
+                                                focusable="false">
+
                                                 <rect width="100%" height="100%" fill="var(--bs-secondary-color)">
                                                 </rect>
                                             </svg>
-        
-                                            <h6>Full Name</h6>
+
+                                            <h6 class="mt-3">Full Name</h6>
                                             <p>Dept : </p>
-                                            <div class="">
-        
-        
-                                            </div>
-        
-        
-        
-        
-        
+
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
-        
-                                <button class="carousel-control-prev" type="button" data-bs-target="#birthDayCarousel"
-                                    data-bs-slide="prev">
+
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#birthDayCarousel" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#birthDayCarousel"
-                                    data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#birthDayCarousel" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="h-hidden">Next</span>
                                 </button>
                             </div>
-        
+
                         </div>
-        
+
                     </div>
 
                     <div class="col-6">
@@ -204,70 +203,67 @@
                                     aria-label="Slide 3"></button> --}}
                             </div>
                             <div class="carousel-inner">
-        
+
                                 <div class="birthday-carousel-item carousel-item active">
-        
-        
-        
-        
+
+
+
+
                                     <div class="container">
                                         <div class="birthday-card">
-        
-        
-                                            <svg class="bd-placeholder-img rounded-circle " width="100" height="100"
-                                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                                                preserveAspectRatio="xMidYMid slice" focusable="false">
-        
+
+
+                                            <svg class="bd-placeholder-img rounded-circle " width="100"
+                                                height="100" xmlns="http://www.w3.org/2000/svg" role="img"
+                                                aria-label="Placeholder" preserveAspectRatio="xMidYMid slice"
+                                                focusable="false">
+
                                                 <rect width="100%" height="100%" fill="var(--bs-secondary-color)">
                                                 </rect>
                                             </svg>
-        
-                                            <h6>Full Name</h6>
-                                            <p>Dept : </p>
-                                            <div class="">
-        
-        
-                                            </div>
-        
-        
-        
-        
-        
+
+                                            <h6 class="mt-3">Full Name</h6>
+                                            <p>Finance | Technical</p>
+
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
-        
-                                <button class="carousel-control-prev" type="button" data-bs-target="#birthDayCarousel"
-                                    data-bs-slide="prev">
+
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#birthDayCarousel" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#birthDayCarousel"
-                                    data-bs-slide="next">
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#birthDayCarousel" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
-        
+
                         </div>
                     </div>
                 </div>
 
-           
+
             </div>
-           
+
         </div>
 
-       
-          
-       
+
+
+
 
     </div>
 
     <div class="container-fluid py-5 gallery-container my-5" style="">
         @include('homepage.gallery')
     </div>
-   
+
     {{-- Footer --}}
 
 </x-guest-layout>

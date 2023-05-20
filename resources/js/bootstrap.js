@@ -27,7 +27,6 @@ import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
 
 
 
-
 import 'filepond/dist/filepond.css';
 
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
@@ -89,3 +88,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+

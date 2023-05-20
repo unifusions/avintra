@@ -19,8 +19,8 @@
 
 <body class="">
 
-    <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <a class="navbar-brand" href="{{ route('home') }}">
+    <nav class="navbar navbar-dark bg-dark justify-content-between ">
+        <a class="navbar-brand px-5" href="{{ route('home') }}">
             <img src="{{ asset('images/avnl_logo.jpg') }}" />
         </a>
 
@@ -35,7 +35,7 @@
             </span>
         </div>
 
-        <div class="navbar-secondary-logo">
+        <div class="navbar-secondary-logo px-5">
             <img src="{{ asset('images/akam_logo.png') }}" />
         </div>
 

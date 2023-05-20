@@ -1,18 +1,37 @@
-<nav id="sidebarMenu" class="col-md-2  d-md-block bg-dark sidebar collapse sidebar-menu">
+<nav class="navbar navbar-dark bg-dark justify-content-between " style="z-index: 1000">
+    <a class="navbar-brand px-5" href="{{ route('home') }}">
+        <img src="{{ asset('images/avnl_logo.jpg') }}" />
+    </a>
 
-    <div class="d-flex justify-content-between align-items-center bg-dark">
-        <img src="{{ asset('images/avnl_logo.jpg') }}" alt="" width="125">
-        <div>
-            <h5 class="text-white">
-                Armoured Vehicles Nigam Limited
-            </h5>
-
-
-        </div>
+    <div class="navbar-header">
+        <h1 class="site-title">
+            Armoured Vehicles Nigam Limited
+        </h1>
+        <h3 class="site-subtitle"> A Government of India Enterprise </h3>
+        <span class="site-tagline">
+            Ministry of Defence
+            CIN : U35990TN2021GOI145504
+        </span>
     </div>
-    <div class="position-sticky pt-3 sidebar-sticky">
+
+    <div class="navbar-secondary-logo px-5">
+        <img src="{{ asset('images/akam_logo.png') }}" />
+    </div>
+
+</nav>
+
+<nav id="sidebarMenu" class="col-md-2 d-md-block bg-dark sidebar collapse sidebar-menu">
+{{-- 
+    <div class="d-flex justify-content-between align-items-center bg-dark">
+        <img src="{{ asset('images/avnl_logo.jpg') }}" alt="" width="105">
+        <div>
+            <h6 class="text-white">Armoured Vehicles Nigam Limited</h6>
+        </div>
+    </div> --}}
+
+    <div class="position-sticky sidebar-sticky">
         <ul class="nav flex-column">
-            <li class="nav-item">
+            <li class="nav-item my-1">
                 <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : null }}" aria-current="page"
                     href="{{ route('dashboard') }}">
 
@@ -27,7 +46,7 @@
             </li>
 
 
-            <li class="nav-item ">
+            <li class="nav-item my-1">
 
                 <a class="nav-link {{ request()->routeIs('documents.*') ? ' active' : null }}" data-bs-toggle="collapse"
                     data-bs-target="#documents-collapse" aria-expanded="true">
@@ -65,7 +84,7 @@
             </li>
 
 
-            <li class="nav-item">
+            <li class="nav-item my-1">
 
 
                 <a class="nav-link {{ request()->routeIs('division.*') || request()->routeIs('section.*')  ? ' active' : null }}" data-bs-toggle="collapse"
@@ -102,7 +121,7 @@
 
 
 
-            <li class="nav-item">
+            <li class="nav-item my-1">
 
 
                 <a class="nav-link {{ request()->routeIs('wordoftheday.*') ? ' active' : null }}"
@@ -142,7 +161,7 @@
 
 
 
-            <li class="nav-item">
+            <li class="nav-item my-1">
 
                 <a class="nav-link {{ request()->routeIs('news.*') ? ' active' : null }}" data-bs-toggle="collapse"
                     data-bs-target="#news-collapse" aria-expanded="true">
@@ -173,7 +192,7 @@
 
 
 
-            <li class="nav-item {{ request()->routeIs('gallery.index') ? 'active' : null }}">
+            <li class="nav-item my-1 {{ request()->routeIs('gallery.index') ? 'active' : null }}">
 
 
                 <a class="nav-link {{ request()->routeIs('gallery.*') ? ' active' : null }}"
@@ -208,10 +227,10 @@
             </li>
 
 
-            <li class="nav-item {{ request()->routeIs('user.index') ? 'active' : null }}">
+            <li class="nav-item my-1 {{ request()->routeIs('user.index') ? 'active' : null }}">
 
 
-                <a class="nav-link {{ request()->routeIs('user.*') ? ' active' : null }}" data-bs-toggle="collapse"
+                <a class="nav-link  {{ request()->routeIs('user.*') ? ' active' : null }}" data-bs-toggle="collapse"
                     data-bs-target="#user-collapse" aria-expanded="true">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" width=24>

@@ -27,7 +27,7 @@
 
                         <div class="card-body">
                             <h6>{{ $gallery->title }}</h6>
-                            <p class="card-text">{{ $gallery->description }}</p>
+                            {{-- <p class="card-text">{{ $gallery->description }}</p> --}}
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href={{ route('gallery.single', $gallery) }} type="button"

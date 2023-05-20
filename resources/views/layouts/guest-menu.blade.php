@@ -14,39 +14,39 @@
          </button>
 
          <!-- Collapsible wrapper -->
-         <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+         <div class="collapse navbar-collapse justify-content-between" id="navbarCenteredExample">
 
 
 
              <!-- Left links -->
-             <ul class="navbar-nav ">
+             <ul class="navbar-nav">
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('home') }}"> {{ __('welcome.Home') }}</a>
                  </li>
 
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3">
                      <a class="nav-link" href="{{ route('aboutus') }}">{{ __('welcome.About') }}</a>
                  </li>
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3">
                      <a class="nav-link" href="{{ route('leadership') }}">{{ __('welcome.Leadership') }}</a>
                  </li>
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3">
                      <a class="nav-link" href="{{ route('publicnews') }}">News</a>
                  </li>
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3">
                      <a class="nav-link" href="{{ route('publicdocuments') }}">Documents</a>
                  </li>
 
 
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3 ">
                      <a class="nav-link" href="{{ route('directory') }}">Directory</a>
                  </li>
 
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3 ">
                      <a class="nav-link" href="{{ route('publicgallery') }}">Gallery</a>
                  </li>
 
-                 <li class="nav-item px-2">
+                 <li class="nav-item mx-3 ">
                      <a class="nav-link" href="{{ route('home') }}">CMD Message</a>
                  </li>
 

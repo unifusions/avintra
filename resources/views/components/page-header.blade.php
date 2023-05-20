@@ -1,7 +1,7 @@
 @props(['heading' => ''])
-<div class="page_header_default ">
+<div class="page_header_default">
     <div class="parallax_cover">
-        {{-- <img src="assets/images/page-header-default.jpg" alt="bg_image" class="cover-parallax"> --}}
+        <img src="{{ asset('images/header-bg.png') }}" alt="bg_image" class="cover-parallax">
     </div>
     <div class="page_header_content">
         <div class="auto-container">

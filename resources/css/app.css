@@ -8,8 +8,11 @@
 @import 'widgets.css';
 
 @import 'about.css';
+@import 'leadership.css';
 @import 'documents.css';
 
+@import 'breadcrumbs.css';
+@import 'footer.css';
 /*------ 1. GENERAL ------*/
 /*------ 2. HEADER  ------*/
 
@@ -24,7 +27,7 @@
 
 body {
      font-family: 'Jost';
-     font-size: 1em;
+     font-size: 1rem;
      font-weight: 400;
 }
 
@@ -84,6 +87,27 @@ body {
 .text-justify {
      text-align: justify;
 }
+
+.delete-button{
+     border: 0;
+     background-color: rgba(0,0,0,0);
+     padding: 0;
+}
+
+.delete-button svg{
+     color: red;
+}
+
+/* ACTIONS UI */
+.action-button-container {
+
+}
+.action-buttons{
+     display: block;
+     padding: 0.25rem;
+}
+
+
 
 /* 2.2 SECONDARY NAVBAR */
 
@@ -255,7 +279,7 @@ body {
      text-align: justify;
      overflow: hidden;
      display: -webkit-box;
-     -webkit-line-clamp: 8;
+     -webkit-line-clamp: 7;
      -webkit-box-orient: vertical;
 }
 
@@ -289,29 +313,6 @@ body {
      background: rgba(255, 255, 255, 0.8)
 }
 
-/* FOOTER */
-
-.footer-logo-item>img {
-     height: 45px;
-}
-
-.copyright-section {
-     background-color: #94701d;
-     color: #fff;
-}
-
-.copyright {
-     font-size: 0.9rem;
-}
-
-.visitors-count {
-     font-size: 1.2rem;
-     font-weight: 600;
-}
-
-.disclaimer-section {
-     font-size: 0.8rem;
-}
 
 .vertical-seperator {
      border-right: 1px solid #94701D;
@@ -320,13 +321,14 @@ body {
 
 .page_header_default::before {
      position: absolute;
+     
      content: "";
      top: 0;
      right: 0;
      left: 0;
      bottom: 0;
      background: #F7EDE2;
-     opacity: 0.85;
+     opacity: 0.5;
      z-index: 1;
 }
 
@@ -342,6 +344,11 @@ body {
      position: relative;
      z-index: 3;
      text-align: center;
+}
+
+.cover-parallax{
+     width: 100%;
+     object-fit: cover;
 }
 
 .auto-container,
@@ -364,71 +371,6 @@ body {
 .page_header_default .page_header_content .banner_title_inner {
      position: relative;
      margin-bottom: 20px;
-}
-
-.breadcrumbs {
-     position: relative;
-     display: inline-block;
-}
-
-.breadcrumbs ul {
-     position: relative;
-     padding: 0;
-}
-
-.breadcrumbs ul li {
-     margin-right: 30px;
-     color: #94701D;
-     position: relative;
-     font-family: var(--creote-family-one);
-     font-size: 12px;
-     line-height: 18px;
-     font-weight: 600;
-     text-transform: uppercase;
-}
-
-/* 
- %3Csvg xmlns='http://www.w3.org/2000/svg' fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"%3E
- %3Cpath stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /%3E
- %3C/svg%3E */
-
-
-
-.breadcrumbs ul li:before {
-     position: absolute;
-     content: '|';
-     right: -19px;
-     top: -2px;
-     color: #94701D;
-     font-size: 14px;
-}
-
-.breadcrumbs ul li:last-child:before {
-     content: '';
-}
-
-.breadcrumbs ul li:last-child {
-     margin-right: 0;
-
-}
-
-
-
-.breadcrumbs ul li a {
-     position: relative;
-     text-decoration: none;
-     font-size: 12px;
-     line-height: 18px;
-     text-transform: uppercase;
-     padding-right: 30px;
-     color: #94701D
-}
-
-
-.breadcrumbs ul li a:last-child {
-     padding-right: 0px;
-     font-weight: bold;
-
 }
 
 

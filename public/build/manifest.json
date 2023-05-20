@@ -1,18 +1,25 @@
 {
+  "node_modules/owl.carousel/dist/assets/owl.video.play.png": {
+    "file": "assets/owl.video.play-04360456.png",
+    "src": "node_modules/owl.carousel/dist/assets/owl.video.play.png"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-61452720.css",
+    "file": "assets/app-edf88da0.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.css": {
-    "file": "assets/app-130eca19.css",
+    "file": "assets/app-5b2f972e.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
-    "css": [
-      "assets/app-130eca19.css"
+    "assets": [
+      "assets/owl.video.play-04360456.png"
     ],
-    "file": "assets/app-83977a65.js",
+    "css": [
+      "assets/app-5b2f972e.css"
+    ],
+    "file": "assets/app-ab7671d2.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
