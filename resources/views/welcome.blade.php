@@ -89,7 +89,7 @@
            
 
             <hr>
-            <p class="cmd-message-text">
+            <p class="cmd-message-text "> 
                 Today I have taken over as CMD/AVL. I feel privileged & honoured to assume the charge of CMD of
                 AVANI, one of the leading Defence Companies among the seven created recently. At the outset, let
                 me place on record that the company has been very ably led by the Board of Directors for the
