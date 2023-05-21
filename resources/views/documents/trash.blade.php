@@ -30,7 +30,7 @@
                         <td>{{ $document->title }}</td>
                         <td>{{ $document->document_no }}</td>
                         <td>
-                            <span class=""> {{ $document->division->name }} </span>
+                            <span class=""> {{ $document->division->name ?? ''}} </span>
                             <span class="badge bg-secondary text-light">{{ $document->section->name ?? ''}}</span>
                         </td>
                         <td>
