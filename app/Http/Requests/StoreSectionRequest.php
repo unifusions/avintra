@@ -25,7 +25,7 @@ class StoreSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('divisions')->ignore($this->section)],
+            'name' => ['required', Rule::unique('sections')->ignore($this->section)],
             'description' => 'required',
             'slug' => 'string',
             'division_id' => 'required'
