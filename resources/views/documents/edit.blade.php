@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="">
-            {{ __('Documents - Edit | ' . $document->title) }}
+            {{ __('Edit Document | ' . $document->document_no) }}
         </h2>
     </x-slot>
 
@@ -137,15 +137,11 @@
                         </div>
                         <hr>
                         <div class="form-group row mb-3">
-                            <div class="col-6">
+                            <div class="col-9">
 
                             </div>
-                            <div class="col-3 px-1">
-                                <x-secondary-button class="ml-3 w-100">
-                                    {{ __('Cancel') }}
-                                </x-secondary-button>
-                            </div>
-                            <div class="col-3 px-1">
+                           
+                            <div class="col-3">
                                 <x-primary-button class="ml-3">
                                     {{ __('Save Document') }}
                                 </x-primary-button>

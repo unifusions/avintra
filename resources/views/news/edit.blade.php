@@ -39,8 +39,8 @@
                             <x-input-label for="news_category" :value="__('News Category')" class="col-4 col-form-label" />
                             <div class="col-8">
                                 <select class="form-select"  id="news_category_id"
-                                    name="news_category_id" required>
-                                    <option value="" selected>Select Category</option>
+                                    name="news_category_id" >
+                                    <option selected>Select Category</option>
 
                                     @foreach ($news_categories as $news_category)
                                             <option value="{{ $news_category->id }}">{{ $news_category->category_title }}</option>
@@ -55,10 +55,8 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="news_content" :value="__('News Content')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <textarea class="form-control" id="news_content" class="" :value="old('news_content')"
-                                name="news_content" required></textarea>
-                                {{-- <x-tiny-editor id="news_content" class="" :value="old('news_content')"
-                                    name="news_content"  /> --}}
+                                <x-tiny-editor id="news_content" class="" :value="old('news_content')"
+                                    name="news_content"  />
                                 <x-input-error :messages="$errors->get('news_content')" class="mt-2" />
                             </div>
                         </div>

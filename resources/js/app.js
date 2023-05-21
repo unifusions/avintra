@@ -10,7 +10,6 @@ import 'bootstrap';
 import 'owl.carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 
-
 $(document).ready(function () {
     $('.owl-carousel').owlCarousel({
         loop: true,
@@ -33,6 +32,9 @@ $(document).ready(function () {
                 items: 8
             }
         }
-    })
+    });
+    
+    // $('#liveToast').toast('show')
+
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDocumentRequest;
 use App\Models\Division;
 use App\Models\Document;
 use App\Models\Section;
@@ -29,6 +30,18 @@ class DocumentController extends Controller
         }
 
         // dd($request->input());
+        if ($request->section) {
+            return view('documents.index')->with([
+                'documents' => Document::where('section_id', $request->section)->orderBy('created_at', 'desc')->paginate(15),
+                'divisions' => Division::all(),
+
+                'sort_by' => '',
+                'sections' => Section::where('division_id', $request->division)->get(),
+                'division_id' => $request->division,
+                'section_id' => $request->section,
+                'search' => $request->search,
+            ]);
+        }
         if ($request->sort_by) {
 
             switch ($request->sort_by) {
@@ -44,12 +57,14 @@ class DocumentController extends Controller
                 'documents' => $documents,
                 'divisions' => Division::all(),
                 'sort_by' => $request->sort_by,
+                'search' => $request->search,
             ]);
         }
         return view('documents.index')->with([
             'documents' => $documents,
             'divisions' => Division::all(),
-            'sort_by' => ''
+            'sort_by' => '',
+            'search' => $request->search,
         ]);
     }
 
@@ -61,7 +76,9 @@ class DocumentController extends Controller
     public function create()
     {
 
-        return view('documents.create')->with(['divisions' => Division::all()]);
+        $divisions =  Division::all();
+        return view('documents.create', compact('divisions'));
+        return redirect()->route('documents.index');
     }
 
     /**
@@ -76,33 +93,11 @@ class DocumentController extends Controller
         $data['sections'] = Section::where("division_id", $request->division_id)->get(["name", "id"]);
         return response()->json($data);
     }
-    public function store(Request $request)
+    public function store(StoreDocumentRequest $request)
     {
 
-
-
-        $file = $request->file('document_file');
-        $fileName = $file->getClientOriginalName();
-        $fileType = $file->getClientOriginalExtension();
-        $fileSize = $file->getSize();
-        $upload = Storage::putFileAs("documents", $file, $fileName);
-
-        Document::create([
-
-            'title' => $request->title,
-            'document_no' => $request->document_no,
-            'document_path' => $upload,
-            'user_id' => auth()->user()->id,
-            'division_id' => $request->division_id,
-            'section_id' => $request->section_id,
-            'file_name' => $fileName,
-            'file_size' => $fileSize,
-            'file_type' => $fileType
-
-
-        ]);
-
-        return redirect()->route('documents.index');
+        $document = Document::create($request->validated());
+        return redirect()->route('documents.index')->with('success', 'New Document ' . $document->title .' has been uploaded successfully');
     }
 
     public function archive()
@@ -123,16 +118,14 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        
     }
-    
+
 
     public function download(Document $document)
     {
-   
 
-            return response()->file(Storage::path($document->document_path));
-        
+
+        return response()->file(Storage::path($document->document_path));
     }
     /**
      * Show the form for editing the specified resource.
@@ -162,7 +155,7 @@ class DocumentController extends Controller
         $document->division_id = $request->division_id;
         $document->section_id = $request->section_id;
         $document->save();
-        return redirect()->route('documents.index')->with('status', 'Document Updated');
+        return redirect()->route('documents.index')->with('success', 'Document ' . $document->document_no . ' has been uploaded successfully');
     }
 
     /**
@@ -171,8 +164,17 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Document $document)
     {
-        //
+        $document->delete();
+        return redirect()->route('documents.index')->with('success', 'Document ' . $document->document_no . ' has been deleted successfully');
+    }
+
+    public function restore($document)
+    {
+        $restoredDocument = Document::onlyTrashed()->findOrFail($document);
+        // dd($restoredDocument);
+        $restoredDocument->restore();
+        return back()->with('success', 'Document ' . $restoredDocument->document_no . ' has been restored successfully');
     }
 }

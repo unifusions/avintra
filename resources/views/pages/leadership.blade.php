@@ -96,9 +96,7 @@
                         <div>
                             <h4 class="galleryTitle">Shri. Shalabh Tyagi
                             </h4>
-                            <p>Govt. Nominee Director
-
-                            </p>
+                            <p>Govt. Nominee Director</p>
                         </div>
                     </div>
                 </div>

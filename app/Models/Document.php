@@ -19,6 +19,7 @@ class Document extends Model
         'file_size',
         'file_type',
         'file_name',
+        'slug',
 
     ];
 

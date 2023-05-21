@@ -42,7 +42,7 @@ class WordOfTheDayController extends Controller
         $fileName = $file->getClientOriginalName();
         $fileType = $file->getClientOriginalExtension();
         $fileSize = $file->getSize();
-        $upload = Storage::putFileAs("public/wordoftheday", $file, $fileName);
+        $upload = Storage::putFileAs("wordoftheday", $file, $fileName);
 
         TodayWord::create([
             'word_english' => $request->word_english,

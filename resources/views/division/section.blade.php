@@ -22,19 +22,19 @@
                     @csrf
 
                     <div class="form-group row mb-3">
-                        <x-input-label for="section_name" :value="__('Section Name')" class="col-4 col-form-label" />
+                        <x-input-label for="name" :value="__('Section Name')" class="col-4 col-form-label" />
                         <div class="col-8">
-                            <x-text-input id="section_name" class="" :value="old('section_name')" type="text"
-                                name="section_name" required autocomplete="section_name" />
-                            <x-input-error :messages="$errors->get('section_name')" class="mt-2" />
+                            <x-text-input :errorMsg="$errors->has('name')"  id="name" class="" :value="old('name')" type="text"
+                                name="name"  autocomplete="name" />
+                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
                     </div>
 
                     <div class="form-group row mb-3">
                         <x-input-label for="description" :value="__('Description')" class="col-4 col-form-label" />
                         <div class="col-8">
-                            <x-text-input id="description" class="" :value="old('description')" type="text"
-                                name="description" required autocomplete="description" />
+                            <x-text-input  :errorMsg="$errors->has('description')" id="description" class="" :value="old('description')" type="text"
+                                name="description"  autocomplete="description" />
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     <div class="form-group row mb-3">
                         <x-input-label for="division" :value="__('Division')" class="col-4 col-form-label" />
                         <div class="col-8">
-                            <select class="form-select" aria-label="Division Select" id="division" name="division" required>
+                            <select class="form-select @if($errors->has('division_id')) is-invalid @endif" aria-label="Division Select" id="division_id" name="division_id" >
                                 <option selected>Select Division</option>
 
                                 @foreach ($divisions as $division)
@@ -51,6 +51,7 @@
                                 @endforeach
 
                             </select>
+                            <x-input-error :messages="$errors->get('division_id')" class="mt-2"/>
                         </div>
                     </div>
 

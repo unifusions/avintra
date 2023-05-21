@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSectionRequest;
 use App\Models\Division;
 use App\Models\Section;
 use Illuminate\Http\Request;
@@ -21,16 +22,16 @@ class SectionController extends Controller
     {
      
     }
-    public function store(Request $request)
+    public function store(StoreSectionRequest $request)
     {
 
-        Section::create([
+        $section = Section::create([
             'name' => $request->input('section_name'),
             'slug' => str()->slug($request->input('section_name')),
             'description' => $request->input('description'),
-            'division_id' => $request->input('division'),
+            'division_id' => $request->input('division_id'),
         ]);
-        return redirect()->back()->with('status', 'profile-updated');   
+        return redirect()->route('section.index')->with('success', 'New Section ' . $section->name .' has been created successfully');
     }
 
     

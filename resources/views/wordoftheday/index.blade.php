@@ -3,6 +3,8 @@
           <h2 class="">
               {{ __(' Word of the Day') }}
           </h2>
+
+          
       </x-slot>
 
      
@@ -35,7 +37,7 @@
                         <td  class="text-right">
                             <div class="d-flex justify-content-evenly">
                                 
-                                <x-view-button href="{{ route('wordoftheday.show', $word) }}" class=""/>
+                                
 
                                 <x-edit-button href="{{ route('wordoftheday.edit', $word) }}" class=""/>
                                 

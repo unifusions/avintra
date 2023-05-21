@@ -14,6 +14,7 @@ class TodayWord extends Model
         'word_tamil',
         'word_hindi',
         'word_audio_file',
+        'word_meaning',
         'slug'
     ];
 }

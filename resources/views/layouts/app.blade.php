@@ -11,7 +11,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,39 +26,11 @@
 
     <div class="container-fluid">
         <div class="row">
-
             {{-- SideBar --}}
             @include('layouts.sidebar')
 
-
-
             {{-- Main Content --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
-
-
-
-
-                @if (session('status'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ __('Section has been created') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-
-
-                    {{-- <script type="module">
-    var toastTrigger = document.getElementById('liveToastBtn')
-var toastLiveExample = document.getElementById('liveToast')
-if (toastTrigger) {
-toastTrigger.addEventListener('click', function () {
-var toast = new bootstrap.Toast(toastLiveExample)
-
-toast.show()
-})
-}
- --}}
-      {{-- </script>  --}}
-                @endif
-
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
@@ -102,10 +75,17 @@ toast.show()
                 </div>
 
 
+                <x-toast-component />
+
+
+
+
+
+
+
+
             </main>
         </div>
-
-
 
 
 

@@ -21,7 +21,7 @@
 
 
 
-                <div class="">
+              
 
                     @foreach ($documents as $document)
                         <article class="document-list border-bottom">
@@ -41,7 +41,7 @@
 
 
 
-                </div>
+               
 
                 <div class="mt-5">
                     {{ $documents->links() }}
@@ -50,7 +50,7 @@
 
             <div class="col-lg-4 col-md-8">
                 <div class="">
-                    <div class="">
+                    <div class="border-bottom">
                         <form>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search Documents"
@@ -69,7 +69,7 @@
                         <ul class="list-style-none">
                             @foreach ($divisions as $division)
                                 @if (count($division->documents) > 0)
-                                    <li><a href="">{{ $division->name }}<span
+                                    <li><a href="{{ route('publicdivision', $division) }}">{{ $division->name }}<span
                                                 class="float-end">{{ count($division->documents) }}</span></a></li>
                                                 @endif
                                 @endforeach

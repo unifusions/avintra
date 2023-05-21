@@ -36,12 +36,12 @@
                     <form method="POST" action="{{ route('documents.store') }}" enctype="multipart/form-data">
                         @csrf
 
-
+                            
                         <div class="form-group row mb-3">
                             <x-input-label for="title" :value="__('Document Title')" class="col-4 col-form-label" />
-                            <div class="col-8">
-                                <x-text-input id="title" class="" :value="old('title')" type="text"
-                                    name="title" required autocomplete="title" />
+                            <div class="col-8 ">
+                                <x-text-input :errorMsg="$errors->has('title')" id="title"  :value="old('title')" type="text"
+                                    name="title" autocomplete="title"   />
                                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
                             </div>
                         </div>
@@ -49,27 +49,28 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="document_no" :value="__('Document No')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <x-text-input id="document_no" class="" :value="old('document_no')" type="text"
-                                    name="document_no" required autocomplete="title" />
+                                <x-text-input :errorMsg="$errors->has('document_no')" id="document_no" class="" :value="old('document_no')" type="text"
+                                    name="document_no"  autocomplete="document_no" />
                                 <x-input-error :messages="$errors->get('document_no')" class="mt-2" />
                             </div>
                         </div>
 
 
-
+                       
 
                         <div class="form-group row mb-3">
                             <x-input-label for="division" :value="__('Division')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <select class="form-select" aria-label="Division Select" id="division_id"
-                                    name="division_id">
-                                    <option selected>Select Division</option>
+                                <select  class="form-select @if($errors->has('division_id')) is-invalid @endif" aria-label="Division Select" id="division_id"
+                                    name="division_id" >
+                                    <option  value=""  selected>Select Division</option>
 
                                     @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                        <option value="{{ $division->id }}" @if(old('division_id') == $division->id) selected @endif >{{ $division->name }}</option>
                                     @endforeach
 
                                 </select>
+                                <x-input-error :messages="$errors->get('division_id')" />
                             </div>
                         </div>
 
@@ -78,55 +79,78 @@
                                     $('#division_id').on('change', function(){
                                         var divisionId = this.value;
                                         $('.spinner-div').addClass('d-flex');
-                                       
                                         $.ajax({
-                    url: "{{url('/fetchSections')}}",
-                    type: "POST",
-                    data: {
-                        division_id: divisionId,
-                        _token: '{{csrf_token()}}'
-                    },
-                    dataType: 'json',
-                    
-                    success: function (result) {
-                        $("#section_id").removeAttr("disabled");
-                        $('#section_id').html('<option value="">Select Section</option>');
-                        $.each(result.sections, function (key, value) {
-                            $("#section_id").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                      
-                    },
-                    complete: function () {
-                $('.spinner-div').removeClass('d-flex');//Request is complete so hide spinner
-            }
-                });
-            });
-
+                                            url: "{{url('/fetchSections')}}",
+                                            type: "POST",
+                                            data: {
+                                                division_id: divisionId,
+                                                _token: '{{csrf_token()}}'
+                                            },
+                                            dataType: 'json',
+                                            success: function (result) {
+                                                $("#section_id").removeAttr("disabled");
+                                                $('#section_id').html('<option value="">Select Section</option>');
+                                                $.each(result.sections, function (key, value) {
+                                                    $("#section_id").append('<option value="' + value
+                                                    .id + '">' + value.name + '</option>');
+                                                });
+                                            },
+                                            complete: function () {
+                                                $('.spinner-div').removeClass('d-flex');//Request is complete so hide spinner
+                                            }
+                                        });
                                     });
+                                });
                                 
                             </script>
-
+                        @if(old('division_id'))
+                            <script type="module">
+                                $.ajax({
+                                    url: "{{url('/fetchSections')}}",
+                                            type: "POST",
+                                            data: {
+                                                division_id: {{ old('division_id') }},
+                                                _token: '{{csrf_token()}}'
+                                            },
+                                            dataType: 'json',
+                                            success: function (result) {
+                                                $("#section_id").removeAttr("disabled");
+                                                $('#section_id').html('<option value="">Select Section</option>');
+                                               
+                                                $.each(result.sections, function (key, value) {
+                                                    let selectedSectionId = {{ old('section_id') }}
+                                                    $("#section_id").append(
+                                                        (value.id === selectedSectionId) ?
+                                                        '<option value="' + value.id + ' " selected>' + value.name + '</option>'  : '<option value="' + value.id + '">' + value.name + '</option>');
+                                                });
+                                            },
+                                            complete: function () {
+                                                $('.spinner-div').removeClass('d-flex');//Request is complete so hide spinner
+                                            }
+                                })
+                                </script>
+                        @endif
                         <div class="form-group row mb-3">
                             <x-input-label for="section" :value="__('Section')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <select class="form-select" aria-label="Division Select" id="section_id"
-                                    name="section_id" disabled>
-                                    <option selected>Select Section</option>
-
+                                <select class="form-select  @if($errors->has('section_id')) is-invalid @endif" aria-label="Division Select" id="section_id"
+                                    name="section_id"  disabled >
+                                    <option  value=""  selected>Select Section</option>
+                                   
                                     {{-- @foreach ($divisions as $division)
                                             <option value="{{ $division->id }}">{{ $division->name }}</option>
                                         @endforeach --}}
 
                                 </select>
+                                <x-input-error :messages="$errors->get('section_id')" />
                             </div>
                         </div>
 
                         <div class="form-group row mb-3">
                             <x-input-label for="document_file" :value="__('Document Upload')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <x-text-input id="document_file" class="" :value="old('document_file')" type="file"
-                                    name="document_file" required />
+                                <x-text-input  :errorMsg="$errors->has('document_file')" id="document_file" class="  " :value="old('document_file')" type="file"
+                                    name="document_file"  />
                                 <x-input-error :messages="$errors->get('document_file')" class="mt-2" />
                             </div>
 
@@ -137,9 +161,7 @@
 
                             </div>
                             <div class="col-3 px-1">
-                                <x-secondary-button class="ml-3 w-100">
-                                    {{ __('Cancel') }}
-                                </x-secondary-button>
+                              
                             </div>
                             <div class="col-3 px-1">
                                 <x-primary-button class="ml-3">

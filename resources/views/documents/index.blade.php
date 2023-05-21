@@ -3,6 +3,10 @@
         <h2 class="">
             {{ __('Documents') }}
         </h2>
+        <div class="ms-3">
+            <x-hyperlinkbutton href="{{ route('documents.create') }}">Add New Document</x-hyperlinkbutton>
+        </div>
+
     </x-slot>
 
 
@@ -11,61 +15,114 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="">
             <form method="get" action="{{ route('documents.index') }}" class="d-flex gap-2">
-                <x-text-input id="search" class="pr-3" :value="old('search')" type="text" name="search" required
-                    autocomplete="search" placeholder="" />
+
+                <x-text-input id="search" class="" :value="old('search', $search)" type="text" name="search" required
+                    autocomplete="search" placeholder="" style="min-width:200px" />
                 <x-primary-button class=" btn-sm">
-                    {{ __('Search Documents') }}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                    </svg>
+
                 </x-primary-button>
             </form>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="flex-fill px-3">{{ __('Filter By') }}</div>
-            <div class="flex-fill px-3">
+        <div class="d-flex ">
+            <form id="filter_by_ds" method="get" action="{{ route('documents.index') }}"
+                class="d-flex align-items-center gap-2">
+                <div class="flex-fill">{{ __('Filter By') }}</div>
+                <div class="flex-fill">
 
-                <select class="form-select" id="division" name="division">
-                    <option selected>Select Division</option>
+                    <select class="form-select" id="division_id" name="division">
+                        <option @empty($division_id) selected @endempty>Select Division</option>
 
-                    @foreach ($divisions as $division)
-                        <option value="{{ $division->id }}">{{ $division->name }}</option>
-                    @endforeach
+                        @foreach ($divisions as $division)
+                            <option value="{{ $division->id }}"
+                                @if (!empty($division_id)) {{ $division->id == $division_id ? 'selected' : '' }} @endif>
+                                {{ $division->name }}</option>
+                        @endforeach
 
-                </select>
+                    </select>
 
-            </div>
+                </div>
+                <script type="module">
+                $(document).ready(function(){
+                    $('#division_id').on('change', function(){
+                        var divisionId = this.value;
+                        $('.spinner-div').addClass('d-flex');
+                        $.ajax({
+                            url: "{{url('/fetchSections')}}",
+                            type: "POST",
+                            data: {
+                                division_id: divisionId,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            success: function (result) {
+                                $("#section_id").removeAttr("disabled");
+                                $('#section_id').html('<option value="">Select Section</option>');
+                                $.each(result.sections, function (key, value) {
+                                    $("#section_id").append('<option value="' + value
+                                    .id + '">' + value.name + '</option>');
+                                });
+                            },
+                            complete: function () {
+                                $('.spinner-div').removeClass('d-flex');//Request is complete so hide spinner
+                            }
+                        });
+                    });
+                });
+                
+            </script>
+                <div class="flex-fill">
 
-            <div class="flex-fill px-3">
+                    <select class="form-select" id="section_id" name="section"
+                        @empty($section_id) disabled @endempty onchange='filter_by_ds.submit()'>
 
-                <select class="form-select" id="division" name="division" disabled>
-                    <option selected>Select Section</option>
+                        @empty($sections)
+                            <option selected>Select Section</option>
+                        @else
+                            @foreach ($sections as $section)
+                                <option value="{{ $section->id }}" {{ $section->id == $section_id ? 'selected' : '' }}>
+                                    {{ $section->name }}</option>
+                            @endforeach
+                        @endempty
+                        {{-- <option value="{{ $news_category->id }}">{{ $news_category->name }}</option> --}}
 
-                    {{-- @foreach ($news_categories as $news_category)
+
+                        {{-- @foreach ($news_categories as $news_category)
                                 <option value="{{ $news_category->id }}">{{ $news_category->name }}</option>
                             @endforeach --}}
 
-                </select>
+                    </select>
 
-            </div>
 
+                </div>
+            </form>
         </div>
         <div class="d-flex justify-content-around align-items-center">
             <div class="px-3">
-                <form id="sort_by_form" method="get" action="{{ route('documents.index') }}" class="d-flex gap-2" >
+                <form id="sort_by_form" method="get" action="{{ route('documents.index') }}" class="d-flex gap-2">
                     <select class="form-select" id="sort_by" name="sort_by" onchange='sort_by_form.submit()'>
                         <option selected>Sort By</option>
-                        <option value="recency" {{ $sort_by === 'recency' ? 'selected="selected"' : '' }}>Recently Uploaded</option>
-                        <option value="type"  {{ $sort_by === 'type' ? 'selected="selected"' : '' }} >Document Type</option>
-                        
+                        <option value="recency" {{ $sort_by === 'recency' ? 'selected="selected"' : '' }}>Recently
+                            Uploaded</option>
+                        <option value="type" {{ $sort_by === 'type' ? 'selected="selected"' : '' }}>Document Type
+                        </option>
+
                     </select>
-                    
+
                 </form>
 
-             
+
 
             </div>
 
             <div class="">
-                <a href="" class="btn btn-outline-danger btn-sm justify-content-between align-items-center">
+                <a href="{{ route('documents.trash') }}"
+                    class="btn btn-outline-danger btn-sm justify-content-between align-items-center">
                     <span class>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" width=20>
@@ -88,62 +145,93 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Document Name</th>
-                    <th scope="col">Document No</th>
-                    <th scope="col">Division & Section</th>
-                    <th scope="col">Info</th>
-                    <th scope="col">Uploaded By</th>
-                    <th scope="col">Uploaded on</th>
-
-                    <th scope="col">Actions</th>
+                    <th scope="col" width="2%">#</th>
+                    <th scope="col" width="40%">Document Name</th>
+                    <th scope="col" width="25%">Document No</th>
+                    <th scope="col" width="15%">Division & Section</th>
+                    <th scope="col" width="15%">Info</th>
+                    <th scope="col" width="3%">Actions</th>
 
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($documents as $key => $document)
-                    <tr>
-                        <th scope="row">{{ $documents->firstItem() + $key }}</th>
-                        <td>{{ $document->title }}</td>
-                        <td>{{ $document->document_no }}</td>
-                        <td>
-                            <span class=""> {{ $document->division->name }} </span>
-                            <span class="badge bg-secondary text-light">{{ $document->section->name }}</span>
-                        </td>
-                        <td>
-                            <span class="badge bg-primary">
-                                {{ $document->file_type }}</span>
-                            @php
-                                if ($document->file_size == 0) {
-                                    return '0.00 B';
-                                }
-                                $s = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
-                                $e = floor(log($document->file_size, 1024));
-                                echo ' <span class="small">' . round($document->file_size / pow(1024, $e), 2) . ' ' . $s[$e] . '</span>';
-                            @endphp
 
-                        </td>
-
-                        <td>{{ $document->user->name }}</td>
-                        <td>
-                            {{ $document->created_at->format('d/m/y, h:m') }}
+            @empty($section)
+                <tbody>
+                    @foreach ($documents as $key => $document)
+                        <tr>
+                            <th scope="row">{{ $documents->firstItem() + $key }}</th>
+                            <td>{{ $document->title }}</td>
+                            <td>{{ $document->document_no }}</td>
+                            <td>
+                                <span class=""> {{ $document->division->name }} </span><br>
+                                <span class="badge bg-secondary text-light">{{ $document->section->name }}</span>
+                            </td>
+                            <td>
+                                <x-file-info file_type="{{ $document->file_type }}"
+                                    file_size="{{ $document->file_size }}" />
 
 
-                        </td>
-                        <td>
-                            <div class="d-flex justify-content-evenly">
-                                <x-view-button href=" {{ route('documents.show', $document) }} "/>
-                                <x-edit-button href=" {{ route('documents.edit', $document) }} " />
-                                <x-delete-button href=" {{ route('documents.destroy', $document) }} " />
-                               
-                           
-                            </div>
+                                {{ $document->created_at->format('d/M/y') }}
+                            </td>
 
-                        </td>
-                    </tr>
-                @endforeach
+                            {{-- <td>{{ $document->user->name }}</td> --}}
 
-            </tbody>
+                            <td class="text-right ">
+                                <div class="action-button-container d-flex justify-content-evenly">
+                                    <x-view-button href=" {{ route('documents.single', $document) }} " />
+
+                                    <x-edit-button href=" {{ route('documents.edit', $document) }} " />
+                                    <x-delete-button action=" {{ route('documents.destroy', $document) }} " />
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            @else
+                @if (count($documents) > 0)
+                    <tbody>
+                        @foreach ($documents as $key => $document)
+                            <tr>
+                                <th scope="row">{{ $documents->firstItem() + $key }}</th>
+                                <td>{{ $document->title }}</td>
+                                <td>{{ $document->document_no }}</td>
+                                <td>
+                                    <span class=""> {{ $document->division->name }} </span><br>
+                                    <span class="badge bg-secondary text-light">{{ $document->section->name }}</span>
+                                </td>
+                                <td>
+                                    <x-file-info file_type="{{ $document->file_type }}"
+                                        file_size="{{ $document->file_size }}" />
+
+
+                                    {{ $document->created_at->format('d/M/y') }}
+                                </td>
+
+                                {{-- <td>{{ $document->user->name }}</td> --}}
+
+                                <td class="text-right ">
+                                    <div class="action-button-container d-flex justify-content-evenly">
+                                        <x-view-button href=" {{ route('documents.single', $document) }} " />
+                                        <x-edit-button href=" {{ route('documents.edit', $document) }} " />
+                                        <x-delete-button action=" {{ route('documents.destroy', $document) }} " />
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                @else
+                    <tbody>
+                        <tr>
+                            <td colspan="6">No documents in this {{ $section->name }} section.</td>
+                        </tr>
+
+                    </tbody>
+                @endif
+            @endempty
+
+
+
+
 
             <tfoot>
 

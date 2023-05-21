@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDivisionRequest;
 use App\Models\Division;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class DivisionController extends Controller
     {
         return view(
             'division.index',
-            ['divisions' =>  Division::paginate(5)]
+            ['divisions' =>  Division::paginate(10)]
         );
     }
 
@@ -38,14 +39,10 @@ class DivisionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDivisionRequest $request)
     {
-       Division::create([
-        'name' => $request->input('division'),
-        'slug' => str()->slug($request->input('division')),
-        'description' => $request->input('description'),
-       ]);
-       return redirect()->action([DivisionController::class, 'index'])->with('status', 'Division Created');
+       $division = Division::create($request->validated());
+       return redirect()->route('division.index')->with('success', 'New Division ' . $division->name .' has been created successfully');
     }
 
     /**
@@ -56,7 +53,7 @@ class DivisionController extends Controller
      */
     public function show(Division $division)
     {
-        dd($division);
+        
     }
 
     /**
@@ -67,7 +64,8 @@ class DivisionController extends Controller
      */
     public function edit(Division $division)
     {
-        //
+        return view('division.edit', compact('division'));
+
     }
 
     /**
@@ -77,9 +75,11 @@ class DivisionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Division $division)
+    public function update(StoreDivisionRequest $request, Division $division)
     {
-        //
+        $division->update($request->validated());
+       return redirect()->route('division.index')->with('success', 'Division ' . $division->name .' has been modified successfully');
+
     }
 
     /**
@@ -90,6 +90,7 @@ class DivisionController extends Controller
      */
     public function destroy(Division $division)
     {
-        //
+        $division->delete();
+        return redirect()->route('division.index')->with('success', 'Division ' . $division->name . ' has been deleted successfully');
     }
 }

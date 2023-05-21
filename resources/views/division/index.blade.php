@@ -3,6 +3,9 @@
         <h2 class="">
             {{ __('Divisions & Sections') }}
         </h2>
+        <div class="ms-3">
+            <x-hyperlinkbutton href="{{ route('division.create') }}">New Division</x-hyperlinkbutton>
+        </div>
     </x-slot>
 
 
@@ -36,7 +39,10 @@
 
                                 </td>
                                 <td>
-
+                                    <div class="action-button-container d-flex justify-content-evenly">
+                                        <x-edit-button href=" {{ route('division.edit', $division) }} " />
+                                        <x-delete-button action=" {{ route('division.destroy', $division) }} " />
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

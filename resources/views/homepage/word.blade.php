@@ -23,8 +23,8 @@
         @empty(!$todayword)
             <div>
                 <audio controls class="w-100">
-                    <source src="horse.ogg" type="audio/ogg">
-                    <source src="horse.mp3" type="audio/mpeg">
+                    <source src="{{ asset('storage/' .$todayword->word_audio_file) }}" type="audio/mp3">
+                    
                     Your browser does not support the audio element.
                 </audio>
 

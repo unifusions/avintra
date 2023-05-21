@@ -44,9 +44,7 @@
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/public-grievances-logo.jpg') }}" alt="">
     </div>
-    <div class="logo-slide">
-        <img src="{{ asset('images/footer-logos/niclogo.jpg') }}" alt="">
-    </div>
+    
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/mpa_logo.png') }}" alt="">
     </div>

@@ -13,7 +13,10 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicDirectoryController;
+use App\Http\Controllers\PublicDivisionController;
+use App\Http\Controllers\PublicDocumentDivisionController;
 use App\Http\Controllers\PublicDocumentsController;
+use App\Http\Controllers\PublicDocumentSingleController;
 use App\Http\Controllers\PublicGalleryController;
 use App\Http\Controllers\PublicGallerySingleController;
 use App\Http\Controllers\PublicNewsController;
@@ -57,16 +60,19 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'store'])->name('settings.store');
-
     Route::get('/documents/archive', [DocumentController::class, 'archive'])->name('documents.archive');
     Route::get('/documents/trash', [DocumentController::class, 'trash'])->name('documents.trash');
+    Route::get('documents/{document}/restore/', [DocumentController::class, 'restore'])->name('documents.restore');
 
     Route::resource('documents', DocumentController::class);
+    
+
+    
 
     Route::resource('news', NewsController::class);
     Route::resource('wordoftheday', WordOfTheDayController::class);
 
-    Route::resource('division', DivisionController::class)->parameters(['division' => 'division:slug']);
+    Route::resource('division', DivisionController::class);
     Route::resource('gallery', GalleryController::class);
 
     Route::resource('section', SectionController::class)->parameters(['section' => 'section:slug']);
@@ -84,11 +90,13 @@ Route::get('/gallery', PublicGalleryController::class)->name('publicgallery');
 
 Route::get('/news/{news:slug}', PublicNewsSingleController::class)->name('singlenews');
 Route::get('/documents', PublicDocumentsController::class)->name('publicdocuments');
+Route::get('/documents/{document:slug}', PublicDocumentSingleController::class)->name('documents.single');
 
 Route::get('/gallery', PublicGalleryController::class)->name('publicgallery');
 Route::get('/gallery/{gallery:slug}', PublicGallerySingleController::class)->name('gallery.single');
 Route::get('documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
 
+Route::get('/division/{division:slug}', PublicDivisionController::class)->name('publicdivision');
 Route::get('/directory', PublicDirectoryController::class)->name('directory');
 
 Route::get('/about-us', function () {
@@ -104,7 +112,7 @@ Route::get('/leadership', function () {
 Route::post('galleryImageUpload',  MultipleUploadsController::class)->name('galleryImageUpload');
 Route::delete('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');
 Route::delete('/galleryImageDelete/{galleryImage}', GalleryImageDeleteController::class)->name('galleryImageDeletewithID');
-require __DIR__ . '/auth.php';
 
 
 Route::get('lang/{lang}', LocaleController::class);
+require __DIR__ . '/auth.php';
