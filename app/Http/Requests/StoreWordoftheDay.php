@@ -28,7 +28,7 @@ class StoreWordoftheDay extends FormRequest
     public function rules()
     {
         return [
-            'word_english' => ['required', 'unique:today_words', 'max:255', Rule::unique('divisions')->ignore($this->division)],
+            'word_english' => ['required', 'unique:today_words', 'max:255', Rule::unique('today_words')->ignore($this->todayword)],
             'word_tamil' => 'required',
             'word_hindi' => 'required',
             'word_audio_file' => [
