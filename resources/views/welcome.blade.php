@@ -100,7 +100,7 @@
                 on the path of growth and profit. I congratulate all my fellow Avanians for their dedication and
                 determined efforts to turnaround loss making units into a profitable concern.
             </p>
-            <x-hyperlinkbutton href="#">
+            <x-hyperlinkbutton href="{{ route('cmdmessage') }}" target="_blank">
                 Read More
             </x-hyperlinkbutton>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AllSectionController;
+use App\Http\Controllers\CmdMessageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DocumentController;
@@ -108,6 +109,7 @@ Route::get('/leadership', function () {
     return view('pages.leadership');
 })->name('leadership');
 
+Route::get('/cmd-message',CmdMessageController::class)->name('cmdmessage');
 
 Route::post('galleryImageUpload',  MultipleUploadsController::class)->name('galleryImageUpload');
 Route::delete('galleryImageDelete', DeleteController::class)->name('galleryImageDelete');

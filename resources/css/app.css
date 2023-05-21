@@ -328,7 +328,7 @@ body {
      left: 0;
      bottom: 0;
      background: #F7EDE2;
-     opacity: 0.5;
+     opacity: 0.8;
      z-index: 1;
 }
 
@@ -348,7 +348,9 @@ body {
 
 .cover-parallax{
      width: 100%;
-     object-fit: cover;
+    height: 100%;
+    object-fit: contain;
+    object-fit: cover
 }
 
 .auto-container,

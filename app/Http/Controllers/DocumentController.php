@@ -96,8 +96,16 @@ class DocumentController extends Controller
     public function store(StoreDocumentRequest $request)
     {
 
-        $document = Document::create($request->validated());
-        return redirect()->route('documents.index')->with('success', 'New Document ' . $document->title .' has been uploaded successfully');
+        $document = Document::create(array_merge(
+            $request->validated(),
+            [
+                'file_size' => $request->document_file->getSize(),
+                'file_name' => $request->document_file->getClientOriginalName(),
+                'file_type' =>  $request->document_file->getClientOriginalExtension(),
+                'document_path' => Storage::putFileAs("documents", $request->document_file, $request->document_file->getClientOriginalName()),
+            ]
+        ));
+        return redirect()->route('documents.index')->with('success', 'New Document ' . $document->title . ' has been uploaded successfully');
     }
 
     public function archive()

@@ -7,8 +7,8 @@
 
     <x-card>
         <div class="card-body">
-            <form id="gallery-form" method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
-                @csrf
+            <form id="gallery-form" method="POST" action="{{ route('gallery.update', $gallery) }}" enctype="multipart/form-data">
+                @csrf @method('patch')
                 <div class="row">
 
 

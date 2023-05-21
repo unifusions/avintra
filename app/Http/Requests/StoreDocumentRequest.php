@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
+
 
 
 class StoreDocumentRequest extends FormRequest
@@ -27,31 +29,38 @@ class StoreDocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:documents|max:255',
+            'title' => ['required', 'unique:documents', 'max:255', Rule::unique('documents')->ignore($this->document)],
+
             'document_no' => 'required',
             'division_id' => 'required',
             'section_id' => 'required',
-            'document_file' => 'required|mimes:pdf',
+            'document_file' => [
+                'required',
+                File::types(['pdf'])
+            ],
             'slug' => 'required',
-            'file_size' => 'integer',
-           'file_name' => 'string',
-           'file_type' => 'string',
-           'document_path' => 'string',
-           'user_id' => 'required',
+            // 'file_size' => 'integer',
+            // 'file_name' => 'string',
+            // 'file_type' => 'string',
+            // 'document_path' => 'string',
+            'user_id' => 'required',
         ];
     }
 
-    protected function prepareForValidation(): void
+    protected function prepareForValidation()
     {
+
+        // $this->merge([
+        //         'slug' => str()->slug($this->title),
+        // ]);
         $this->merge([
             'slug' => str()->slug($this->title),
             'user_id' => auth()->user()->id,
-            'file_size' => $this->document_file->getSize(),
-            'file_name' => $this->document_file->getClientOriginalName(),
-            'file_type' =>  $this->document_file->getClientOriginalExtension(),
-            'document_path' => Storage::putFileAs("documents", $this->document_file, $this->document_file->getClientOriginalName() ),
         ]);
     }
+
+
+
 
     public function messages(): array
     {

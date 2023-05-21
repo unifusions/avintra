@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreWordoftheDay;
 use App\Models\TodayWord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -35,24 +36,22 @@ class WordOfTheDayController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreWordoftheDay $request)
     {
         
-        $file = $request->file('word_audio_file');
-        $fileName = $file->getClientOriginalName();
-        $fileType = $file->getClientOriginalExtension();
-        $fileSize = $file->getSize();
-        $upload = Storage::putFileAs("wordoftheday", $file, $fileName);
 
-        TodayWord::create([
-            'word_english' => $request->word_english,
-            'word_tamil'=>$request->word_tamil,
-            'word_hindi' => $request->word_hindi,
-            'word_audio_file' => $upload,
-            'slug' => str()->slug($request->word_english),
-        ]);
+        $todayword = TodayWord::create(
+            array_merge( $request->validated(),
+            [
+                'file_size' =>  $request->word_audio_file->getSize(),
+                'file_name' =>  $request->word_audio_file->getClientOriginalName(),
+                'file_type' =>  $request->word_audio_file->getClientOriginalExtension(),
+                'word_path' => Storage::putFileAs("wordoftheday", $request->word_audio_file, $request->word_audio_file->getClientOriginalName()),
+            ]
+            )
+           );
 
-        return redirect()->route('wordoftheday.index'); 
+        return redirect()->route('wordoftheday.index')->with('success', 'Word of the day: ' . $todayword->word_english . ' has been created successfully'); 
     }
 
     /**

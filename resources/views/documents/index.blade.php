@@ -4,7 +4,7 @@
             {{ __('Documents') }}
         </h2>
         <div class="ms-3">
-            <x-hyperlinkbutton href="{{ route('documents.create') }}">Add New Document</x-hyperlinkbutton>
+            <x-hyperlinkbutton href="{{ route('documents.create') }}">New Document</x-hyperlinkbutton>
         </div>
 
     </x-slot>
@@ -131,7 +131,7 @@
                         </svg>
                     </span>
                     <span>
-                        {{ __('Trash Bin') }}
+                        {{ __('Trash') }}
                     </span>
 
                 </a>
@@ -146,79 +146,21 @@
             <thead>
                 <tr>
                     <th scope="col" width="2%">#</th>
-                    <th scope="col" width="40%">Document Name</th>
-                    <th scope="col" width="25%">Document No</th>
+                    <th scope="col" width="30%">Document Name</th>
+                    <th scope="col" width="20%">Document No</th>
                     <th scope="col" width="15%">Division & Section</th>
-                    <th scope="col" width="15%">Info</th>
+                    <th scope="col" width="13%">Info</th>
+                    <th scope="col" width="12">Uploaded On</th>
                     <th scope="col" width="3%">Actions</th>
 
                 </tr>
             </thead>
 
             @empty($section)
-                <tbody>
-                    @foreach ($documents as $key => $document)
-                        <tr>
-                            <th scope="row">{{ $documents->firstItem() + $key }}</th>
-                            <td>{{ $document->title }}</td>
-                            <td>{{ $document->document_no }}</td>
-                            <td>
-                                <span class=""> {{ $document->division->name }} </span><br>
-                                <span class="badge bg-secondary text-light">{{ $document->section->name }}</span>
-                            </td>
-                            <td>
-                                <x-file-info file_type="{{ $document->file_type }}"
-                                    file_size="{{ $document->file_size }}" />
-
-
-                                {{ $document->created_at->format('d/M/y') }}
-                            </td>
-
-                            {{-- <td>{{ $document->user->name }}</td> --}}
-
-                            <td class="text-right ">
-                                <div class="action-button-container d-flex justify-content-evenly">
-                                    <x-view-button href=" {{ route('documents.single', $document) }} " />
-
-                                    <x-edit-button href=" {{ route('documents.edit', $document) }} " />
-                                    <x-delete-button action=" {{ route('documents.destroy', $document) }} " />
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
+                @include('documents.partials.datatable')
             @else
                 @if (count($documents) > 0)
-                    <tbody>
-                        @foreach ($documents as $key => $document)
-                            <tr>
-                                <th scope="row">{{ $documents->firstItem() + $key }}</th>
-                                <td>{{ $document->title }}</td>
-                                <td>{{ $document->document_no }}</td>
-                                <td>
-                                    <span class=""> {{ $document->division->name }} </span><br>
-                                    <span class="badge bg-secondary text-light">{{ $document->section->name }}</span>
-                                </td>
-                                <td>
-                                    <x-file-info file_type="{{ $document->file_type }}"
-                                        file_size="{{ $document->file_size }}" />
-
-
-                                    {{ $document->created_at->format('d/M/y') }}
-                                </td>
-
-                                {{-- <td>{{ $document->user->name }}</td> --}}
-
-                                <td class="text-right ">
-                                    <div class="action-button-container d-flex justify-content-evenly">
-                                        <x-view-button href=" {{ route('documents.single', $document) }} " />
-                                        <x-edit-button href=" {{ route('documents.edit', $document) }} " />
-                                        <x-delete-button action=" {{ route('documents.destroy', $document) }} " />
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+                @include('documents.partials.datatable')
                 @else
                     <tbody>
                         <tr>

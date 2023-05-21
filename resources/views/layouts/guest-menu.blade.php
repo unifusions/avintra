@@ -47,7 +47,7 @@
                  </li>
 
                  <li class="nav-item mx-3 ">
-                     <a class="nav-link" href="{{ route('home') }}">CMD Message</a>
+                     <a class="nav-link" href="{{ route('cmdmessage') }}" target="_blank">CMD Message</a>
                  </li>
 
                  {{-- @switch(session()->get('lang'))

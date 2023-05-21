@@ -25,12 +25,7 @@ class SectionController extends Controller
     public function store(StoreSectionRequest $request)
     {
 
-        $section = Section::create([
-            'name' => $request->input('section_name'),
-            'slug' => str()->slug($request->input('section_name')),
-            'description' => $request->input('description'),
-            'division_id' => $request->input('division_id'),
-        ]);
+        $section = Section::create($request->validated());
         return redirect()->route('section.index')->with('success', 'New Section ' . $section->name .' has been created successfully');
     }
 
@@ -53,8 +48,13 @@ class SectionController extends Controller
     }
 
     
-    public function destroy($id)
+    public function destroy(Section $section)
     {
+        if(count($section->documents)>0)
+        return redirect()->route('section.index')->with('error', 'Section ' . $section->name .' has documents. Please delete documents before deleting sections');
+
+        $section->delete();
+        return redirect()->route('section.index')->with('success', 'Section ' . $section->name .' has been deleted successfully');
     
     }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="">
-            {{ __('Divisions & Sections') }}
+            {{ __('Sections') }}
         </h2>
     </x-slot>
 
@@ -44,10 +44,10 @@
                         <x-input-label for="division" :value="__('Division')" class="col-4 col-form-label" />
                         <div class="col-8">
                             <select class="form-select @if($errors->has('division_id')) is-invalid @endif" aria-label="Division Select" id="division_id" name="division_id" >
-                                <option selected>Select Division</option>
+                                <option value=""   selected>Select Division</option>
 
                                 @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    <option value="{{ $division->id }}" @if(old('division_id') == $division->id) selected @endif >{{ $division->name }}</option>
                                 @endforeach
 
                             </select>
@@ -61,17 +61,13 @@
 
                     <hr>
                     <div class="form-group row mb-3">
-                        <div class="col-6">
+                        <div class="col-9">
 
                         </div>
-                        <div class="col-3 px-1">
-                            <x-secondary-button class="ml-3 w-100">
-                                {{ __('Cancel') }}
-                            </x-secondary-button>
-                        </div>
-                        <div class="col-3 px-1">
+                        
+                        <div class="col-3 ">
                             <x-primary-button class="ml-3">
-                                {{ __('Create Division') }}
+                                {{ __('Create Section') }}
                             </x-primary-button>
                         </div>
 
@@ -103,6 +99,13 @@
                                    <td>{{ $section->name ?? ''}}</td>
                                    <td>{{ $section->description ??'' }}</td>
                                    <td>{{ $section->division->name ?? '' }}</td>
+                                   <td>
+                                    <div class="action-button-container d-flex justify-content-evenly">
+                                        {{-- <x-edit-button href=" {{ route('section.edit', $section) }} " /> --}}
+                                        <x-delete-button :modelId="$section->id" :modelName="$section->name" action="{{ route('section.destroy', $section) }} "  type="section"  />
+                    
+                                    </div>
+                                   </td>
                               </tr>
                          @endforeach
                         

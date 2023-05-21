@@ -28,7 +28,7 @@
 
                             <div class="">
                                 <div class="created-date">{{ $document->created_at->format('d/M/y') }}</div>
-                                <a class="document-link" href="{{ route('documents.download', $document) }}">
+                                <a class="document-link" href="{{ route('documents.single', $document) }}" target="_blank">
                                     <h4 class=""> {{ $document->title }}
                                     </h4>
                                 </a>

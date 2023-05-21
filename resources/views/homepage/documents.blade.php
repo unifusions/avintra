@@ -45,14 +45,14 @@
 
                             <div class="flex-grow-1">
                               <div class="document-title">
-                                   <a href="#">
+                                   <a href="{{ route('documents.single',$document) }}" target="_blank">
                                         {{ $document->title }}
         
                                    </a>
         
                               </div>
                               <div class="small">
-                                    {{ $document->division->name }} | {{  $document->section->name  }}
+                                    {{ $document->division->name ?? "" }}  | {{  $document->section->name ?? "" }}
                               </div>
 
                             </div>

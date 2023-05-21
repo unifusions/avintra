@@ -33,7 +33,7 @@
                         </div>
                     </div> --}}
 
-                    <form method="POST" action="{{ route('documents.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('documents.store') }}" enctype="multipart/form-data">
                         @csrf
 
                             
@@ -157,13 +157,11 @@
                         </div>
                         <hr>
                         <div class="form-group row mb-3">
-                            <div class="col-6">
+                            <div class="col-9">
 
                             </div>
-                            <div class="col-3 px-1">
-                              
-                            </div>
-                            <div class="col-3 px-1">
+                          
+                            <div class="col-3">
                                 <x-primary-button class="ml-3">
                                     {{ __('Create Document') }}
                                 </x-primary-button>

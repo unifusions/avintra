@@ -16,7 +16,7 @@
                     <th scope="col">Document No</th>
                     <th scope="col">Division & Section</th>
                     <th scope="col">Info</th>
-                    <th scope="col">Uploaded By</th>
+                    
                     <th scope="col">Uploaded on</th>
                     <th scope="col">Deleted On</th>
                     <th scope="col" width="5%">Actions</th>
@@ -31,46 +31,33 @@
                         <td>{{ $document->document_no }}</td>
                         <td>
                             <span class=""> {{ $document->division->name }} </span>
-                            <span class="badge bg-secondary text-light">{{ $document->section->name }}</span>
+                            <span class="badge bg-secondary text-light">{{ $document->section->name ?? ''}}</span>
                         </td>
                         <td>
-                            <span class="badge bg-primary">
-                                {{ $document->file_type }}</span>
-                            @php
-                                if ($document->file_size == 0) {
-                                    return '0.00 B';
-                                }
-                                $s = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
-                                $e = floor(log($document->file_size, 1024));
-                                echo ' <span class="small">' . round($document->file_size / pow(1024, $e), 2) . ' ' . $s[$e] . '</span>';
-                            @endphp
-
+                            <x-file-info file_type="{{ $document->file_type }}"
+                                file_size="{{ $document->file_size }}" />
+           
+           
                         </td>
 
-                        <td>{{ $document->user->name }}</td>
+                      
                         <td>
-                            {{ $document->created_at->format('d/m/y, h:m') }}
+                            {{ $document->created_at->format('d-m-Y') }}
 
 
                         </td>
                         <td>
-                         {{ $document->deleted_at->format('d/m/y, h:m') }}
+                         {{ $document->deleted_at->format('d-m-Y') }}
 
 
                      </td>
                         <td>
-                            <div class="d-flex justify-content-evenly">
-                                <a href="{{ route('documents.restore' , $document->id) }}">
-                                   
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  width=20>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-                                      </svg>
-                                      
-
-                                </a>
-                              
-                                <a href="" class="text-danger">
+                            <div class="action-button-container d-flex justify-content-evenly align-items-center">
+                              <x-model-restore-button href="{{ route('documents.restore' , $document->id) }}" />
+                            
+                                {{-- <x-delete-button action=" {{ route('documents.destroy', $document) }} " type="document"  /> --}}
+                                <div class="action-buttons">
+                                <a href="" class="btn btn-sm btn-outline-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" width=20>
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -78,6 +65,7 @@
                                     </svg>
 
                                 </a>
+                                </div>
                             </div>
 
                         </td>
