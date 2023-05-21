@@ -47,7 +47,7 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="word_meaning" :value="__('Meaning of the word')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <textarea id="word_meaning" class="form-control @if($errors->has('word_meaning')) is-invalid @endif" :value="old('word_meaning')"  autocomplete="word_meaning" ></textarea>
+                                <textarea name="word_meaning" id="word_meaning" class="form-control @if($errors->has('word_meaning')) is-invalid @endif" :value="old('word_meaning')"  autocomplete="word_meaning" ></textarea>
                               
                                 <x-input-error :messages="$errors->get('word_meaning')" class="mt-2" />
                             </div>
