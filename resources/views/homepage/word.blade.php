@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="mb-3">
-                    the means of paying for something or buying something (= coins or notes)
+                    {{ $todayword->word_meaning }}
                 </div>
             </div>
         @endempty
