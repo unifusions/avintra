@@ -60,7 +60,7 @@
                             <div class="action-button-container d-flex justify-content-evenly">
                                 <x-view-button href=" {{ route('gallery.single', $gallery) }} " />
                                 <x-edit-button href=" {{ route('gallery.edit', $gallery) }} " />
-                                <x-delete-button :modelId="$gallery->id" :modelName="$gallery->title" action="{{ route('gallery.destroy', $gallery) }} " type="gallery" />
+                                <x-delete-button :model="$gallery" :modelId="$gallery->id" :modelName="$gallery->title" action="{{ route('gallery.destroy', $gallery) }} " type="gallery" />
                                 
                             </div>
 
