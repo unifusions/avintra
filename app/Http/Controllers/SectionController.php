@@ -9,12 +9,11 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
+    {
+      $this->authorizeResource(Section::class, ['section', 'user']);
+       
+    }    public function index()
     {
         return view('division.section')->with(['divisions' => Division::all(), 'sections' => Section::all()]);
     }

@@ -14,13 +14,15 @@ $(document).ready(function () {
     $('.owl-carousel').owlCarousel({
         loop: true,
         autoplay: true,
+        nav :false,
+        // navText : ["",""],
         slideTransition: 'linear',
-        autoplayTimeout: 4000,
-        autoplaySpeed: 4000,
-
+        autoplayTimeout: 3000,
+        autoplaySpeed: 3000,
+       
         autoWidth: true,
         margin: 25,
-        nav: true,
+        autoplayHoverPause:true,
         responsive: {
             0: {
                 items: 1

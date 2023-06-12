@@ -19,34 +19,37 @@
 
 
              <!-- Left links -->
-             <ul class="navbar-nav">
+             <ul class="navbar-nav gap-3">
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('home') }}"> {{ __('welcome.Home') }}</a>
                  </li>
 
-                 <li class="nav-item mx-3">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('aboutus') }}">{{ __('welcome.About') }}</a>
                  </li>
-                 <li class="nav-item mx-3">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('leadership') }}">{{ __('welcome.Leadership') }}</a>
                  </li>
-                 <li class="nav-item mx-3">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('publicnews') }}">News</a>
                  </li>
-                 <li class="nav-item mx-3">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('publicdocuments') }}">Documents</a>
                  </li>
 
 
-                 <li class="nav-item mx-3 ">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('directory') }}">Directory</a>
                  </li>
 
-                 <li class="nav-item mx-3 ">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('publicgallery') }}">Gallery</a>
                  </li>
 
-                 <li class="nav-item mx-3 ">
+                 <li class="nav-item">
+                    <a class="nav-link" href="#">Calendar</a>
+                 </li>
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('cmdmessage') }}" target="_blank">CMD Message</a>
                  </li>
 

@@ -5,7 +5,7 @@
         </h2>
 
         <div class="ms-3">
-            <x-hyperlinkbutton href="{{ route('gallery.create') }}">Add New Gallery</x-hyperlinkbutton>
+            <x-hyperlinkbutton href="{{ route('gallery.create') }}">New Gallery</x-hyperlinkbutton>
         </div>
     </x-slot>
 

@@ -41,7 +41,7 @@
                                 <td>
                                     <div class="action-button-container d-flex justify-content-evenly">
                                         <x-edit-button href=" {{ route('division.edit', $division) }} " />
-                                        <x-delete-button :modelId="$division->id" :modelName="$division->name" action=" {{ route('division.destroy', $division) }} " type="division" />
+                                        <x-delete-button :modelId="$division->id" :modelName="$division->name" action=" {{ route('division.destroy', $division) }} " type="division" :model="$division" />
                                     </div>
                                 </td>
                             </tr>

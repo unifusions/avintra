@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="">
@@ -34,9 +33,10 @@
                         </div>
                     </div> --}}
 
-                    <form method="POST" action="{{ route('documents.update', $document) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('documents.update', $document) }}"
+                        enctype="multipart/form-data">
                         @csrf
-@method('PATCH')
+                        @method('PATCH')
 
                         <div class="form-group row mb-3">
                             <x-input-label for="title" :value="__('Document Title')" class="col-4 col-form-label" />
@@ -51,11 +51,29 @@
                             <x-input-label for="document_no" :value="__('Document No')" class="col-4 col-form-label" />
                             <div class="col-8">
                                 <x-text-input id="document_no" class="" :value="old('document_no', $document->document_no)" type="text"
-                                    name="document_no" required autocomplete="title"/>
+                                    name="document_no" required autocomplete="title" />
                                 <x-input-error :messages="$errors->get('document_no')" class="mt-2" />
                             </div>
                         </div>
 
+                        <div class="form-group row mb-3">
+                            <x-input-label for="document_category_id" :value="__('Document Category')" class="col-4 col-form-label" />
+                            <div class="col-8">
+                                <select class="form-select @if ($errors->has('document_category_id')) is-invalid @endif"
+                                    aria-label="Division Select" id="document_category_id" name="document_category_id">
+                                    <option value="" selected>Select Category</option>
+
+                                    @foreach ($documentsCategories as $documentsCategory)
+                                        <option value="{{ $documentsCategory->id }}"
+                                            @if (old('document_category_id', $document->document_category->id ?? '') == $documentsCategory->id) selected @endif>
+                                            {{ $documentsCategory->category_title }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+
+                        </div>
 
 
 
@@ -67,7 +85,9 @@
                                     <option selected>Select Division</option>
 
                                     @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}" {{ $document->division_id === $division->id ? 'selected' : ''}}>{{ $division->name }}</option>
+                                        <option value="{{ $division->id }}"
+                                            {{ $document->division_id === $division->id ? 'selected' : '' }}>
+                                            {{ $division->name }}</option>
                                     @endforeach
 
                                 </select>
@@ -116,8 +136,10 @@
                                     <option selected>Select Section</option>
 
                                     @foreach ($document->division->sections as $section)
-                                            <option value="{{ $section->id }}" {{ $document->section_id === $section->id ? 'selected' : '' }}>{{ $section->name }}</option>
-                                        @endforeach
+                                        <option value="{{ $section->id }}"
+                                            {{ $document->section_id === $section->id ? 'selected' : '' }}>
+                                            {{ $section->name }}</option>
+                                    @endforeach
 
                                 </select>
                             </div>
@@ -126,21 +148,38 @@
                         <div class="form-group row mb-3 align-items-center">
                             <x-input-label for="document_file" :value="__('Document Upload')" class="col-4 col-form-label" />
                             <div class="col-8">
-                              <div class="d-flex align-items-center gap-2">
-                                   <x-icons.pdf-icon/>
-                                   <a href= "{{ route('documents.download', $document) }}" target="_blank"> {{ $document->file_name ?: 'No Name'}}  </a>
-                                   
-                              </div>
-                          
+                                <div class="d-flex align-items-center gap-2">
+                                    @switch($document->file_type)
+                                        @case('pdf')
+                                            <x-icons.pdf-icon />
+                                        @break
+                                            
+                                        @case('docx')
+                                       <x-icons.word-doc-icon/>
+                                    @break
+
+                                    @case('xlsx')
+                                    <x-icons.excel-icon/>
+                                    @break
+
+                                        @default
+                                        
+                                    @endswitch
+
+                                    <a href="{{ route('documents.download', $document) }}" target="_blank">
+                                        {{ $document->file_name ?: 'No Name' }} </a>
+
+                                </div>
+
                             </div>
-                         
+
                         </div>
                         <hr>
                         <div class="form-group row mb-3">
                             <div class="col-9">
 
                             </div>
-                           
+
                             <div class="col-3">
                                 <x-primary-button class="ml-3">
                                     {{ __('Save Document') }}

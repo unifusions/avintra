@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\DocumentCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,7 @@ return new class extends Migration
     {
         Schema::table('documents', function (Blueprint $table) {
             $table->string('slug')->unique();
+            $table->foreignIdFor(DocumentCategory::class);
         });
     }
 
@@ -27,6 +29,7 @@ return new class extends Migration
     {
         Schema::table('documents', function (Blueprint $table) {
            $table->dropColumn('slug');
+           $table->dropForeignIdFor(DocumentCategory::class);
         });
     }
 };

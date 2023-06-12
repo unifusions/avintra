@@ -4,6 +4,7 @@ use App\Http\Controllers\AllSectionController;
 use App\Http\Controllers\CmdMessageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\Gallery\DeleteController;
 use App\Http\Controllers\Gallery\GalleryImageDeleteController;
@@ -11,7 +12,9 @@ use App\Http\Controllers\Gallery\MultipleUploadsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Pages\LeadershipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicDirectoryController;
 use App\Http\Controllers\PublicDivisionController;
@@ -23,10 +26,13 @@ use App\Http\Controllers\PublicGallerySingleController;
 use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicNewsSingleController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\Settings\HomePageSettingsController;
+use App\Http\Controllers\Settings\LeadershipPageSettingsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordOfTheDayController;
 use App\Http\Middleware\Localization;
+use App\Models\DocumentCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,13 +70,14 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/documents/archive', [DocumentController::class, 'archive'])->name('documents.archive');
     Route::get('/documents/trash', [DocumentController::class, 'trash'])->name('documents.trash');
     Route::get('documents/{document}/restore/', [DocumentController::class, 'restore'])->name('documents.restore');
-
+    Route::resource('documentsCategories', DocumentCategoryController::class);
     Route::resource('documents', DocumentController::class);
     
 
     
 
     Route::resource('news', NewsController::class);
+    Route::get('news-category', NewsCategoryController::class);
     Route::resource('wordoftheday', WordOfTheDayController::class);
 
     Route::resource('division', DivisionController::class);
@@ -78,10 +85,15 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
     Route::resource('section', SectionController::class)->parameters(['section' => 'section:slug']);
     Route::resource('user', UserController::class);
-    // Route::scopeBindings()->group(function () {
+    
+    Route::get('/settings/home-page/', [HomePageSettingsController::class, 'edit'])->name('homepagesettings.edit');
 
-    //     Route::resource('division.section', SectionController::class)->parameters(['division' => 'division:slug', 'section' => 'section:slug']);
-    // });
+    Route::group(['prefix' => 'settings',  'middleware' => 'auth'],function(){
+        Route::resource('leadership',LeadershipPageSettingsController::class);
+    });
+
+   
+
 });
 
 // PUBLIC ROUTES
@@ -105,9 +117,7 @@ Route::get('/about-us', function () {
 })->name('aboutus');
 
 
-Route::get('/leadership', function () {
-    return view('pages.leadership');
-})->name('leadership');
+Route::get('/leadership', LeadershipController::class)->name('leadership');
 
 Route::get('/cmd-message',CmdMessageController::class)->name('cmdmessage');
 

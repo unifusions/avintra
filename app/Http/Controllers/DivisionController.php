@@ -14,6 +14,11 @@ class DivisionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+      $this->authorizeResource(Division::class, ['division', 'user']);
+       
+    }
 
     public function index()
     {
@@ -30,6 +35,7 @@ class DivisionController extends Controller
      */
     public function create()
     {
+
         return view('division.create');
     }
 
@@ -41,8 +47,8 @@ class DivisionController extends Controller
      */
     public function store(StoreDivisionRequest $request)
     {
-       $division = Division::create($request->validated());
-       return redirect()->route('division.index')->with('success', 'New Division ' . $division->name .' has been created successfully');
+        $division = Division::create($request->validated());
+        return redirect()->route('division.index')->with('success', 'New Division ' . $division->name . ' has been created successfully');
     }
 
     /**
@@ -53,7 +59,6 @@ class DivisionController extends Controller
      */
     public function show(Division $division)
     {
-        
     }
 
     /**
@@ -65,7 +70,6 @@ class DivisionController extends Controller
     public function edit(Division $division)
     {
         return view('division.edit', compact('division'));
-
     }
 
     /**
@@ -78,8 +82,7 @@ class DivisionController extends Controller
     public function update(StoreDivisionRequest $request, Division $division)
     {
         $division->update($request->validated());
-       return redirect()->route('division.index')->with('success', 'Division ' . $division->name .' has been modified successfully');
-
+        return redirect()->route('division.index')->with('success', 'Division ' . $division->name . ' has been modified successfully');
     }
 
     /**

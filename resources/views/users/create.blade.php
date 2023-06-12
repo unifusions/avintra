@@ -20,7 +20,7 @@
                         <x-input-label for="full_name" :value="__('Full Name')" class="col-4 col-form-label" />
                         <div class="col-8">
                             <x-text-input id="full_name" class="" :value="old('full_name')" type="text"
-                                name="full_name" autocomplete="full_name" required  />
+                                name="full_name" autocomplete="full_name" required />
                             <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <x-input-label for="email" :value="__('Email')" class="col-4 col-form-label" />
                         <div class="col-8">
                             <x-text-input id="email" class="" type="email" name="email" :value="old('email')"
-                                 required autocomplete="email" />
+                                required autocomplete="email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                     </div>
@@ -61,25 +61,51 @@
                             </select>
                         </div>
                     </div>
-
-                    <hr>
-
                     <div class="form-group row mb-3">
-                        <div class="col-6"></div>
+                        <x-input-label for="permissions" :value="__('Permissions')" class="col-4 col-form-label" />
 
-                        <div class="col-3">
-                            <x-secondary-button class="ml-3 w-100">
-                                {{ __('Cancel') }}
-                            </x-secondary-button>
+                        <div class="col-8">
+                            @foreach ($permissionsList as $key => $permissionList)
+                                <div class="row border-bottom mb-2">
+                                    <div class="col-2 mb-3 fw-medium"> {{ $key }}</div>
+                                    <div class="col-10">
+                                        {{-- <div class="row row-cols-md-6"> --}}
+
+                                        @foreach ($permissionList as $pl)
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input" name="hasPermissionsCheckBox[]"
+                                                    type="checkbox" id="hasPermissionsCheckBox-{{ $pl->id }}"
+                                                    value="{{ $pl->id }}"
+                                                    >
+                                                <label class="form-check-label"
+                                                    for="hasPermissionsCheckBox-{{ $pl->id }}">
+                                                    {{ $pl->name }}</label>
+                                            </div>
+                                        @endforeach
+                                        {{-- </div> --}}
+                                    </div>
+
+                                </div>
+                            @endforeach
                         </div>
+                        <hr>
 
-                        <div class="col-3">
-                            <x-primary-button class="ml-3">
-                                {{ __('Create User') }}
-                            </x-primary-button>
+                        <div class="form-group row mb-3">
+                            <div class="col-6"></div>
+
+                            <div class="col-3">
+                                <x-secondary-button class="ml-3 w-100">
+                                    {{ __('Cancel') }}
+                                </x-secondary-button>
+                            </div>
+
+                            <div class="col-3">
+                                <x-primary-button class="ml-3">
+                                    {{ __('Create User') }}
+                                </x-primary-button>
+                            </div>
+
                         </div>
-
-                    </div>
 
 
 

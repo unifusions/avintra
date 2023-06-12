@@ -3,6 +3,9 @@
         <h2 class="">
             {{ __('News & Announcements') }}
         </h2>
+        <div class="ms-3">
+            <x-hyperlinkbutton href="{{ route('news.create') }}">Add News</x-hyperlinkbutton>
+        </div>
     </x-slot>
 
     <x-card>

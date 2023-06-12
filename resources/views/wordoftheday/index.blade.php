@@ -48,14 +48,14 @@
                         <td class="text-right">
                             <div class="d-flex justify-content-evenly">
 
+                                @can('update', $word)
+                                    <x-edit-button href="{{ route('wordoftheday.edit', $word) }}" class="" />
+                                @endcan
 
-
-                                <x-edit-button href="{{ route('wordoftheday.edit', $word) }}" class="" />
-
-                                <x-delete-button :modelId="$word->id" :modelName="$word->word_english"
-                                    href="{{ route('wordoftheday.destroy', $word) }}" type="word" />
-
-
+                                @can('delete', $word)
+                                    <x-delete-button :model="$word" :modelId="$word->id" :modelName="$word->word_english"
+                                        href="{{ route('wordoftheday.destroy', $word) }}" type="word" />
+                                @endcan
                             </div>
 
                         </td>

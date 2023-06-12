@@ -2,7 +2,7 @@
 
 
     <x-page-header>
-        <x-slot:heading> {{ __('Documents & Downloads') }} </x-slot:heading>
+        <x-slot:heading> {{ __('Documents') }} </x-slot:heading>
         <div class="col-lg-12">
             <div class="breadcrumbs creote">
                 <ul class="breadcrumb m-auto">
@@ -21,27 +21,27 @@
 
 
 
-              
-
-                    @foreach ($documents as $document)
-                        <article class="document-list border-bottom">
-
-                            <div class="">
-                                <div class="created-date">{{ $document->created_at->format('d/M/y') }}</div>
-                                <a class="document-link" href="{{ route('documents.single', $document) }}" target="_blank">
-                                    <h4 class=""> {{ $document->title }}
-                                    </h4>
-                                </a>
-
-                            </div>
-                        </article>
-                    @endforeach
 
 
+                @foreach ($documents as $document)
+                    <article class="document-list border-bottom">
+
+                        <div class="">
+                            <div class="created-date">{{ $document->created_at->format('d/M/y') }}</div>
+                            <a class="document-link" href="{{ route('documents.single', $document) }}" target="_blank">
+                                <h4 class=""> {{ $document->title }}
+                                </h4>
+                            </a>
+
+                        </div>
+                    </article>
+                @endforeach
 
 
 
-               
+
+
+
 
                 <div class="mt-5">
                     {{ $documents->links() }}
@@ -64,33 +64,34 @@
                             </div>
                         </form>
                     </div>
-                    <div class="sidebar-widget border-bottom">
-                        <h4 class="sidebar-title">Divisions</h4>
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">Divisions & Sections</h4>
                         <ul class="list-style-none">
                             @foreach ($divisions as $division)
                                 @if (count($division->documents) > 0)
-                                    <li><a href="{{ route('publicdivision', $division) }}">{{ $division->name }}<span
-                                                class="float-end">{{ count($division->documents) }}</span></a></li>
-                                                @endif
-                                @endforeach
-
-
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-widget border-bottom">
-                        <h4 class="sidebar-title">Sections</h4>
-                        <ul class>
-                            @foreach ($sections as $section)
-                                @if (count($section->documents) > 0)
-                                    <li><a href="">{{ $section->name }}<span
-                                                class="float-end">{{ count($section->documents) }}</span></a></li>
+                                    <li class="border-bottom">
+                                        <a href="{{ route('publicdivision', $division) }}" class="fw-medium ">{{ $division->name }}<span
+                                                class="float-end">{{ count($division->documents) }}</span>
+                                        </a>
+                                        <ul class="list-style-none ms-3">
+                                            @if (count($division->sections) > 0)
+                                            @foreach ($division->sections as $section )
+                                                
+                                            @endforeach
+                                                <li><a href="">{{ $section->name }}<span
+                                                            class="float-end">{{ count($section->documents) }}</span></a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </li>
                                 @endif
                             @endforeach
 
 
                         </ul>
                     </div>
+
+                 
 
 
 

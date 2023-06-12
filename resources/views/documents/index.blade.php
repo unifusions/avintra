@@ -10,7 +10,7 @@
     </x-slot>
 
 
-
+{{-- <livewire:documentsearch /> --}}
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="">
@@ -47,6 +47,7 @@
                     </select>
 
                 </div>
+                
                 <script type="module">
                 $(document).ready(function(){
                     $('#division_id').on('change', function(){
@@ -80,9 +81,8 @@
 
                     <select class="form-select" id="section_id" name="section"
                         @empty($section_id) disabled @endempty onchange='filter_by_ds.submit()'>
-
+                        <option selected value="">Select Section</option>
                         @empty($sections)
-                            <option selected>Select Section</option>
                         @else
                             @foreach ($sections as $section)
                                 <option value="{{ $section->id }}" {{ $section->id == $section_id ? 'selected' : '' }}>
@@ -99,6 +99,20 @@
                     </select>
 
 
+                </div>
+                <div class="flex-fill">
+                    <select class="form-select" id="document_category_id" name="document_category"
+                        onchange='filter_by_ds.submit()'>
+                        <option @empty($document_category_id) selected @endempty value="">Select Category
+                        </option>
+
+                        @foreach ($documentsCategories as $category)
+                            <option value="{{ $category->id }}"
+                                @if (!empty($document_category_id)) {{ $category->id == $document_category_id ? 'selected' : '' }} @endif>
+                                {{ $category->category_title }}</option>
+                        @endforeach
+
+                    </select>
                 </div>
             </form>
         </div>
@@ -146,11 +160,13 @@
             <thead>
                 <tr>
                     <th scope="col" width="2%">#</th>
-                    <th scope="col" width="30%">Document Name</th>
+                    <th scope="col" width="20%">Document Name</th>
                     <th scope="col" width="20%">Document No</th>
                     <th scope="col" width="15%">Division & Section</th>
-                    <th scope="col" width="13%">Info</th>
-                    <th scope="col" width="12">Uploaded On</th>
+                    <th scope="col" width="10%">Category</th>
+                    <th scope="col" width="10%">Info</th>
+                    <th scope="col" width="15">Uploaded By</th>
+                    <th scope="col" width="15">Uploaded On</th>
                     <th scope="col" width="3%">Actions</th>
 
                 </tr>
@@ -160,7 +176,7 @@
                 @include('documents.partials.datatable')
             @else
                 @if (count($documents) > 0)
-                @include('documents.partials.datatable')
+                    @include('documents.partials.datatable')
                 @else
                     <tbody>
                         <tr>
@@ -186,4 +202,5 @@
     </x-card>
 
 
+    {{-- @livewireScripts --}}
 </x-app-layout>

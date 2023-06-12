@@ -36,7 +36,8 @@
         </div>
 
         <div class="navbar-secondary-logo px-5">
-            <img src="{{ asset('images/akam_logo.png') }}" />
+            <img src="{{ asset('images/g20-logo.png') }}" alt="G20-summit" class="p-3">
+            <img src="{{ asset('images/akam_logo.png') }}" alt="75-Azadi-Ka-Amrit-Mahotsav"/>
         </div>
 
     </nav>

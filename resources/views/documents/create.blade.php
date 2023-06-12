@@ -36,12 +36,12 @@
                     <form method="post" action="{{ route('documents.store') }}" enctype="multipart/form-data">
                         @csrf
 
-                            
+
                         <div class="form-group row mb-3">
                             <x-input-label for="title" :value="__('Document Title')" class="col-4 col-form-label" />
                             <div class="col-8 ">
-                                <x-text-input :errorMsg="$errors->has('title')" id="title"  :value="old('title')" type="text"
-                                    name="title" autocomplete="title"   />
+                                <x-text-input :errorMsg="$errors->has('title')" id="title" :value="old('title')" type="text"
+                                    name="title" autocomplete="title" />
                                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
                             </div>
                         </div>
@@ -49,24 +49,44 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="document_no" :value="__('Document No')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <x-text-input :errorMsg="$errors->has('document_no')" id="document_no" class="" :value="old('document_no')" type="text"
-                                    name="document_no"  autocomplete="document_no" />
+                                <x-text-input :errorMsg="$errors->has('document_no')" id="document_no" class="" :value="old('document_no')"
+                                    type="text" name="document_no" autocomplete="document_no" />
                                 <x-input-error :messages="$errors->get('document_no')" class="mt-2" />
                             </div>
                         </div>
 
+                        <div class="form-group row mb-3">
+                            <x-input-label for="document_category_id" :value="__('Document Category')" class="col-4 col-form-label" />
+                            <div class="col-8">
+                                <select class="form-select @if ($errors->has('document_category_id')) is-invalid @endif"
+                                    aria-label="Division Select" id="document_category_id" name="document_category_id">
+                                    <option value="" selected>Select Category</option>
 
-                       
+                                    @foreach ($documentsCategories as $documentsCategory)
+                                    <option value="{{ $documentsCategory->id }}"
+                                        @if (old('document_category_id') == $documentsCategory->id) selected @endif>{{ $documentsCategory->category_title }}
+                                    </option>
+
+                                   
+                                    @endforeach
+                                </select>
+
+                            </div>
+
+                        </div>
+
 
                         <div class="form-group row mb-3">
                             <x-input-label for="division" :value="__('Division')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <select  class="form-select @if($errors->has('division_id')) is-invalid @endif" aria-label="Division Select" id="division_id"
-                                    name="division_id" >
-                                    <option  value=""  selected>Select Division</option>
+                                <select class="form-select @if ($errors->has('division_id')) is-invalid @endif"
+                                    aria-label="Division Select" id="division_id" name="division_id">
+                                    <option value="" selected>Select Division</option>
 
                                     @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}" @if(old('division_id') == $division->id) selected @endif >{{ $division->name }}</option>
+                                        <option value="{{ $division->id }}"
+                                            @if (old('division_id') == $division->id) selected @endif>{{ $division->name }}
+                                        </option>
                                     @endforeach
 
                                 </select>
@@ -103,7 +123,7 @@
                                 });
                                 
                             </script>
-                        @if(old('division_id'))
+                        @if (old('division_id'))
                             <script type="module">
                                 $.ajax({
                                     url: "{{url('/fetchSections')}}",
@@ -133,10 +153,10 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="section" :value="__('Section')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <select class="form-select  @if($errors->has('section_id')) is-invalid @endif" aria-label="Division Select" id="section_id"
-                                    name="section_id"  disabled >
-                                    <option  value=""  selected>Select Section</option>
-                                   
+                                <select class="form-select  @if ($errors->has('section_id')) is-invalid @endif"
+                                    aria-label="Division Select" id="section_id" name="section_id" disabled>
+                                    <option value="" selected>Select Section</option>
+
                                     {{-- @foreach ($divisions as $division)
                                             <option value="{{ $division->id }}">{{ $division->name }}</option>
                                         @endforeach --}}
@@ -149,8 +169,8 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="document_file" :value="__('Document Upload')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <x-text-input  :errorMsg="$errors->has('document_file')" id="document_file" class="  " :value="old('document_file')" type="file"
-                                    name="document_file"  />
+                                <x-text-input :errorMsg="$errors->has('document_file')" id="document_file" class="  " :value="old('document_file')"
+                                    type="file" name="document_file" />
                                 <x-input-error :messages="$errors->get('document_file')" class="mt-2" />
                             </div>
 
@@ -160,7 +180,7 @@
                             <div class="col-9">
 
                             </div>
-                          
+
                             <div class="col-3">
                                 <x-primary-button class="ml-3">
                                     {{ __('Create Document') }}

@@ -233,12 +233,16 @@ body {
 }
 
 /* Declare heights because of positioning of img element */
-.carousel-item {
-     height: 38rem;
+#homePageCarousel .carousel-item {
+     height: 35rem;
+}
+
+.cmd-message-container  {
+     background:#F7EDE2;color:#000
 }
 
 .birthday-carousel-item {
-     height: 10rem;
+     height: 15rem;
 }
 
 .birthday-card {
@@ -279,8 +283,17 @@ body {
      text-align: justify;
      overflow: hidden;
      display: -webkit-box;
-     -webkit-line-clamp: 7;
+     -webkit-line-clamp: 6;
      -webkit-box-orient: vertical;
+}
+
+.cmd-name-title{
+     font-weight: 500;
+     font-size: 1.2rem;
+}
+
+.cmd-designation{
+     font-size: 1.1rem;
 }
 
 

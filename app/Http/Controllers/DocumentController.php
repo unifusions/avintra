@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Models\Division;
 use App\Models\Document;
+use App\Models\DocumentCategory;
 use App\Models\Section;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,54 +18,45 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct(){
+        $this->authorizeResource(Document::class,['document', 'user']);
+     }
     public function index(Request $request)
     {
         $documents = Document::orderBy('created_at', 'desc')->paginate(15);
-        if ($request->search) {
-            $documents = Document::query()->when($request->search, function ($q) use ($request) {
-                $q->where('title', 'like', '%' . $request->search . '%')
-                    ->orWhere('document_no', 'like', '%' . $request->search . '%');
-            })->paginate(15);
 
-            // return back()->with('data' , $documents);
-        }
+    
+        if ($request->search)
+            $documents = Document::search($request->search);
 
-        // dd($request->input());
-        if ($request->section) {
-            return view('documents.index')->with([
-                'documents' => Document::where('section_id', $request->section)->orderBy('created_at', 'desc')->paginate(15),
-                'divisions' => Division::all(),
+        if ($request->section)
+            $documents = Document::where('section_id', $request->section)->orderBy('created_at', 'desc')->paginate(15);
 
-                'sort_by' => '',
-                'sections' => Section::where('division_id', $request->division)->get(),
-                'division_id' => $request->division,
-                'section_id' => $request->section,
-                'search' => $request->search,
-            ]);
-        }
-        if ($request->sort_by) {
+        if ($request->document_category)
+            $documents = Document::filterByCategory($request->document_category)->orderBy('created_at', 'desc')->paginate(15);
 
+        if ($request->sort_by)
             switch ($request->sort_by) {
                 case 'recency':
-                    $documents = Document::orderBy('created_at', 'ASC')->paginate(15);
+                    $documents = Document::orderBy('created_at', 'DESC')->paginate(15);
                     break;
                 case 'type':
-                    $documents = Document::orderBy('document_no', 'ASC')->paginate(15);
+                    $documents = Document::orderBy('file_type', 'DESC')->paginate(15);
                     break;
             }
 
-            return view('documents.index')->with([
-                'documents' => $documents,
-                'divisions' => Division::all(),
-                'sort_by' => $request->sort_by,
-                'search' => $request->search,
-            ]);
-        }
         return view('documents.index')->with([
             'documents' => $documents,
+            'documentsCategories' => DocumentCategory::all(),
             'divisions' => Division::all(),
-            'sort_by' => '',
-            'search' => $request->search,
+            'division_id' => $request->division ?? '',
+            'sections' => $request->division ? Section::where('division_id', $request->division)->get() : '',
+            'section_id' => $request->section ?? '',
+            'document_category_id' => $request->document_category ?? '',
+            'sort_by' => $request->sort_by ?? '',
+            'search' => $request->search ?? '',
+
         ]);
     }
 
@@ -77,7 +69,8 @@ class DocumentController extends Controller
     {
 
         $divisions =  Division::all();
-        return view('documents.create', compact('divisions'));
+        $documentsCategories = DocumentCategory::all();
+        return view('documents.create', compact('divisions', 'documentsCategories'));
         return redirect()->route('documents.index');
     }
 
@@ -146,6 +139,7 @@ class DocumentController extends Controller
         return view('documents.edit')->with([
             'document' => $document,
             'divisions' => Division::all(),
+            'documentsCategories' => DocumentCategory::all(),
         ]);
     }
 

@@ -32,27 +32,21 @@ class StoreDocumentRequest extends FormRequest
             'title' => ['required', 'unique:documents', 'max:255', Rule::unique('documents')->ignore($this->document)],
 
             'document_no' => 'required',
+            'document_category_id'=> 'required',
             'division_id' => 'required',
             'section_id' => 'required',
             'document_file' => [
                 'required',
-                File::types(['pdf'])
+                File::types(['pdf', 'docx', 'xlsx'])
             ],
             'slug' => 'required',
-            // 'file_size' => 'integer',
-            // 'file_name' => 'string',
-            // 'file_type' => 'string',
-            // 'document_path' => 'string',
+            
             'user_id' => 'required',
         ];
     }
 
     protected function prepareForValidation()
     {
-
-        // $this->merge([
-        //         'slug' => str()->slug($this->title),
-        // ]);
         $this->merge([
             'slug' => str()->slug($this->title),
             'user_id' => auth()->user()->id,
@@ -71,7 +65,8 @@ class StoreDocumentRequest extends FormRequest
             'division_id.required' => 'Please select Division for the Document',
             'section_id.required' => 'Please select Section for the Document',
             'document_file.required' => 'Please select PDF File',
-            'document_file.mimes' => 'Only PDF File type is allowed'
+            'document_file.mimes' => 'Only PDF/Docx/Xlsx File type is allowed',
+            'document_category_id.required'=> 'Please select Category of the document'
         ];
     }
 }
