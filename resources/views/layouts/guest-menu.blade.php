@@ -47,7 +47,7 @@
                  </li>
 
                  <li class="nav-item">
-                    <a class="nav-link" href="#">Calendar</a>
+                    <a class="nav-link" href="{{ route('calendar') }}">Calendar</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('cmdmessage') }}" target="_blank">CMD Message</a>

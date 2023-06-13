@@ -125,7 +125,7 @@
                         </ul>
                     </div>
                 </li>
-            @endcanany
+            @endcan
 
 
 
@@ -167,7 +167,7 @@
 
 
 
-            @canany(['update', 'view', 'delete', 'create', 'viewAny'], App\Models\News::Class)
+            @canany('viewAny', App\Models\News::Class)
                 <li class="nav-item my-1">
 
                     <a class="nav-link {{ request()->routeIs('news.*') ? ' active' : null }}" data-bs-toggle="collapse"
@@ -196,7 +196,7 @@
                         </ul>
                     </div>
                 </li>
-            @endcanany
+            @endcan
 
             <li class="nav-item my-1 {{ request()->routeIs('gallery.index') ? 'active' : null }}">
 

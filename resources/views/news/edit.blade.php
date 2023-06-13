@@ -12,14 +12,15 @@
                 <div class="card-body">
                   
 
-                    <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('news.update', $news) }}" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
 
 
                         <div class="form-group row mb-3">
                             <x-input-label for="news_title" :value="__('News Title')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <x-text-input id="news_title" class="" :value="old('news_title')" type="text"
+                                <x-text-input id="news_title" class="" :value="old('news_title', $news->news_title)" type="text"
                                     name="news_title" required autocomplete="news_title" />
                                 <x-input-error :messages="$errors->get('news_title')" class="mt-2" />
                             </div>
@@ -28,9 +29,9 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="news_excerpt" :value="__('News Excerpt')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <textarea id="news_excerpt" class="form-control" :value="old('news_excerpt')" type="text"
-                                    name="news_excerpt" required autocomplete="news_excerpt"></textarea>
-                                <x-input-error :messages="$errors->get('news_excerpt')" class="mt-2" />
+                                <textarea id="excerpt" class="form-control" :value="old('excerpt', $news->excerpt)" type="text"
+                                    name="excerpt" required autocomplete="excerpt">{{ $news->excerpt}}</textarea>
+                                <x-input-error :messages="$errors->get('excerpt')" class="mt-2" />
                             </div>
                         </div>
 
@@ -43,7 +44,7 @@
                                     <option selected>Select Category</option>
 
                                     @foreach ($news_categories as $news_category)
-                                            <option value="{{ $news_category->id }}">{{ $news_category->category_title }}</option>
+                                            <option value="{{ $news_category->id }}" {{ $news->news_category_id === $news_category->id ? 'selected' : '' }}>{{ $news_category->category_title }}</option>
                                         @endforeach
 
                                 </select>
@@ -55,8 +56,10 @@
                         <div class="form-group row mb-3">
                             <x-input-label for="news_content" :value="__('News Content')" class="col-4 col-form-label" />
                             <div class="col-8">
-                                <x-tiny-editor id="news_content" class="" :value="old('news_content')"
-                                    name="news_content"  />
+                                <textarea class="form-control" id="news_content" class="" :value="old('news_content', $news->news_content)"
+                                name="news_content" required>{{  $news->news_content }}</textarea>
+                                {{-- <x-tiny-editor id="news_content" class="" :value="old('news_content')"
+                                    name="news_content"  /> --}}
                                 <x-input-error :messages="$errors->get('news_content')" class="mt-2" />
                             </div>
                         </div>
@@ -76,13 +79,11 @@
 
                             </div>
                             <div class="col-3 px-1">
-                                <x-secondary-button class="ml-3 w-100">
-                                    {{ __('Cancel') }}
-                                </x-secondary-button>
+                              
                             </div>
                             <div class="col-3 px-1">
                                 <x-primary-button class="ml-3">
-                                    {{ __('Publish News') }}
+                                    {{ __('Update News') }}
                                 </x-primary-button>
                             </div>
 

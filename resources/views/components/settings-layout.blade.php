@@ -12,7 +12,9 @@
                  <a class="nav-link {{  request()->routeIs('leadership.index') ? 'active' : '' }}" href="{{ route('leadership.index') }}">Leadership</a>
                </li>
              
-              
+              <li class="nav-item">
+                <a href="{{ route('footersettings.index') }}" class="nav-link {{  request()->routeIs('footersettings.index') ? 'active' : '' }}">Footer</a>
+              </li>
              </ul>
  
              

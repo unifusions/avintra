@@ -9,22 +9,18 @@ use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->authorizeResource(Gallery::class, ['gallery', 'user']);
+    }
+
     public function index()
     {
         $galleries = Gallery::orderBy('created_at', 'desc')->paginate(15);
         return view('gallery.index', compact('galleries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('gallery.create');
@@ -37,7 +33,7 @@ class GalleryController extends Controller
 
         $fileName = $file->getClientOriginalName();
         $upload = Storage::putFileAs("gallery/featured", $file, $fileName);
-            
+
         $gallery = Gallery::create([
             'title' => $request->title,
             'featured_image' => $upload,
@@ -50,50 +46,47 @@ class GalleryController extends Controller
                 $galleryimage->gallery_id = $gallery->id;
                 $galleryimage->save();
             }
-        return redirect()->route('gallery.index')->with(['status' => 'success']);
+        return redirect()->route('gallery.index')->with('success', 'Gallery ' . $gallery->title . ' has been created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Gallery $gallery)
     {
         return view('gallery.edit', compact('gallery'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Gallery $gallery)
     {
-        dd($request);
+        if ($request->file('featured_image')) {
+            $file = $request->file('featured_image');
+
+            $fileName = $file->getClientOriginalName();
+            $upload = Storage::putFileAs("gallery/featured", $file, $fileName);
+            $gallery->featured_image = $upload;
+        }
+
+
+        $gallery->title = $request->title;
+        $gallery->description  = $request->description;
+        $gallery->slug = str()->slug($request->title);
+
+        if ($request->hidden_ids)
+            foreach ($request->hidden_ids as $hi) {
+                $galleryimage = GalleryImage::findorfail($hi);
+                $galleryimage->gallery_id = $gallery->id;
+                $galleryimage->save();
+            }
+
+            $gallery->save();
+        return redirect()->route('gallery.index')->with('success', 'Gallery ' . $gallery->title . ' has been modified successfully');
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Gallery $gallery)
     {
         $gallery->delete();

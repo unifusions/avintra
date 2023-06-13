@@ -4,7 +4,7 @@
     "src": "node_modules/owl.carousel/dist/assets/owl.video.play.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-39271cd2.css",
+    "file": "assets/app-664213b3.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -19,7 +19,7 @@
     "css": [
       "assets/app-5b2f972e.css"
     ],
-    "file": "assets/app-ab7671d2.js",
+    "file": "assets/app-9e9822ad.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AllSectionController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CmdMessageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisionController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\PublicGallerySingleController;
 use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicNewsSingleController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\Settings\FooterSettingsController;
 use App\Http\Controllers\Settings\HomePageSettingsController;
 use App\Http\Controllers\Settings\LeadershipPageSettingsController;
 use App\Http\Controllers\SettingsController;
@@ -90,6 +92,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'settings',  'middleware' => 'auth'],function(){
         Route::resource('leadership',LeadershipPageSettingsController::class);
+        Route::resource('footersettings', FooterSettingsController::class);
     });
 
    
@@ -100,7 +103,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
 Route::get('/news', PublicNewsController::class)->name('publicnews');
 Route::get('/gallery', PublicGalleryController::class)->name('publicgallery');
-
+Route::get('/calendar', CalendarController::class)->name('calendar');
 Route::get('/news/{news:slug}', PublicNewsSingleController::class)->name('singlenews');
 Route::get('/documents', PublicDocumentsController::class)->name('publicdocuments');
 Route::get('/documents/{document:slug}', PublicDocumentSingleController::class)->name('documents.single');
