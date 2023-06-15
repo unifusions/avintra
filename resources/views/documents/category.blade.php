@@ -58,7 +58,7 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $category->category_title ?? '' }}</td>
-                                <td>{{ $category->category ?? '' }}</td>
+                                <td>{{ $category->description ?? '' }}</td>
 
                                 <td>
                                     <div class="action-button-container d-flex justify-content-evenly">

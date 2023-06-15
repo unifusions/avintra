@@ -9,11 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class WordOfTheDayController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->authorizeResource(TodayWord::class,['todayword', 'user']);
+     }
     public function index()
     {
         $words = TodayWord::orderBy('created_at', 'desc')->paginate(15);
