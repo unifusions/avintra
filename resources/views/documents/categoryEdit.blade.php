@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="">
-            {{ __('Document Categories') }}
+            {{ __('Edit Category - ' . $documentsCategory->category_title) }}
         </h2>
     </x-slot>
 
@@ -76,7 +76,7 @@
                     </tbody>
                 </table>
             @else
-                <div>Create sections</div>
+               
             @endif
 
 
