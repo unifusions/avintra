@@ -18,7 +18,7 @@
 </head>
 
 <body class="">
-
+{{-- 
     <nav class="navbar navbar-dark bg-dark justify-content-between ">
         <a class="navbar-brand px-5" href="{{ route('home') }}">
             <img src="{{ asset('images/avnl_logo.jpg') }}" />
@@ -40,7 +40,7 @@
             <img src="{{ asset('images/akam_logo.png') }}" alt="75-Azadi-Ka-Amrit-Mahotsav"/>
         </div>
 
-    </nav>
+    </nav> --}}
 
 
     @include('layouts.guest-menu')
@@ -50,7 +50,7 @@
     <!-- Page Heading -->
     @if (isset($header))
         <header class="header-section pb-3">
-            <div class="container ">
+            <div class="container">
                 {{ $header }}
             </div>
         </header>

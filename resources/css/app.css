@@ -89,21 +89,20 @@ body {
      text-align: justify;
 }
 
-.delete-button{
+.delete-button {
      border: 0;
-     background-color: rgba(0,0,0,0);
+     background-color: rgba(0, 0, 0, 0);
      padding: 0;
 }
 
-.delete-button svg{
+.delete-button svg {
      color: red;
 }
 
 /* ACTIONS UI */
-.action-button-container {
+.action-button-container {}
 
-}
-.action-buttons{
+.action-buttons {
      display: block;
      padding: 0.25rem;
 }
@@ -238,8 +237,9 @@ body {
      height: 35rem;
 }
 
-.cmd-message-container  {
-     background:#F7EDE2;color:#000
+.cmd-message-container {
+     background: #F7EDE2;
+     color: #000
 }
 
 .birthday-carousel-item {
@@ -288,12 +288,12 @@ body {
      -webkit-box-orient: vertical;
 }
 
-.cmd-name-title{
+.cmd-name-title {
      font-weight: 500;
      font-size: 1.2rem;
 }
 
-.cmd-designation{
+.cmd-designation {
      font-size: 1.1rem;
 }
 
@@ -335,7 +335,7 @@ body {
 
 .page_header_default::before {
      position: absolute;
-     
+
      content: "";
      top: 0;
      right: 0;
@@ -360,11 +360,11 @@ body {
      text-align: center;
 }
 
-.cover-parallax{
+.cover-parallax {
      width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-fit: cover
+     height: 100%;
+     object-fit: contain;
+     object-fit: cover
 }
 
 .auto-container,
@@ -448,4 +448,63 @@ body {
 .galleryEditImageContainer:hover img {
      transform: scale(1.2);
 
+}
+
+/* Responsive */
+
+/* Mobile Screens */
+@media(max-width:575px) {
+     .navbar-header {
+          display: inline-flex;
+          text-align: left;
+     }
+
+     .navbar-brand {
+          display: none;
+     }
+
+     .navbar-secondary-logo {
+          display: none;
+     }
+
+     .mobile-logo {
+          display: block;
+     }
+
+}
+
+/* Small Screens */
+@media (min-width:576px) and (max-width:767px) {
+     .mobile-logo {
+          display: none;
+     }
+}
+
+/* medium screens */
+@media (min-width:768px) and (max-width:991px) {
+     .mobile-logo {
+          display: none;
+     }
+
+     .navbar-header {
+          display: inline-flex;
+          text-align: left;
+     }
+}
+
+@media(min-width:992px) and (max-width:1200px){
+     
+}
+
+/* Large Screens */
+@media (min-width:992px)  {
+     #brandHeader{
+          justify-content: space-between;
+     }
+     .mobile-logo {
+          display: none;
+     }
+     .section-heading{
+          font-size:1.5rem; 
+      }
 }

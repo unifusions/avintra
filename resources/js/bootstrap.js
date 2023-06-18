@@ -3,7 +3,7 @@ window._ = _;
 
 import $ from 'jquery';
 import tinymce from 'tinymce';
-import bootstrap from 'bootstrap/dist/js/bootstrap';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
 
 import 'tinymce/icons/default';
 

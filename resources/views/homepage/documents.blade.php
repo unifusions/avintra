@@ -3,18 +3,15 @@
         <div class="heading-icon me-2 p-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="#fff"  width=30>
                <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
-                
-              </svg>
-              
+            </svg>  
         </div>
-        
-            <h3 class="section-heading flex-grow-1"> {{ __('Documents') }}</h3>
-        
-       
+        <h3 class="section-heading"> {{ __('Documents') }}</h3>       
     </div>
+
     <div>
-        <x-hyperlinkbutton href="{{ route('publicdocuments') }}" class="" :outline="true">
-            All Documents  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" width="20">
+        <x-hyperlinkbutton href="{{ route('publicdocuments') }}" class="" :outline="true" >
+            All Documents  
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" width="20">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
         </x-hyperlinkbutton>

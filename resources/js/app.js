@@ -10,7 +10,10 @@ import 'bootstrap';
 import 'owl.carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 
+
 $(document).ready(function () {
+
+    // Carousel Initialization
     $('.owl-carousel').owlCarousel({
         loop: true,
         autoplay: true,
@@ -35,6 +38,9 @@ $(document).ready(function () {
             }
         }
     });
+    
+    //Navbar Close
+
     
     // $('#liveToast').toast('show')
 
