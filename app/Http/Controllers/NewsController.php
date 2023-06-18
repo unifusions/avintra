@@ -14,7 +14,6 @@ class NewsController extends Controller
     }
     public function index()
     {
-
         return view('news.index')->with([
             'news' => News::orderBy('created_at', 'desc')->paginate(15),
         ]);
@@ -23,7 +22,6 @@ class NewsController extends Controller
     
     public function create()
     {
-
         return view('news.create')->with([
             'news_categories' => NewsCategory::all(),
         ]);
@@ -64,8 +62,7 @@ class NewsController extends Controller
     }
 
    
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        
     }
 }
