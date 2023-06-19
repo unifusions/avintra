@@ -22,7 +22,7 @@
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/YIL-Logo.png') }}" alt="">
 
-    </div >
+    </div>
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/aweil-logo.png') }}" alt="">
 
@@ -44,7 +44,7 @@
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/public-grievances-logo.jpg') }}" alt="">
     </div>
-    
+
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/mpa_logo.png') }}" alt="">
     </div>
@@ -52,17 +52,13 @@
 
 
 <footer class="footer mt-auto">
-
-
     <div class="container-fluid copyright-section py-2">
-
         <div class="container ">
             <div class="d-flex justify-content-between copyright align-items-center">
-                <div class=""> &copy; 2021 - {{ now()->year }}. All rights Reserved - Official Website of
-                    Armoured Vehicles Nigam Limited.abcd</div>
-
+                <div class=""> &copy; {{ now()->year }}. All rights Reserved - Official Website of
+                    Armoured Vehicles Nigam Limited</div>
                 <div>
-                    Visitors <span class="visitors-count">{{ number_format(589630) }}</span>
+                    Visitors <span class="visitors-count">{{ number_format($app_visitors) }}</span>
                 </div>
             </div>
 

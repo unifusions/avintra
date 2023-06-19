@@ -129,5 +129,5 @@ Route::delete('galleryImageDelete', DeleteController::class)->name('galleryImage
 Route::delete('/galleryImageDelete/{galleryImage}', GalleryImageDeleteController::class)->name('galleryImageDeletewithID');
 
 
-Route::get('lang/{lang}', LocaleController::class);
+Route::get('lang/{lang}', LocaleController::class)->name('locale');
 require __DIR__ . '/auth.php';

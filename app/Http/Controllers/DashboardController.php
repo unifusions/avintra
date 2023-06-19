@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\News;
 use App\Models\TodayWord;
+use App\Models\Visitors;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,7 +23,8 @@ class DashboardController extends Controller
         return view('dashboard')->with([
             'documents_count' => Document::count(),
             'news_count' => News::count(),
-            'words_count' => TodayWord::count()
+            'words_count' => TodayWord::count(),
+            'daily_visitors' => Visitors::whereDate('created_at', Carbon::today())->count()
         ]);
     }
 }

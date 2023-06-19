@@ -30,7 +30,7 @@
 <nav class="navbar navbar-expand-lg secondary-navbar">
 
     <div class="container">
-      
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#guestMenu"
             aria-controls="guestMenu" aria-expanded="false" aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -40,9 +40,9 @@
 
         </button>
 
-        
+
         <div class="collapse navbar-collapse justify-content-between" id="guestMenu">
-           
+
             <ul class="navbar-nav gap-2">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}"> {{ __('welcome.Home') }}</a>
@@ -73,24 +73,26 @@
                 </li>
             </ul>
 
-            @switch(session()->get('lang'))
-                @case('en')
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="#">English</a>
-                    </li>
-                @break
 
-                @case('hi')
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="#">Hindi</a>
-                    </li>
-                @break
-                @default
-            @endswitch
 
 
             <ul class="navbar-nav">
-                @if (Route::has('login'))
+                @switch(session()->get('lang'))
+                    @case('en')
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="{{ route('locale', 'hi') }}">Hindi</a>
+                        </li>
+                    @break
+
+                    @case('hi')
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="{{ route('locale', 'en') }}">English</a>
+                        </li>
+                    @break
+
+                    @default
+                @endswitch
+                {{-- @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
                             <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
@@ -112,10 +114,10 @@
                         </li>
 
                     @endauth
-                @endif
+                @endif --}}
 
             </ul>
-         
+
         </div>
-       
+
 </nav>
