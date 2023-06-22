@@ -19,19 +19,18 @@ return new class extends Migration
             $table->id();
             $table->String('emp_id')->unique();
             $table->text('name');
-            $table->integer('phone_no');
-            $table->integer('mobile_no');
+            $table->double('phone_no');
+            $table->double('mobile_no');
             $table->string('email');
             $table->string('designation');
             $table->foreignIdFor(Division::class);
             $table->foreignIdFor(Section::class);
             $table->date('date_of_birth');
             $table->date('date_of_joining');
-            $table->date('date_of_retirment');
-            $table->date('photo');
+            $table->date('date_of_retirement');
+            $table->string('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

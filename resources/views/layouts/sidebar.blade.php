@@ -260,6 +260,35 @@
 
             </li>
 
+            <li class="nav-item my-1 {{ request()->routeIs('employee.index') ? 'active' : null }}">
+
+
+                <a class="nav-link  {{ request()->routeIs('employee.*') ? ' active' : null }}" data-bs-toggle="collapse"
+                    data-bs-target="#user-collapse" aria-expanded="true">
+                    <x-icons.users-icon />
+                    {{ __('Employees') }}
+                </a>
+
+
+                <div class="collapse py-2 {{ request()->routeIs('employee.*') ? 'show active' : null }} "
+                    id="user-collapse" style="">
+                    <ul class="btn-toggle-nav flex-column sub-nav">
+                        <li class="nav-item small mb-2"><a href="{{ route('employee.index') }}"
+                                class="link-dark {{ request()->routeIs('employee.index') ? 'active fw-bold' : null }}">
+                                All Employees
+                            </a></li>
+                        <li class="nav-item small  mb-2"><a href="{{ route('user.create') }}"
+                                class="link-dark {{ request()->routeIs('user.create') ? 'active fw-bold' : null }}">Add
+                                New User</a></li>
+                        {{-- <li class="nav-item small"><a href="#" class="link-dark {{ request()->routeIs('documents.index') ? 'active fw-bold' : null }}">Archive</a></li> --}}
+
+                    </ul>
+                </div>
+
+            </li>
+
+
+
             <li class="nav-item my-1">
                 <a href="{{ route('homepagesettings.edit') }}"
                     class="nav-link {{ request()->routeIs('homepagesettings.edit') || request()->routeIs('leadership.*') ? 'active' : null }} align-middle">

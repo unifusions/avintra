@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('app_visitors', Visitors::count());
+        
         Paginator::useBootstrapFive();
     }
 }

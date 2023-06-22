@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DocumentCategoryController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Gallery\DeleteController;
 use App\Http\Controllers\Gallery\GalleryImageDeleteController;
 use App\Http\Controllers\Gallery\MultipleUploadsController;
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::resource('gallery', GalleryController::class);
 
     Route::resource('section', SectionController::class)->parameters(['section' => 'section:slug']);
+    Route::resource('employee', EmployeeController::class)->parameters(['employee' => 'employee:emp_id']);
     Route::resource('user', UserController::class);
     
     Route::get('/settings/home-page/', [HomePageSettingsController::class, 'edit'])->name('homepagesettings.edit');

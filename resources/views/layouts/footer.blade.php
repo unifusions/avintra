@@ -1,7 +1,7 @@
 {{-- Logos --}}
 
 
-<div class="owl-carousel">
+<div id="footerCarousel" class="owl-carousel">
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/niclogo.jpg') }}" alt="">
     </div>

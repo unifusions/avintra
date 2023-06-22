@@ -10,12 +10,12 @@
         </a>
         <div>
             <h1 class="site-title">
-                Armoured Vehicles Nigam Limited
+                {{ __('welcome.AVNL') }}
             </h1>
-            <h3 class="site-subtitle"> A Government of India Enterprise </h3>
+            <h3 class="site-subtitle">  {{ __('welcome.AVNLTagLine') }}  </h3>
             <span class="site-tagline">
-                Ministry of Defence
-                CIN : U35990TN2021GOI145504
+                {{ __('welcome.avnlmod') }}
+                {{ __('welcome.CIN') }} : U35990TN2021GOI145504
             </span>
         </div>
     </div>
@@ -54,22 +54,22 @@
                     <a class="nav-link" href="{{ route('leadership') }}">{{ __('welcome.Leadership') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('publicnews') }}">News</a>
+                    <a class="nav-link" href="{{ route('publicnews') }}">{{ __('welcome.News') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('publicdocuments') }}">Documents</a>
+                    <a class="nav-link" href="{{ route('publicdocuments') }}">{{ __('welcome.Documents') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('directory') }}">Directory</a>
+                    <a class="nav-link" href="{{ route('directory') }}">{{ __('welcome.Directory') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('publicgallery') }}">Gallery</a>
+                    <a class="nav-link" href="{{ route('publicgallery') }}">{{ __('welcome.Gallery') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('calendar') }}">Calendar</a>
+                    <a class="nav-link" href="{{ route('calendar') }}">{{ __('welcome.Calendar') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cmdmessage') }}" target="_blank">CMD Message</a>
+                    <a class="nav-link" href="{{ route('cmdmessage') }}" target="_blank">{{ __('welcome.CMDMessage') }}</a>
                 </li>
             </ul>
 

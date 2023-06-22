@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division;
+use App\Models\Employee;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,11 @@ class PublicDirectoryController extends Controller
     public function __invoke(Request $request)
     {
 
-        $divisions = Division::all();
-        $sections = Section::all();
-        return view('pages.directory', compact(['divisions', 'sections']));
+        $employees = Employee::orderBy('name', 'asc')->paginate(25);
+        if ($request->search)
+            $employees = Employee::search($request->search);
+        return view('pages.directory')->with([
+            'employees' =>  $employees
+        ]);
     }
 }

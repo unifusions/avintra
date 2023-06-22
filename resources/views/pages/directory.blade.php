@@ -14,11 +14,11 @@
 
       <div class="container my-5">
         <div class="row gx-xl-5">
-            <div class="col-lg-4"> <form>
+            <div class="col-lg-4"> <form method="get" action="{{ route('directory') }}">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search Directory"
+                    <input name="search" type="text" class="form-control" placeholder="Search Directory"
                         aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-primary" type="button" id="button-addon2"><svg
+                    <button class="btn btn-primary" type="submit" id="button-addon2"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6" width=20>
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -39,46 +39,37 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Designation</th>
                             <th scope="col">Division</th>
                             <th scope="col">Section</th>
-                            
-                            <th scope="col">Phone</th>
+                            <th scope="col">Phone No</th>
+                            <th scope="col">Personal No</th>
+
                             <th scope="col">Email</th>
                           </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>IT</td>
-                            <td>Accounting</td>
-
-                            <td>+91 123456789</td>
-                            <td>demo@email.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>IT</td>
-                            <td>Accounting</td>
-
-                            <td>+91 123456789</td>
-                            <td>demo@email.com</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>IT</td>
-                            <td>Accounting</td>
-
-                            <td>+91 123456789</td>
-                            <td>demo@email.com</td>
-                          </tr>
+                            @foreach ($employees as $key => $employee  )
+                                    <tr>
+                                        <td>{{  $employees->firstItem() + $key }}</td>
+                                        <td>{!! $employee->name !!}</td>
+                                        <td>{!! $employee->designation !!}</td>
+                                        <td>{{ $employee->division->name ?? ''  }} </td>
+                                        <td>{{ $employee->section->name ?? '' }}</td>
+                                        <td>{{ $employee->phone_no }}</td>
+                                        <td>{{ $employee->mobile_no }}</td>
+                                        <td>{{ $employee->email }}</td>
+                                       
+                                    </tr>
+                            @endforeach
+                         
                         </tbody>
                       </table>
 
 
-
+                      <div class="mt-3">
+                        {{ $employees->links() }}
+                    </div>
 
 
                 </div>

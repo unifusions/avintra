@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Visitors;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
@@ -13,6 +14,8 @@ class GuestLayout extends Component
     public function render(): View
     {
         
-        return view('layouts.guest');
+        return view('layouts.guest')->with(
+            ['app_visitors' => Visitors::count(),]
+        );
     }
 }

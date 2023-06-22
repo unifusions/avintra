@@ -2,12 +2,12 @@
 
 
     <x-page-header>
-        <x-slot:heading> About Us </x-slot:heading>
+        <x-slot:heading> {{ __('aboutus.title') }} </x-slot:heading>
         <div class="col-lg-12">
             <div class="breadcrumbs creote">
                 <ul class="breadcrumb m-auto">
-                    <li><a href="{{ route('home') }}">Home</a> </li>
-                    <li class="active">About Us</li>
+                    <li><a href="{{ route('home') }}">{{ __('welcome.Home') }}</a> </li>
+                    <li class="active">{{ __('aboutus.title') }}</li>
                 </ul>
             </div>
         </div>
@@ -22,11 +22,9 @@
                         
                         
                         <p class="text-justify governanceContent">
-                            ARMOURED VEHICLES NIGAM LIMITED(AVNL) is one of the DPSUs formed consequent to the decision
-                            of Government of India to convert Ordnance Factory Board into 07 fully owned Government
-                            Corporate Entities. AVNL comprises of 05 Manufacturing Units and 03 Non-Production units.
-                            AVNL has been registered by Ministry of Corporate Affairs on 14th August, 2021, under
-                            Company's Act of 2013.
+
+                            {{ __('aboutus.about')  }}
+                            
                         </p>
 
 
@@ -39,7 +37,7 @@
                 <div class="col-12">
                     <div class="aboutContent">
                         {{-- <h5 class="subTitle">About AVNL</h5> --}}
-                        <h2 class="secTitle">Corporate Governance</h2>
+                        <h2 class="secTitle">  {{ __('aboutus.CGTitle')  }}</h2>
 
 
 
