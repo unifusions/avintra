@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 class HomePageSettingsController extends Controller
 {
    public function edit () {
-    return view('setting.index');
+   //  return view('setting.index');
+   return redirect()->route('leadership.index');
+
    }
 }

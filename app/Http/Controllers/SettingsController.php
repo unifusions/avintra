@@ -9,7 +9,8 @@ class SettingsController extends Controller
 {
     public function index()
     {
-        return view('setting.index');
+        // return view('setting.index');
+        return redirect()->route('leadership.index');
     }
 
     public function store(Request $request)
