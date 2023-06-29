@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreWordoftheDay;
+use App\Http\Requests\UpdateWordoftheDay;
 use App\Models\TodayWord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class WordOfTheDayController extends Controller
 {
@@ -56,13 +58,17 @@ class WordOfTheDayController extends Controller
 
     public function edit(TodayWord $wordoftheday)
     {
-     dd($wordoftheday);
+        return view('wordoftheday.edit', compact('wordoftheday'));
     }
 
    
-    public function update(Request $request, TodayWord $wordoftheday)
+    public function update(UpdateWordoftheDay $request, TodayWord $wordoftheday)
     {
        
+        $wordoftheday->fill($request->validated());
+        $wordoftheday->save();
+        return redirect()->route('wordoftheday.index')->with('success', 'Word of the day: ' . $wordoftheday->word_english . ' has been updated successfully'); 
+        
     }
 
   

@@ -177,6 +177,6 @@ class DocumentController extends Controller
         $restoredDocument = Document::onlyTrashed()->findOrFail($document);
         // dd($restoredDocument);
         $restoredDocument->restore();
-        return back()->with('success', 'Document ' . $restoredDocument->document_no . ' has been restored successfully');
+        return back()->with('success', 'Document ' . $document->document_no . ' has been restored successfully');
     }
 }

@@ -6,13 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "coderflexx/laravisit": "^1.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.19",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.12"
+        "livewire/livewire": "^2.12",
+        "mkrohn/laravel-odbc-informix": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
@@ -32,6 +32,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
+           
+           
         },
         "files": [
             "app/Utils/helpers.php"
