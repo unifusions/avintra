@@ -26,12 +26,22 @@
                 @foreach ($documents as $document)
                     <article class="document-list border-bottom">
 
-                        <div class="">
-                            <div class="created-date">{{ $document->created_at->format('d/M/y') }}</div>
-                            <a class="document-link" href="{{ route('documents.single', $document) }}" target="_blank">
-                                <h4 class=""> {{ $document->title }}
-                                </h4>
-                            </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="created-date">{{ $document->created_at->format('d/M/y') }}</div>
+                                <div class=mb-3>
+                                    <h4 class=""> {!! $document->title !!}</h4>
+                                    {{ $document->division->name ?? ''}}  <span class="badge bg-secondary text-light">{{ $document->section->name ?? '' }}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <a class="document-link" href="{{ route('documents.single', $document) }}"
+                                    target="_blank">
+                                    <x-file-info file_type="{{ $document->file_type }}"
+                                        file_size="{{ $document->file_size }}" />
+                                </a>
+                            </div>
+
 
                         </div>
                     </article>
@@ -51,11 +61,11 @@
             <div class="col-lg-4 col-md-8">
                 <div class="">
                     <div class="border-bottom">
-                        <form>
+                        <form action="{{ route('publicdocuments') }}">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search Documents"
-                                    aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-primary" type="button" id="button-addon2"><svg
+                                <input type="text" class="form-control" placeholder="Search Documents" id="search"
+                                    name="search" aria-label="Documents Search" aria-describedby="button-addon2">
+                                <button class="btn btn-primary" type="submit" id="button-addon2"><svg
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6" width=20>
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -70,15 +80,15 @@
                             @foreach ($divisions as $division)
                                 @if (count($division->documents) > 0)
                                     <li class="border-bottom">
-                                        <a href="{{ route('publicdivision', $division) }}" class="fw-medium ">{{ $division->name }}<span
+                                        <a href="{{ route('publicdivision', $division) }}"
+                                            class="fw-medium ">{{ $division->name }}<span
                                                 class="float-end">{{ count($division->documents) }}</span>
                                         </a>
                                         <ul class="list-style-none ms-3">
                                             @if (count($division->sections) > 0)
-                                            @foreach ($division->sections as $section )
-                                                
-                                            @endforeach
-                                                <li><a href="">{{ $section->name }}<span
+                                                @foreach ($division->sections as $section)
+                                                @endforeach
+                                                <li><a href="{{ route('publicdivision', $division)  }}">{{ $section->name }}<span
                                                             class="float-end">{{ count($section->documents) }}</span></a>
                                                 </li>
                                             @endif
@@ -91,7 +101,7 @@
                         </ul>
                     </div>
 
-                 
+
 
 
 

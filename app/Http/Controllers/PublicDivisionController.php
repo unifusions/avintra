@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division;
+use App\Models\Document;
 use Illuminate\Http\Request;
 
 class PublicDivisionController extends Controller
@@ -15,6 +16,12 @@ class PublicDivisionController extends Controller
      */
     public function __invoke(Division $division)
     {
-        return view ('division.public', compact('division'));
+        return view ('division.public')->with(
+            [
+                'divisions' => Division::all(),
+                'division' => $division,
+                'documents' => Document::where('division_id', $division->id)->orderBy('created_at', 'desc')->paginate(15),
+            ]
+        );
     }
 }
