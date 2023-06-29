@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class WordOfTheDayController extends Controller
 {
     public function __construct(){
-        $this->authorizeResource(TodayWord::class,['todayword', 'user']);
+        $this->authorizeResource(TodayWord::class,['wordoftheday', 'user']);
      }
     public function index()
     {
@@ -28,15 +28,11 @@ class WordOfTheDayController extends Controller
         return view('wordoftheday.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(StoreWordoftheDay $request)
     {
         
+    
 
         $todayword = TodayWord::create(
             array_merge( $request->validated(),
@@ -52,48 +48,31 @@ class WordOfTheDayController extends Controller
         return redirect()->route('wordoftheday.index')->with('success', 'Word of the day: ' . $todayword->word_english . ' has been created successfully'); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+       
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(TodayWord $wordoftheday)
     {
-        //
+     dd($wordoftheday);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+   
+    public function update(Request $request, TodayWord $wordoftheday)
     {
-        //
+       
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+  
+    public function destroy(TodayWord $wordoftheday)
     {
-        //
+        $wordoftheday->delete();
+        return redirect()->route('wordoftheday.index')->with('success', 'Word  ' . $wordoftheday->word_english . ' has been deleted successfully');
+
+      
     }
+
+    
 }

@@ -92,7 +92,7 @@
 
                     @default
                 @endswitch
-                {{-- @if (Route::has('login'))
+                @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
                             <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
@@ -114,7 +114,7 @@
                         </li>
 
                     @endauth
-                @endif --}}
+                @endif
 
             </ul>
 

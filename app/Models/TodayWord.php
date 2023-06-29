@@ -10,11 +10,17 @@ class TodayWord extends Model
     use HasFactory;
 
     protected $fillable = [
+        'word_date',
         'word_english',
         'word_tamil',
         'word_hindi',
         'word_audio_file',
         'word_meaning',
         'slug'
+    ];
+
+    protected $casts = [
+        'word_date'=> 'date',
+     
     ];
 }

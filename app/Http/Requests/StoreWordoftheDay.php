@@ -28,6 +28,7 @@ class StoreWordoftheDay extends FormRequest
     public function rules()
     {
         return [
+            'word_date' => ['required', 'unique:today_words'],
             'word_english' => ['required', 'unique:today_words', 'max:255', Rule::unique('today_words')->ignore($this->todayword)],
             'word_tamil' => 'required',
             'word_hindi' => 'required',
@@ -57,6 +58,8 @@ class StoreWordoftheDay extends FormRequest
     public function messages(): array
     {
         return [
+            'word_date.required'=> 'Word of the day date is required',
+            'word_date.unique' => 'Word for the mentioned date is already exists. Please enter another day',
             'word_english.required' => 'An English word is required',
             'word_english.unique' => 'Word with same already exists. Use different title',
             'word_tamil.required' => 'A Tamil Word is required',

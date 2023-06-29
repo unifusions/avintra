@@ -15,8 +15,8 @@
             <div class="modal-content">
                 @can('delete', $model)
                     <form {{ $attributes->merge([]) }} method="POST">
-                        @method('delete')
                         @csrf
+                        @method('delete')
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

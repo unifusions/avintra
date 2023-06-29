@@ -51,7 +51,7 @@ class TodayWordPolicy
     }
 
    
-    public function delete(User $user, TodayWord $todayWord)
+    public function delete(User $user)
     {
         $getPermission = Permission::whereModel('TodayWord')->whereName('delete')->first();
         return ($user->isAdmin || $user->permissions->contains($getPermission ? $getPermission->id : 0)) ?

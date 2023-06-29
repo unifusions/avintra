@@ -13,7 +13,22 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
-        
+      
+        $sessionId = request()->session()->getId();
+        $userIp =  request()->ip();
+        $visitor = Visitors::where('ip_address', $userIp)->where('session_id', $sessionId)->first();
+
+        if ($visitor === null)
+            Visitors::create([
+                'ip_address' => $userIp,
+                'session_id' => $sessionId,
+
+            ]);
+        else {
+            $visitor->counter = $visitor->counter + 1;
+            $visitor->save();
+        }
+
         return view('layouts.guest')->with(
             ['app_visitors' => Visitors::count(),]
         );

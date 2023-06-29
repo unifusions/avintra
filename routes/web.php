@@ -81,7 +81,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
     Route::resource('news', NewsController::class);
     Route::get('news-category', NewsCategoryController::class);
-    Route::resource('wordoftheday', WordOfTheDayController::class);
+
+    
 
     Route::resource('division', DivisionController::class);
     Route::resource('gallery', GalleryController::class);
@@ -89,6 +90,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::resource('section', SectionController::class)->parameters(['section' => 'section:slug']);
     Route::resource('employee', EmployeeController::class)->parameters(['employee' => 'employee:emp_id']);
     Route::resource('user', UserController::class);
+
+    Route::resource('wordoftheday', WordOfTheDayController::class);
     
     Route::get('/settings/home-page/', [HomePageSettingsController::class, 'edit'])->name('homepagesettings.edit');
 

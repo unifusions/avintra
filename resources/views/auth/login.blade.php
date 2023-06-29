@@ -17,7 +17,7 @@
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            <div class="mt-4 mb-3">
                 <x-input-label for="password" :value="__('Password')" />
 
                 <x-text-input id="password" type="password" name="password" required
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Remember Me -->
-            
+{{--             
             <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
                 <div class="">
                     <label for="remember_me" class="inline-flex items-center">
@@ -46,7 +46,7 @@
                 </div>
                 
 
-            </div>
+            </div> --}}
 
             
             <x-primary-button class="ml-3">

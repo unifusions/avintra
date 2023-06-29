@@ -24,26 +24,13 @@ class HomepageController extends Controller
     {
     
 
-        $sessionId = $request->session()->getId();
-        $userIp = $request->ip();
-        $visitor = Visitors::where('ip_address', $userIp)->where('session_id', $sessionId)->first();
-
-        if ($visitor === null)
-            Visitors::create([
-                'ip_address' => $userIp,
-                'session_id' => $sessionId,
-
-            ]);
-        else {
-            $visitor->counter = $visitor->counter + 1;
-            $visitor->save();
-        }
+      
 
 
         return view('welcome')->with([
             'news' => News::latest()->take(5)->get(),
             'documents' => Document::latest()->take(5)->get(),
-            'todayword' => TodayWord::latest()->first(),
+            'todayword' => TodayWord::whereDay('word_date', now()->day)->first(),
             'galleries' => Gallery::latest()->take(6)->get(),
             'birthdays' => Employee::whereMonth('date_of_birth', '=', Carbon::now()->format('m'))
                 ->whereDay('date_of_birth', '=', Carbon::now()->format('d'))

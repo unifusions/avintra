@@ -16,6 +16,14 @@
                     <form method="POST" action="{{ route('wordoftheday.store') }}" enctype="multipart/form-data">
                         @csrf
 
+                        <div class="form-group row mb-3">
+                            <x-input-label for="word_date" :value="__('Date')" class="col-4 col-form-label" />
+                            <div class="col-8">
+                                <x-text-input  :errorMsg="$errors->has('word_date')" id="word_date" class="" :value="old('word_date')" type="date"
+                                    name="word_date" autocomplete="word_date" />
+                                <x-input-error :messages="$errors->get('word_date')" class="mt-2" />
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-3">
                             <x-input-label for="word_english" :value="__('Today\'s Word in English')" class="col-4 col-form-label" />

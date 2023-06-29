@@ -26,18 +26,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($words as $key => $word)
+                @foreach ($words as $key => $wordoftheday)
                     <tr>
                         <th scope="row">{{ $words->firstItem() + $key }}</th>
-                        <td>{{ $word->created_at->format('d-m-y') }}</td>
-                        <td>{{ $word->word_english }}</td>
-                        <td>{{ $word->word_hindi }}</td>
-                        <td>{{ $word->word_tamil }}</td>
-                        <td>{{ $word->word_meaning }} </td>
+                        <td>{{ $wordoftheday->word_date->format('d-m-y') }}</td>
+                        <td>{{ $wordoftheday->word_english }}</td>
+                        <td>{{ $wordoftheday->word_hindi }}</td>
+                        <td>{{ $wordoftheday->word_tamil }}</td>
+                        <td>{{ $wordoftheday->word_meaning }} </td>
                         <td>
                             <div>
                                 <audio controls class="w-100">
-                                    <source src="{{ asset('storage/' . $word->word_audio_file) }}" type="audio/mp3">
+                                    <source src="{{ asset('storage/' . $wordoftheday->word_audio_file) }}" type="audio/mp3">
 
                                     Your browser does not support the audio element.
                                 </audio>
@@ -48,13 +48,15 @@
                         <td class="text-right">
                             <div class="d-flex justify-content-evenly">
 
-                                @can('update', $word)
-                                    <x-edit-button href="{{ route('wordoftheday.edit', $word) }}" class="" />
+                                @can('update', $wordoftheday)
+                                    <x-edit-button href="{{ route('wordoftheday.edit', $wordoftheday) }}" class="" />
                                 @endcan
 
-                                @can('delete', $word)
-                                    <x-delete-button :model="$word" :modelId="$word->id" :modelName="$word->word_english"
-                                        href="{{ route('wordoftheday.destroy', $word) }}" type="word" />
+                                @can('delete', $wordoftheday)
+                               
+
+                                    <x-delete-button :model="$wordoftheday" :modelId="$wordoftheday->id" :modelName="$wordoftheday->word_english"
+                                        action=" {{ route('wordoftheday.destroy', $wordoftheday) }}" type="wordoftheday" />
                                 @endcan
                             </div>
 
