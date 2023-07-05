@@ -11946,7 +11946,7 @@ var jquery = {
     return jQuery2;
   });
 })(jquery);
-const $$1 = jqueryExports;
+const $ = jqueryExports;
 var tinymceExports = {};
 var tinymce$2 = {
   get exports() {
@@ -97510,7 +97510,7 @@ axios.default = axios;
 const axios$1 = axios;
 window._ = _;
 window.axios = axios$1;
-window.$ = window.jQuery = $$1;
+window.$ = window.jQuery = $;
 window.tinymce = tinymce$1;
 window.FilePond = FilePond;
 window.bootstrap = bootstrap;
@@ -104427,47 +104427,3 @@ defineJQueryPlugin(Toast);
   }
 })(window.Zepto || window.jQuery);
 const owl_carousel = "";
-$(document).ready(function() {
-  $("#footerCarousel").owlCarousel({
-    loop: true,
-    autoplay: true,
-    nav: false,
-    slideTransition: "linear",
-    autoplayTimeout: 3e3,
-    autoplaySpeed: 3e3,
-    autoWidth: true,
-    margin: 25,
-    autoplayHoverPause: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 3
-      },
-      1e3: {
-        items: 8
-      }
-    }
-  });
-  $("#birthdayCarousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: false,
-    center: true,
-    autoplay: true,
-    autoplayTimeout: 3e3,
-    items: 1,
-    autoplayHoverPause: true
-  });
-  $("#retirementCarousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: false,
-    center: true,
-    autoplay: true,
-    autoplayTimeout: 2e3,
-    items: 1,
-    autoplayHoverPause: true
-  });
-});
