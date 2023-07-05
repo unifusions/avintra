@@ -104432,7 +104432,6 @@ $(document).ready(function() {
     loop: true,
     autoplay: true,
     nav: false,
-    // navText : ["",""],
     slideTransition: "linear",
     autoplayTimeout: 3e3,
     autoplaySpeed: 3e3,

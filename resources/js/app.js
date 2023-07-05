@@ -17,11 +17,9 @@ $(document).ready(function () {
         loop: true,
         autoplay: true,
         nav: false,
-        // navText : ["",""],
         slideTransition: 'linear',
         autoplayTimeout: 3000,
         autoplaySpeed: 3000,
-
         autoWidth: true,
         margin: 25,
         autoplayHoverPause: true,
