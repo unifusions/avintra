@@ -7,10 +7,14 @@ import 'bootstrap';
 // window.Alpine = Alpine;
 
 // Alpine.start();
+
+import $ from 'jquery';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
 import 'owl.carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 
-
+window.bootstrap  = bootstrap ;
+window.$ = window.jQuery = $;
 $(document).ready(function () {
 
     // Carousel Initialization

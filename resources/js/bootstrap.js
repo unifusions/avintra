@@ -30,7 +30,7 @@ import FilePondPluginFilePoster from 'filepond-plugin-file-poster';
 import 'filepond/dist/filepond.css';
 
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import Masonry from 'masonry-layout';
+
 
 
 /**
