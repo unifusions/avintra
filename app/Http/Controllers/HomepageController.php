@@ -35,7 +35,7 @@ class HomepageController extends Controller
             'birthdays' => Employee::whereMonth('date_of_birth', '=', Carbon::now()->format('m'))
                 ->whereDay('date_of_birth', '=', Carbon::now()->format('d'))
                 ->get(),
-            'retirements' => Employee::whereMonth('date_of_retirement', '=', Carbon::now()->format('m'))
+            'retirements' => Employee::whereMonth('date_of_retirment', '=', Carbon::now()->format('m'))
             ->whereYear('date_of_retirement', '=', Carbon::now()->format('Y'))
             ->get(),
         ]);
