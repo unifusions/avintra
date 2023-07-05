@@ -4,12 +4,12 @@
     "src": "node_modules/owl.carousel/dist/assets/owl.video.play.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-fd2bdadf.css",
+    "file": "assets/app-7cf7f59b.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.css": {
-    "file": "assets/app-5b2f972e.css",
+    "file": "assets/app-81c14e8c.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -17,9 +17,9 @@
       "assets/owl.video.play-04360456.png"
     ],
     "css": [
-      "assets/app-5b2f972e.css"
+      "assets/app-81c14e8c.css"
     ],
-    "file": "assets/app-6e73c5c3.js",
+    "file": "assets/app-8944a0bf.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
