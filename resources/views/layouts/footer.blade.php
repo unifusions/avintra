@@ -1,30 +1,6 @@
 {{-- Logos --}}
 
-<script type="module">
 
-$('#footerCarousel').owlCarousel({
-        loop: true,
-        autoplay: true,
-        nav: false,
-        slideTransition: 'linear',
-        autoplayTimeout: 3000,
-        autoplaySpeed: 3000,
-autoWidth: true,
-        margin: 25,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 8
-            }
-        }
-    });
-</script>
 <div id="footerCarousel" class="owl-carousel">
     <div class="logo-slide">
         <img src="{{ asset('images/footer-logos/niclogo.jpg') }}" alt="">
