@@ -1,4 +1,4 @@
-{{-- Logos --}}
+{{-- Logos
 
 <script type="module">
     
@@ -58,7 +58,7 @@ $('#retirementCarousel').owlCarousel({
 });
 
 });
-</script>
+</script> --}}
 
 
 <div id="footerCarousel" class="owl-carousel">
