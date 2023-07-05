@@ -20,7 +20,7 @@ $(document).ready(function () {
         slideTransition: 'linear',
         autoplayTimeout: 3000,
         autoplaySpeed: 3000,
-        autoWidth: true,
+autoWidth: true,
         margin: 25,
         autoplayHoverPause: true,
         responsive: {
@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
     });
 
-    //Birthday Carousel
+
 
     $('#birthdayCarousel').owlCarousel({
         loop: true,
