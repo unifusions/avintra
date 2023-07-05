@@ -34,7 +34,7 @@
     </div> --}}
 
 {{-- </div> --}}
-
+{{-- 
 <img src="{{ asset('images/bday-card.png') }}" alt="" height="100" class="mt-2 mb-3 mx-auto d-block">
 
 <div id="birthdayCarousel" class="owl-carousel">
@@ -44,7 +44,7 @@
             <div class="birthday-card">
                 <img src="{{ asset('storage/employees/' . $birthday->emp_id . '.jpg') }}"  height="100"
                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" class="rounded-circle text-center" focusable="false"
-                    style=" object-fit: cover;width:100px!important; display:inline" style=""/>
+                    style=" object-fit: cover;width:100px!important; display:inline" />
                 <h6 class="mt-3">{{ $birthday->name }}</h6>
                 <p>{{ $birthday->division->name ?? '' }} | {{ $birthday->section->name ?? ''}}</p>
             </div>
@@ -53,4 +53,4 @@
     @endforeach
 
 
-</div>
+</div> --}}

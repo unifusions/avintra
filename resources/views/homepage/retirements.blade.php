@@ -35,7 +35,7 @@
 
 {{-- </div> --}}
 
-<img src="{{ asset('images/bday-card.png') }}" alt="" height="100" class="mt-2 mb-3 mx-auto d-block">
+{{-- <img src="{{ asset('images/bday-card.png') }}" alt="" height="100" class="mt-2 mb-3 mx-auto d-block">
 
 <div id="retirementCarousel" class="owl-carousel">
 
@@ -53,4 +53,4 @@
     @endforeach
 
 
-</div>
+</div> --}}

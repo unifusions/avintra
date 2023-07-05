@@ -11946,7 +11946,7 @@ var jquery = {
     return jQuery2;
   });
 })(jquery);
-const $ = jqueryExports;
+const $$1 = jqueryExports;
 var tinymceExports = {};
 var tinymce$2 = {
   get exports() {
@@ -97510,7 +97510,7 @@ axios.default = axios;
 const axios$1 = axios;
 window._ = _;
 window.axios = axios$1;
-window.$ = window.jQuery = $;
+window.$ = window.jQuery = $$1;
 window.tinymce = tinymce$1;
 window.FilePond = FilePond;
 window.bootstrap = bootstrap;
@@ -104427,3 +104427,27 @@ defineJQueryPlugin(Toast);
   }
 })(window.Zepto || window.jQuery);
 const owl_carousel = "";
+$(document).ready(function() {
+  $("#footerCarousel").owlCarousel({
+    loop: true,
+    autoplay: true,
+    nav: false,
+    slideTransition: "linear",
+    autoplayTimeout: 3e3,
+    autoplaySpeed: 3e3,
+    autoWidth: true,
+    margin: 25,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 3
+      },
+      1e3: {
+        items: 8
+      }
+    }
+  });
+});
